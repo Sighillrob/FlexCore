@@ -22,7 +22,6 @@ rpm -ivh apacheds-2.0.0-M23-x86_64.rpm
 
 mkdir /opt/flex
 mkdir /opt/flex/documents
-cp /flex/* /opt/flex
 
 cd /etc/init.d/
 service apacheds-2.0.0_M23-default start
@@ -34,6 +33,15 @@ sudo postgresql-setup initdb
 sudo systemctl start postgresql
 sudo systemctl enable postgresql
 
+
+#Install Flex and connect to Database
+
+#Get Flex from GitHub Repo
+
+git clone https://github.com/Sighillrob/FlexCore.git
+
+# Copy flex from Root to /opt/flex
+cp -a  FlexCore/flex/* /opt/flex/
 
 #
 # Security Stuff
@@ -54,9 +62,10 @@ sudo systemctl enable fail2ban
 sudo yum install yum-plugin-protectbase.noarch -y
 sudo yum install mod_evasive -y
 sudo systemctl restart httpd.service
+service stop httpd 
 
 
+cd /opt/flex
 
-
-
+./silentinstaller.sh answerrob.txt
 
