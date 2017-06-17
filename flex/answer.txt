@@ -22,7 +22,7 @@ answer.file.locale=en
 
 # licenseFilePath - The absolute path for the falcon license
 
-falcon.licenseFilePath=/opt/flex/lic/falconLicense.xml
+falcon.licenseFilePath=/home/docushare/falconLicense.xml
 
 
 databaseConfig.database=postgresql
@@ -105,8 +105,8 @@ mssqlConfig.database.create=false
 postgresConfig.user=postgres
 postgresConfig.password=postgres
 postgresConfig.port=5432
-postgresConfig.host=localhost
-postgresConfig.database.name=changeme3
+postgresConfig.host=10.0.16.34
+postgresConfig.database.name=CHANGEME
 postgresConfig.database.create=true
 
 
@@ -236,4 +236,3 @@ prizm.client.secretKey=mysecretkey
 #
 # End of Answer file
 #
-
