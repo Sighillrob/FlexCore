@@ -21,13 +21,52 @@ answer.file.locale=en
 #
 
 # licenseFilePath - The absolute path for the falcon license
-
 falcon.licenseFilePath=/home/docushare/falconLicense.xml
-
-
+# Setting for the database
+#
+# This setting tells the installer which database you wish to use
+#
+# database - The database for the Falcon schema
+#            The allowed values are "oracle", "postgresql" and "sqlserver".
+#            Default - "sqlserver" for Win32
+#                      "postgresql" for Solaris/Linux
+# Note: Following this database selection setting will be all possible database
+#       setup values.  This is show each of the databases and their settings.  
+#       Only the setting for the database you have chosen in this setting will 
+#       be used.  For example, if you choose "pgsql" in this setting area, only
+#       The PostgreSQL settings that follow will be used to configure Falcon and
+#       PostgreSQL.  The other database settings will be ignored.
+#
 databaseConfig.database=postgresql
 
-
+#
+# Settings for the PostgreSQL database
+#
+# These settings allow the installer to connect to an existing
+# PostgreSQL database to add the Falcon schema.  The installer
+# can, if desired, create a new database within PostgreSQL
+# for the Falcon schema.
+#
+# user       - The user for the Falcon schema
+#              Default - postgres
+# password   - The password for the user for the Falcon schema
+#              Default - blank
+# port       - The tcp/ip port to the PostgreSQL database
+#              Default - 5432
+# host       - The host name of the machine running PostgreSQL
+#              Default - blank
+# name       - Name of the PostgreSQL database  
+#
+# create     - Should the installer create the PostgreSQL database
+#              for the Falcon schema
+#              The allowed values are "true" and "false"
+#              Default - "false"
+postgresConfig.user=postgres
+postgresConfig.password=postgres
+postgresConfig.port=5432
+postgresConfig.host=10.0.16.34
+postgresConfig.database.name=mydatabasetest
+postgresConfig.database.create=true
 
 #
 # Settings for the MSSQL database
@@ -66,49 +105,41 @@ databaseConfig.database=postgresql
 #                defined MSSQL instance?  The allowed values are "true"
 #                and "false"
 #                Default - false
-
-mssqlConfig.user=docushareaccess@docushareflex
-mssqlConfig.password=Xerox@2013!
-mssqlConfig.databaseName=docushare7
-mssqlConfig.host=docushareflex.database.windows.net
-mssqlConfig.port=1433
+mssqlConfig.user=sa
+mssqlConfig.password=Falcon1
+mssqlConfig.databaseName=falcondbtest
+mssqlConfig.host=13.198.102.59
+mssqlConfig.port=1434
 mssqlConfig.instanceType=default
-mssqlConfig.instanceName=docushare7
-mssqlConfig.database.create=false
-
-
-
+mssqlConfig.instanceName=FALCON
+mssqlConfig.database.create=true
 
 #
-# Settings for the PostgreSQL database
+# Settings for the ORACLE database
 #
-# These settings allow the installer to connect to an existing
-# PostgreSQL database to add the Falcon schema.  The installer
-# can, if desired, create a new database within PostgreSQL
-# for the Falcon schema.
+# These settings allow the installer to connect to a ORACLE database
 #
-# user       - The user for the Falcon schema
-#              Default - postgres
-# password   - The password for the user for the Falcon schema
-#              Default - blank
-# port       - The tcp/ip port to the PostgreSQL database
-#              Default - 5432
-# host       - The host name of the machine running PostgreSQL
-#              Default - blank
-# name       - Name of the PostgreSQL database
-#
-# create     - Should the installer create the PostgreSQL database
-#              for the Falcon schema
-#              The allowed values are "true" and "false"
-#              Default - "false"
+# user         - The user for the Falcon schema
+#                Default - sa
+# password     - The password for the user for the Falcon schema
+#                Default - blank
+#                Default - docushare
+# host         - The host name of the machine running ORACLE
+#                Default - blank
+# port         - The tcp/ip port to the ORACLE database engine
+#                Default - 5362
+# dbsid        - Database SID
+# index Tablespace - Index Tablespace of the database.
 
-postgresConfig.user=postgres
-postgresConfig.password=postgres
-postgresConfig.port=5432
-postgresConfig.host=10.0.16.34
-postgresConfig.database.name=CHANGEME
-postgresConfig.database.create=true
 
+oracleConfig.host=13.198.101.107
+oracleConfig.port=1521
+oracleConfig.user=JK102_FALCON2
+oracleConfig.password=Docushare1
+oracleConfig.dbsid=UTF8
+#oracleConfig.db.service.name=PDUTF8
+oracleConfig.index.tablespace=JK102_FALCON2_TBS_01_INDEX
+oracleConfig.overflow.tablespace=JK102_FALCON2_TBS_01_OVERFLOW
 
 #
 # Settings for Tomcat
@@ -134,6 +165,7 @@ tomcatConfig.scanServices.contextRoot=ScanServices
 tomcatConfig.scheme=http
 tomcatConfig.contentStore=/opt/flex/documents
 tomcatConfig.defaultLocale=en
+tomcatConfig.default.timezone=Pacific/Honolulu
 
 
 #
@@ -152,34 +184,34 @@ tomcatConfig.defaultLocale=en
 #
 # port            - The port for LDAP.
 #
-# agentDN         - LDAP agentDN details.
+# agentDN         - LDAP agent DN
 #
-# adminDN	  - LDAP AdminDN details.
+# agent password  - LDAP agent password.
 #
-# admin password  - LDAP admin password.
+# adminDN	  	  - Falcon site admin DN
+#
+# coordinatorDN   - Falcon site coordinator DN
+#
+# coordinator password  - Falcon site coordinator password.
 #
 # rootDIT         - LDAP rootDIT
 #
-#
-
-
-#THIS IS SUPER IMPORTANT
 
 ldapConfig.webServer.type=apache
 ldapConfig.webServer.host=localhost
-ldapConfig.webServer.home=/etc/httpd/
+ldapConfig.webServer.home=/etc/httpd
 ldapConfig.webServer.port=80
 ldapConfig.webServer.ssl.enable=false
 ldapConfig.webServer.apache.version=2.4
 ldapConfig.webServer.autoConfig.enable=true
 
 #ldapConfig.server.type=active_directory
+#ldapConfig.server.ssl.enable=false
 #ldapConfig.host=13.198.102.131
 #ldapConfig.port=389
 #ldapConfig.agentDN=CN=Mr.11,OU=LQTestOU,OU=Falcon,DC=ad2012,DC=dssg,DC=com
-#ldapConfig.agent.password=Docudshare1
+#ldapConfig.agent.password=Docushare1
 #ldapConfig.site.adminDN=CN=Wayne Rooney,OU=LQTestOU,OU=Falcon,DC=ad2012,DC=dssg,DC=com
-#ldapConfig.site.admin.password=Docushare123
 #ldapConfig.coordinatorDN=CN=lq1,OU=Users,OU=Falcon,DC=ad2012,DC=dssg,DC=com
 #ldapConfig.coordinator.password=Docushare1
 #ldapConfig.rootDIT=DC=ad2012,DC=dssg,DC=com

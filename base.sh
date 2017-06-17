@@ -20,6 +20,12 @@ wget http://www-eu.apache.org/dist//directory/apacheds/dist/2.0.0-M23/apacheds-2
 
 rpm -ivh apacheds-2.0.0-M23-x86_64.rpm
 
+cd FlexCore/
+tar -xzvf prizmdoc_client_12.1.x86_64.rpm.tar.gz 
+cd prizmdoc_client_12.1.0.75.x86_64.rpm/
+yum install --nogpgcheck *.rpm -y
+
+
 mkdir /opt/flex
 mkdir /opt/flex/documents
 mkdir /opt/start/
