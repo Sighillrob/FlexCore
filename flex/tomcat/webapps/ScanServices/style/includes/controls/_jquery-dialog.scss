@@ -1,0 +1,39 @@
+.ui-dialog{
+  border: 1px solid #D2D7DD;
+  .ui-dialog-titlebar{
+    border-radius: 0;
+    background: none;
+    border-width: 0 0 1px 0;
+    border-bottom: 1px solid #D2D7DD;
+    padding: 15px !important;
+    .ui-dialog-titlebar-close{
+      background: none;
+      border: 0;
+    }
+  }
+  .ui-dialog-content{
+    padding: 10px !important;
+    form > fieldset > p:first-of-type{
+      margin-top: 0;
+    }
+  }
+  .ui-dialog-buttonpane{
+    border: 1px solid #D2D7DD;
+    button.ui-button{
+      background: #EBEEF2;
+      overflow:visible;
+      padding:10px 15px;
+      display:inline-block;
+      border: 1px solid #EBEEF2;
+      color: rgba(38, 50, 56, 0.75);
+      border-radius: 0;
+      span{
+        padding: 0;
+      }
+      &:hover{
+        background:#fff;
+        border:1px solid #EBEEF2;
+      }
+    }
+  }
+}

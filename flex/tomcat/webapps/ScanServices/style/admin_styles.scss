@@ -1,0 +1,33 @@
+/* DocuShare Scan Services Styling */
+
+/* ------------------ */
+/* Site Global Styles */
+/* ------------------ */
+@import "includes/defaults";
+@import "includes/mixins";
+@import "includes/lib/normalize";
+@import "includes/font";
+@import "includes/common";
+@import "includes/forms";
+
+/* -------------- */
+/* Control Styles */
+/* -------------- */
+@import "includes/controls/nav";
+@import "includes/controls/objectlist";
+@import "includes/controls/jquery-dialog";
+
+/* ----------- */
+/* Page Styles */
+/* ----------- */
+@import "includes/ConfigureButtons";
+@import "includes/EditButton";
+@import "includes/ConfigureDevices";
+@import "includes/EditDevice";
+@import "includes/ScanLogging";
+@import "includes/ServerSetup";
+@import "includes/EmailSetup";
+@import "includes/ODBCAgentCommon";
+@import "includes/AutofillProfiles";
+@import "includes/ODBCMenus";
+@import "includes/DependentMenus";

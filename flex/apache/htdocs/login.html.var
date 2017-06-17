@@ -1,0 +1,13 @@
+URI: login.html
+
+Content-language: en
+Content-type: text/html
+URI: login.html.en
+
+Content-language: fr
+Content-type: text/html
+URI: login.html.fr
+
+Content-language: de
+Content-type: text/html
+URI: login.html.de

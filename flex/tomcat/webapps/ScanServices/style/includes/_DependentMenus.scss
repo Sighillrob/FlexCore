@@ -1,0 +1,140 @@
+/* --------------------------- */
+/* Dependent Menu Listing Page */
+/* --------------------------- */
+#DependentDatasourceMenus .objectlist tbody tr:nth-child(even){background:#f1f2f2}
+#DependentDatasourceMenus .objectlist tbody td{vertical-align: top}
+#DependentDatasourceMenus .objectlist .leftalign{text-align: left;}
+#DependentDatasourceMenus .objectlist tbody tr:nth-child(even) td.actions{background:#e1e4e4}
+#DependentDatasourceMenus .objectlist .menulist{margin:0;padding:0}
+#DependentDatasourceMenus .objectlist .menulist li{
+  background:url(../images/admin/dbMenu.svg) 0 2px no-repeat;
+  background-size: 17px 17px;
+  padding:2px 0 2px 20px;
+}
+
+/* -------------------------------- */
+/* Dependent Menu Set Add/Edit Page */
+/* -------------------------------- */
+#DependentDataSourceMenu .returnlink{margin-top:10px;}
+#dependentMenuList li{float:left;margin-right:10px;}
+#dependentMenuList label{float:none;display:inline-block;width:inherit;margin-bottom:3px;}
+#dependentMenuList p.fielderror{
+  float:none;
+  display:block;
+  width:inherit
+}
+
+#DependentDataSourceMenu select[disabled="disabled"],
+#DependentDataSourceMenu input[disabled="disabled"] {opacity: 0.5}
+
+
+#dmMappingTable {
+  width: auto;
+  thead {
+    background: rgba(142, 154, 169, 0.1);
+    th {
+      border: 1px solid rgba(142, 154, 169, 0.2);
+    }
+    span {
+      display: block;
+      font-weight: normal;
+      color: #666;
+    }
+    tr {
+      &:first-child {
+        th {
+          font-weight: bold;
+          color: #1A1A1A;
+        }
+      }
+    }
+  }
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background: rgba(142, 154, 169, 0.1);
+      }
+    }
+    td {
+      border: 1px solid #E8EBEE;
+      white-space: nowrap;
+    }
+  }
+  table {
+    tr {
+      &:nth-child(even) {
+        background: transparent;
+      }
+    }
+    td {
+      line-height: 20px;
+      border-width: 0 0 1px 0;
+    }
+  }
+  td {
+    table {
+      tr {
+        &:last-child {
+          td {
+            border-bottom: none;
+            table {
+              td {
+                border-bottom: 1px solid #d8d8d8;
+              }
+              tr {
+                &:last-child {
+                  td {
+                    border-bottom: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    p.fielderror {
+      float: none;
+      display: inline-block;
+      width: inherit;
+      margin: 0 5px;
+      line-height: 18px;
+      color: #990000;
+    }
+  }
+  td.nopadding {
+    padding: 0;
+    p {
+      font-size: 80%;
+      margin: 10px;
+      color: #666;
+      font-style: italic;
+    }
+    table {
+      p {
+        margin: 5px 10px;
+      }
+    }
+  }
+}
+#dmMappingTable_tbody {
+  td {
+    vertical-align: top;
+  }
+  tr {
+    &:nth-child(even) {
+      td {
+        background: rgb(247, 248, 250);
+      }
+    }
+  }
+  table {
+    tr {
+      &:nth-child(even) {
+        td {
+          background: transparent;
+        }
+      }
+    }
+  }
+}

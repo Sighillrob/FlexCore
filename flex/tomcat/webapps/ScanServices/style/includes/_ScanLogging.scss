@@ -1,0 +1,29 @@
+
+/* ----------------- */
+/* Scan Logging Page */
+/* ----------------- */
+
+#scanlogtable td, #scanlogtable th{text-align:center}
+
+#scanlogtable .date{text-align:left}
+#scanlogtable .coll{width:100px}
+#scanlogtable .device{width:50px}
+#scanlogtable .btnname{width:50px}
+#scanlogtable .username{width:50px}
+#scanlogtable .status{width:50px}
+
+#scanlogtable tbody tr:nth-child(even){background:#f1f2f2}
+#scanlogtable tbody tr.error{background:#fff0f1}
+#scanlogtable tbody tr:nth-child(even).error{background:#ffe3e4}
+#scanlogtable tbody tr.error .status{color:red}
+#scanlogtable tbody tr .status{color:green}
+
+#logpagesettings{float:right; margin:5px 10px 0 0;}
+#logpagesettings form{display:inline;}
+#logpagesettings label{color: #4C67BF;cursor: help;}
+#logpagesize{margin-right:10px;}
+#log_capacity{width:50px}
+
+#ViewAdminExceptionError h2{
+  color:#b70000;
+}

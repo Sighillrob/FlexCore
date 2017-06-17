@@ -1,0 +1,23 @@
+/* ---------------------------- */
+/* Edit/Add Single Devices Page */
+/* ---------------------------- */
+#servicebtnlist input[type='checkbox']{margin:3px 5px 0 0}
+
+fieldset #servicebtnlist label{
+  float:none;
+  display:inline;
+  width:inherit;
+  background:url(../images/admin/mfd_button_small.svg) 0 50% no-repeat;
+  background-size: 10px 10px;
+  padding-left:15px;
+}
+#servicebtnlist a.edit{
+  color:#ccc;
+  font-size:85%;
+  padding-left:5px;
+}
+
+#servicebtnlist input[type='checkbox']{margin:2px 5px 0 0}
+
+#toggle_advanced{margin-top:5px;}
+#advanced_settings{margin-top:10px;}

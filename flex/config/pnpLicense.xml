@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<license>
+  <authors>10</authors>
+  <policyCoordinators>10</policyCoordinators>
+  <reviewBoard>100</reviewBoard>
+  <approvalCommittee>100</approvalCommittee>
+  <policyUsers>100</policyUsers>
+  <policyGuests>100</policyGuests>
+  <enable>true</enable>
+  <approvalLevels>2</approvalLevels>
+  <acknowledge>true</acknowledge>
+  <dns>@localhost@</dns>
+</license>

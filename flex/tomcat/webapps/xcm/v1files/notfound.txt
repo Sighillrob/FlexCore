@@ -1,0 +1,14 @@
+
+ File <<FILE>> could not be opened.	
+
+ Error: <ERRORTEXT>	
+
+ Please make sure this file can be accessed by typing
+ it into your browsers address bar then pressing enter.
+
+ If the file exists then the browser will prompt you to
+ download it. Cancel the prompt and report this problem
+ to Daeja at support@daeja.com.
+ 
+ If the file does not exist then the browser will provide 
+ you with an error message that may help further.

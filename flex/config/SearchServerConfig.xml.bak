@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SearchServer>
+    <Properties>
+        <verbose/>
+        <timing/>
+    </Properties>
+    <Searcher>
+        <Properties>
+            <name>IDOL</name>
+            <classname>com.xerox.docushare.elf.search.server.autonomy.IdolSearcher</classname>
+            <installdir>+DSH+/IDOLServer</installdir>
+            <searchHost>127.0.0.1</searchHost>         
+            <searchPort>9000</searchPort>
+        </Properties>
+    </Searcher>
+</SearchServer>

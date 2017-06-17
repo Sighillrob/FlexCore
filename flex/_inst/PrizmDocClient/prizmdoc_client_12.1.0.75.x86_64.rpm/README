@@ -1,0 +1,4 @@
+Installation
+==============================================================================
+Run the following command as root to install PrizmDoc:
+yum install --nogpgcheck *.rpm

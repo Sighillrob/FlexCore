@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contentStore>   
+      <rootDirectories>
+         <rootDirectory> 
+            <path> C:\xerox\SVNTree\trunk\DocuShare3\dist\documents </path>
+	    <limit> 99 </limit>
+	    <limitUnits> % </limitUnits>
+         </rootDirectory>                            
+      </rootDirectories>
+      <overwriteIfFileExists> false </overwriteIfFileExists>
+      <logLevel>DEBUG</logLevel>
+      <sleepTime>10000</sleepTime>
+</contentStore>
+

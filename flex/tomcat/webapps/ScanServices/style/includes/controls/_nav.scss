@@ -1,0 +1,55 @@
+
+/* -------------- */
+/* Navbar styling */
+/* -------------- */
+
+nav{float:left;padding:20px;margin-top:5px;}
+nav ul{
+  margin:0;
+  padding:0;
+  list-style: none;
+  width:150px;
+}
+
+nav h3{
+  color:#909090;
+  text-transform: uppercase;
+  padding-left:5px;
+  font-size:90%;
+  margin-bottom:10px;
+}
+
+nav h4{
+  color:#4e4e4e;
+  text-transform: uppercase;
+  padding-left:5px;
+  font-size:90%;
+  margin:20px 0 10px;
+  border-bottom:1px solid #e8e8e8;
+  padding-bottom:5px;
+}
+nav a{color:#666666;
+  text-decoration: none;
+  display:block;
+  padding:5px;
+  border-radius:3px;
+}
+nav a:hover{background:#f3f3f3;}
+
+dl{margin:5px;padding:0;}
+dl dt{padding:0;margin:0;color:#ffd34f;}
+dl dd{padding:0;margin:0 0 0 10px;color:#fff0c1;}
+
+
+#ConfigureButtons #nav_ConfigureButtons a,
+#EditButton #nav_ConfigureButtons a,
+#AddButton #nav_ConfigureButtons a,
+#ConfigureDevices #nav_ConfigureDevices a,
+#EditDevice #nav_ConfigureDevices a,
+#LogSettings #nav_LogSettings a,
+#ScanningLog #nav_ScanningLog a,
+#ServerSetup #nav_ConfigureServer a,
+#EmailSetup #nav_ConfigureEmail a,
+#DatasourceMenus #nav_DatasourceMenus a,
+#AutofillProfiles #nav_AutofillProfiles a,
+#DependentDatasourceMenus #nav_ConfigureDependentMenus a{background:#666;color:#fff;}

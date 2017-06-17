@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ -e /etc/os-release ]
+then
+	. /etc/os-release
+	if [[ "${VERSION_ID}" == *14* && "${ID}" == *ubuntu* ]]
+	then
+		set GO_UBUNTU=true
+		export JRE_HOME=`pwd`/jre
+		export ANT_HOME=`pwd`/ant
+		export PATH=${ANT_HOME}/bin:${JRE_HOME}/bin:${PATH}
+	else
+
+if [ -e /etc/redhat-release ]
+then
+	export VERSION=`grep -i "7." /etc/redhat-release`
+	if [[ "${VERSION}" == *7.* ]]
+	then
+		export JRE_HOME=`pwd`/jre
+		export ANT_HOME=`pwd`/ant
+		export PATH=${ANT_HOME}/bin:${JRE_HOME}/bin:${PATH}
+	else
+		echo "Unsuppoted version of LINUX."
+	fi
+fi
+fi
+fi
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<device_configuration>
+    <!-- DEFAULT SETTINGS IF NO APPROPRIATE DEVICE NAME IS FOUND -->
+    <device name="default">
+        <style name="800x600.css" />
+        <scan name="scan_ocr">
+            <option name="disable" value="IMAGE_ONLY" />
+            <option name="enable" value="SEARCHABLE_IMAGE" />
+        </scan>
+        <scan name="scan_page">
+              <option name="One_Sided" value="ONE_SIDED" />
+              <option name="Two_Sided" value="TWO_SIDED" />
+              <option name="Second_Side_Rotation" value="SECOND_SIDE_ROTATION" />
+         </scan>
+         <scan name="scan_type">
+              <option name="MIXED" value="MIXED" />
+              <option name="TEXT" value="TEXT" />
+              <option name="PHOTO" value="PHOTO" />
+         </scan>
+         <scan name="scan_res">
+              <option name="200" value="RES_200X200" />
+              <option name="300" value="RES_300X300" />
+         </scan>
+         <scan name="scan_compression">
+              <option name="Low"    value="255" />
+              <option name="Medium" value="128" />
+              <option name="High"   value="0" />
+         </scan>
+         <scan name="scan_format">
+              <option name="PDF"  value="PDF" />
+         </scan>
+
+    </device>
+</device_configuration>
+

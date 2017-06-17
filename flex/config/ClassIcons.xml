@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file current represents the mapping for the class icons
+  used to display a docushare class.  We have kept it to a very
+  bare, generic format to allow for the possiblity of merging
+  other configuration data into this file.
+-->
+<config>
+  <category name="classicons">
+    <param>
+      <param-name>Bulletin</param-name>
+      <param-value>small/bulletin.png</param-value>
+    </param>
+    <param>
+      <param-name>BulletinBoard</param-name>
+      <param-value>small/postit.png</param-value>
+    </param>
+    <param>
+      <param-name>Calendar</param-name>
+      <param-value>small/calendar.png</param-value>
+    </param>
+    <param>
+      <param-name>Collection</param-name>
+      <param-value>small/folder.png</param-value>
+    </param>
+    <param>
+      <param-name>ContentRule</param-name>
+      <param-value>action_contentrules.gif</param-value>
+    </param>
+    <param>
+      <param-name>ContentRuleDisabled</param-name>
+      <param-value>action_contentrules_dis2.gif</param-value>
+    </param>
+    <param>
+      <param-name>Event</param-name>
+      <param-value>small/event.png</param-value>
+    </param>
+    <param>
+      <param-name>Document</param-name>
+      <param-value>small/doc.png</param-value>
+    </param>
+    <param>
+      <param-name>Group</param-name>
+      <param-value>small/group.png</param-value>
+    </param>
+    <param>
+      <param-name>Interact</param-name>
+      <param-value>small/interact.png</param-value>
+    </param>
+    <param>
+      <param-name>MailMessage</param-name>
+      <param-value>small/mailnote.png</param-value>
+    </param>
+    <param>
+      <param-name>SavedQuery</param-name>
+      <param-value>small/qcollection.png</param-value>
+    </param>
+    <param>
+      <param-name>Subscription</param-name>
+      <param-value>small/subscription.png</param-value>
+    </param>
+    <param>
+      <param-name>Subscription daily</param-name>
+      <param-value>small/subscription.png</param-value>
+    </param>
+    <param>
+      <param-name>Subscription weekly</param-name>
+      <param-value>small/subscription.png</param-value>
+    </param>
+    <param>
+      <param-name>URL</param-name>
+      <param-value>small/url.png</param-value>
+    </param>
+    <param>
+      <param-name>User</param-name>
+      <param-value>small/user.png</param-value>
+    </param>
+    <param>
+      <param-name>UserDisabled</param-name>
+      <param-value>small/user_disabled.png</param-value>
+    </param>
+    <param>
+      <param-name>Weblog</param-name>
+      <param-value>small/weblog.png</param-value>
+    </param>
+    <param>
+      <param-name>WeblogEntry</param-name>
+      <param-value>small/weblog.png</param-value>
+    </param>
+    <param>
+      <param-name>Wiki</param-name>
+      <param-value>small/wiki.png</param-value>
+    </param>
+    <param>
+      <param-name>WikiPage</param-name>
+      <param-value>small/wiki.png</param-value>
+    </param>
+    <param>
+      <param-name>Workspace</param-name>
+      <param-value>small/workspace.png</param-value>
+    </param>
+    <param>
+      <param-name>WorkspaceTeam</param-name>
+      <param-value>small/workspace_team.png</param-value>
+    </param>
+    <param>
+      <param-name>WorkspaceDoc</param-name>
+      <param-value>small/workspace_docreposit.png</param-value>
+    </param>
+  </category>
+</config>

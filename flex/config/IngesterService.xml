@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ingester logLevel="INFO" threadCount="10" threadWaitTime="125" maxLogFileSize="10MB" maxLogBackupIndex="10">
+    <socket name="Flat_File_Socket" key="123" enabled="false" category="FlatFiles" type="NoProperties" className="com.xerox.docushare.ingester.impl.plugin.DocumentCreatorPlugin"
+            userHandle="" defaultCollection="" implementation="com.xerox.adoc.docushare.ingester.FlatFiles">
+        <lister className="com.xerox.docushare.ingester.impl.lister.FileIngesterProtoLister"
+                watchDirectory="" 
+                acceptedFileExtension=""
+                waitTimeMillis="250">
+        </lister>
+    </socket>
+
+    <socket name="GlyphScan_Socket" key="456" enabled="false" category="ImagingSubsystem" type="GlyphScan" className="com.xerox.docushare.ingester.impl.plugin.DocumentCreatorPlugin"
+            userHandle="User-2" defaultCollection="" implementation="com.xerox.adoc.docushare.ingester.GlyphScan">
+        <lister className="com.xerox.docushare.ingester.impl.lister.GlyphXMLIngesterProtoLister"
+                name="GlyphScanImageXML"
+                parserClass="com.xerox.docushare.ingester.impl.lister.GlyphScanParser">
+            <lister className="com.xerox.docushare.ingester.impl.lister.FileIngesterProtoLister"
+                    acceptedFileExtension="XML"
+                    waitTimeMillis="30000">      
+            </lister>
+        </lister>
+    </socket>
+
+</Ingester>

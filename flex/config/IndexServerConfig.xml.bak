@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IndexServer>
+    <Properties>
+        <chunkSize>250</chunkSize>
+        <numberOfIndexingThreads>1</numberOfIndexingThreads>
+        <numberOfDataThreads>1</numberOfDataThreads>
+        <enableContentIndexing>true</enableContentIndexing>
+        <timeout>60</timeout>
+        <verbose>false</verbose>
+        <timing>false</timing>
+        <maxIndexRetry>10</maxIndexRetry>
+        <contentIndexMaxFileSize>0</contentIndexMaxFileSize>
+        <changeWait>2000</changeWait>
+    </Properties>
+    <Indexer>
+        <Properties>
+            <name>IDOL</name>
+            <classname>com.xerox.docushare.elf.index.server.autonomy.IdolIndexer</classname>
+            <installdir>+DSH+/IDOLServer</installdir>
+            <IDOLServerHost>127.0.0.1</IDOLServerHost>
+            <FSFServerHost>127.0.0.1</FSFServerHost>
+            <aciPort>9000</aciPort>
+            <ndxPort>9001</ndxPort>
+            <fsfPort>7000</fsfPort>
+        </Properties>
+    </Indexer>
+    <ExcludedClassTypes />
+    <Mimetypes>
+        <mime-type index="true">application/dwg</mime-type>
+        <mime-type index="true">application/dxf</mime-type>
+        <mime-type index="true">application/msoutlook</mime-type>
+        <mime-type index="true">application/msword</mime-type>
+        <mime-type index="true">application/pdf</mime-type>
+        <mime-type index="true">application/rtf</mime-type>
+        <mime-type index="true">application/vnd.applix-words</mime-type>
+        <mime-type index="true">application/vnd.corel-presentations</mime-type>
+        <mime-type index="true">application/vnd.fujitsu.oasys2</mime-type>
+        <mime-type index="true">application/vnd.fujixerox.docuworks</mime-type>
+        <mime-type index="true">application/vnd.fujixerox.docuworks.binder</mime-type>
+        <mime-type index="true">application/vnd.lotus-123</mime-type>
+        <mime-type index="true">application/vnd.lotus-amipro</mime-type>
+        <mime-type index="true">application/vnd.lotus-freelance</mime-type>
+        <mime-type index="true">application/vnd.lotus-wordpro</mime-type>
+        <mime-type index="true">application/vnd.mif</mime-type>
+        <mime-type index="true">application/vnd.ms-access</mime-type>
+        <mime-type index="true">application/vnd.ms-excel</mime-type>
+        <mime-type index="true">application/vnd.ms-excel.sheet.macroenabled.12</mime-type>
+        <mime-type index="true">application/vnd.ms-excel.sheet.binary.macroenabled.12</mime-type>
+        <mime-type index="true">application/vnd.ms-excel.template.macroenabled.12</mime-type>
+        <mime-type index="true">application/vnd.ms-excel.addin.macroEnabled.12</mime-type>
+        <mime-type index="true">application/vnd.ms-powerpoint</mime-type>
+        <mime-type index="true">application/vnd.ms-powerpoint.presentation.macroenabled.12</mime-type>
+        <mime-type index="true">application/vnd.ms-powerpoint.template.macroenabled.12</mime-type>
+        <mime-type index="true">application/vnd.ms-powerpoint.slideshow.macroEnabled.12</mime-type>
+        <mime-type index="true">application/vnd.ms-project</mime-type>
+        <mime-type index="true">application/vnd.ms-publisher</mime-type>
+        <mime-type index="true">application/vnd.ms-word.document.macroenabled.12</mime-type>
+        <mime-type index="true">application/vnd.ms-word.template.macroenabled.12</mime-type>
+        <mime-type index="true">application/vnd.ms-works</mime-type>
+        <mime-type index="true">application/vnd.ms-write</mime-type>
+        <mime-type index="true">application/vnd.oasis.opendocument.text</mime-type>
+        <mime-type index="true">application/vnd.oasis.opendocument.presentation</mime-type>
+        <mime-type index="true">application/vnd.oasis.opendocument.spreadsheet</mime-type>
+        <mime-type index="true">application/vnd.openxmlformats-officedocument.presentationml.presentation</mime-type>
+        <mime-type index="true">application/vnd.openxmlformats-officedocument.presentationml.template</mime-type>
+        <mime-type index="true">application/vnd.openxmlformats-officedocument.presentationml.slideshow</mime-type>
+        <mime-type index="true">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</mime-type>
+        <mime-type index="true">application/vnd.openxmlformats-officedocument.spreadsheetml.template</mime-type>
+        <mime-type index="true">application/vnd.openxmlformats-officedocument.wordprocessingml.template</mime-type>
+        <mime-type index="true">application/vnd.openxmlformats-officedocument.wordprocessingml.document</mime-type>
+        <mime-type index="true">application/vnd.quattro-pro</mime-type>
+        <mime-type index="true">application/vnd.visio</mime-type>
+        <mime-type index="true">application/vnd.visio.xml</mime-type>
+        <mime-type index="true">application/vnd.wordperfect</mime-type>
+        <mime-type index="true">application/x-shar</mime-type>
+        <mime-type index="true">application/x-ms-pst</mime-type>
+        <mime-type index="true">application/x-applix-spreadsheet</mime-type>
+        <mime-type index="true">application/x-folio-flat</mime-type>
+        <mime-type index="true">application/x-js-taro</mime-type>
+        <mime-type index="true">application/xml</mime-type>
+        <mime-type index="true">image/vnd.windows-metafile</mime-type>
+        <mime-type index="true">image/x-lotus-pic</mime-type>
+        <mime-type index="true">image/x-dcx</mime-type>
+        <mime-type index="true">message/news</mime-type>
+        <mime-type index="true">message/rfc822</mime-type>
+        <mime-type index="true">text/html</mime-type>
+        <mime-type index="true">text/plain</mime-type>
+        <mime-type index="true">text/css</mime-type>
+        <mime-type index="true">text/sgml</mime-type>
+        <mime-type index="true">text/xml</mime-type>
+        <mime-type index="true">text/csv</mime-type>
+  </Mimetypes>
+
+</IndexServer>

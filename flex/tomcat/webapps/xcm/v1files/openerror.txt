@@ -1,0 +1,11 @@
+
+ Unable to open <<FILE>>.
+
+ Error: <ERROR>	
+
+ Please make sure this file can be accessed and that it is a supported 
+ file type.
+
+ For information on supported file types please consult the latest
+ documentation available with all downloads or our web site 
+ at http://www.daeja.com

@@ -1,0 +1,43 @@
+#/sbin/sh
+#
+# Copyright 2002 Sun Microsystems, Inc.  All rights reserved.
+# Use subject to license terms.
+#
+#ident	"@(#)apache.sh	1.2	02/01/30 SMI"
+
+DOCUSHARE_HOME=/usr/local/Xerox/DS5SUNw
+DOCUSHARE_USER=webservd
+CONF_FILE=${DOCUSHARE_HOME}/config/Monitor.xml
+PIDFILE=/var/run/ds5.pid
+
+if [ ! -f ${CONF_FILE} ]; then
+	exit 0
+fi
+
+# see if we need to start/stop tomcat also
+
+case "$1" in
+start)
+	/bin/rm -f ${PIDFILE}
+	echo "DocuShare 5 starting"
+        /bin/su $DOCUSHARE_USER -c "cd $DOCUSHARE_HOME/bin; ./start_docushare.sh > /dev/null 2>&1 &"
+	;;
+restart)
+	echo "DocuShare 5 restarting"
+        /bin/su $DOCUSHARE_USER -c "cd $DOCUSHARE_HOME/bin; ./monitor.sh restart > /dev/null 2>&1"
+	;;
+stop)
+	echo "DocuShare 5 stopping"
+        /bin/su $DOCUSHARE_USER -c "cd $DOCUSHARE_HOME/bin; ./monitor.sh -q shutdown > /dev/null 2>&1"
+	;;
+status)
+	echo "DocuShare 5 status"
+	cd $DOCUSHARE_HOME/bin; ./monitor.sh status
+	;;
+*)
+	echo "Usage: $0 {start|stop|restart|status}"
+	exit 1
+	;;
+esac
+
+exit 0

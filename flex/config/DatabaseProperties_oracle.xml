@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DatabaseConfig configVersion="1">
+  <properties>
+    <providerName>Oracle</providerName>
+    <user></user>
+    <password encrypt="true"></password>
+    <url></url>
+    <driver>oracle.jdbc.OracleDriver</driver>
+    <database></database>
+    <enablePoolManagement>true</enablePoolManagement>
+    <poolSize>35</poolSize>
+    <minPoolSize>3</minPoolSize>
+    <poolCheckFrequency>900</poolCheckFrequency>
+    <sleepTime>500</sleepTime>
+    <waitMS>120000</waitMS>
+    <logLevel>DEBUG</logLevel>
+    <sparqlLogLevel>INFO</sparqlLogLevel>
+    <logInternalSPARQL>false</logInternalSPARQL>
+    <logConnectionPool>false</logConnectionPool>
+    <bulkLoadChunkSize>200</bulkLoadChunkSize>
+    <timedContentRuleChunkSize>200</timedContentRuleChunkSize>
+    <enableServerSideCursor>true</enableServerSideCursor>
+    <cursorFetchSize>50</cursorFetchSize>
+	<!-- tablespace is deprecated -->
+    <tablespace></tablespace>
+	<!-- indexTablespace is deprecated -->
+	<indexTablespace></indexTablespace>
+  </properties>
+  <actionWalkDirection>
+    <action name="export">down</action>
+    <action name="restore">up</action>
+    <action name="delete">up</action>
+    <action name="deepcopy">down</action>
+    <action name="expunge">down</action>
+    <action name="archive">down</action>
+  </actionWalkDirection>
+  <!-- startupDatabaseCommands is not used by Oracle -->
+  <startupDatabaseCommands>
+    <startupDatabaseCommand/>
+  </startupDatabaseCommands>
+  <tableSuffixes>
+    <table name="AuditEvent_table">
+      <suffix>OVERFLOW TABLESPACE ##overflow tablespace name##</suffix>
+    </table>
+  </tableSuffixes>
+  <indexSuffixes>
+    <!--<index name="..." tableName="..." >-->
+    <!--  <suffix>...</suffix>-->
+    <!--</index>-->
+  </indexSuffixes>
+  <propertySuffixes>
+    <!-- multivalued properties, name is fully qualified name, e.g. com.xerox.xcm.elf.Principals/memberOf -->
+    <!--<property name="...">-->
+    <!--  <suffix>...</suffix>-->
+    <!--  <auditReportableSuffix>...</auditReportableSuffix>-->
+    <!--</property>-->
+  </propertySuffixes>
+  <systemTableSuffixes>
+    <!-- system table partitioning etc., by function keyword, keywords: {walker} -->
+    <!--<keyword="...">-->
+    <!--  <suffix>...</suffix>-->
+    <!--</keyword>-->
+  </systemTableSuffixes>
+  <specialIndexes>
+    <specialIndex name="ix_obj_handle" tableName="Object_table" >
+      <create>CREATE INDEX ix_obj_handle ON Object_table( handle )</create>
+    </specialIndex>
+    <specialIndex name="ix_obj_acl_parent" tableName="Object_table" >
+      <create>CREATE INDEX ix_obj_acl_parent ON Object_table( acl_parent )</create>
+    </specialIndex>
+    <specialIndex name="ix_obj_handle_class" tableName="Object_table" >
+      <create>CREATE INDEX ix_obj_handle_class ON Object_table( handle_class, handle )</create>
+    </specialIndex>
+    <specialIndex name="ix_obj_homepage" tableName="Object_table" >
+      <create>CREATE INDEX ix_obj_homepage ON Object_table( Containable_parent, Trash_, effective_owner, handle_class, effective_acl )</create>
+    </specialIndex>
+    <specialIndex name="ix_Obj_indexingNeeded" tableName="Object_table" >
+      <create>CREATE INDEX ix_Obj_indexingNeeded ON Object_table( NeedsIndexing_indexingNeeded, NeedsIndexing_changeTime )</create>
+    </specialIndex>
+    <specialIndex name="ix_scope_down" tableName="scope_table" >
+      <create>CREATE INDEX ix_scope_down ON scope_table( scope, propertyKey, handle )</create>
+    </specialIndex>
+    <specialIndex name="ix_breadcrumbs_up" tableName="scope_table" >
+      <create>CREATE INDEX ix_breadcrumbs_up ON scope_table( handle, propertyKey, scope )</create>
+    </specialIndex>	
+    <specialIndex name="ix_disaster" tableName="disaster_table" >
+      <create>CREATE INDEX ix_disaster ON disaster_table( disasterID, subsystem, severityLevel )</create>
+    </specialIndex>
+    <specialIndex name="ix_aud_eventID" tableName="auditEvent_table" >
+      <create>CREATE INDEX ix_aud_eventID ON auditEvent_table( eventID )</create>
+    </specialIndex>
+    <specialIndex name="ix_aud_eventType" tableName="auditEvent_table" >
+      <create>CREATE INDEX ix_aud_eventType ON auditEvent_table( eventType )</create>
+    </specialIndex>
+    <specialIndex name="ix_aud_trigHandle" tableName="auditEvent_table" >
+      <create>CREATE INDEX ix_aud_trigHandle ON auditEvent_table( triggerHandle )</create>
+    </specialIndex>
+    <specialIndex name="ix_aud_trigUser" tableName="auditEvent_table" >
+      <create>CREATE INDEX ix_aud_trigUser ON auditEvent_table( triggeringUser )</create>
+    </specialIndex>
+    <specialIndex name="ix_aud_owner" tableName="auditEvent_table" >
+      <create>CREATE INDEX ix_aud_owner ON auditEvent_table( Owned_owner )</create>
+    </specialIndex>
+  </specialIndexes>
+</DatabaseConfig>
+

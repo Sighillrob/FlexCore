@@ -1,0 +1,56 @@
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta name="copyright" content="© 1997-2000 Daeja Image Systems Ltd">
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+<base target="_top">
+<title>viewONE trial demo 1</title>
+</head>
+
+<body bgcolor="#C0C0C0" text="#000000" topmargin="0" leftmargin="0">
+
+
+<script LANGUAGE="JavaScript">
+<!--
+	//this JavaScript sets the width and height of viewONE for all browsers
+	var archiveTag = 'ARCHIVE="viewone.jar"';
+	var win = null;
+	
+	if (navigator.userAgent.toLowerCase().indexOf("mac_") > 0)
+	{
+		archiveTag = 'ARCHIVE="viewonedsa.jar"';
+	}
+
+	else if ((navigator.userAgent.toLowerCase().indexOf("safari")> 0) && (navigator.userAgent.toLowerCase().indexOf("ozilla")> 0))
+	{
+		archiveTag = 'ARCHIVE="viewone.jar"';
+	}
+
+	else if ((navigator.userAgent.toLowerCase().indexOf("macintosh")> 0) && (navigator.userAgent.toLowerCase().indexOf("ozilla")> 0))
+	{
+		archiveTag = 'ARCHIVE="viewonedsa.jar"';
+	}
+	
+//-->
+</script>
+
+
+<script LANGUAGE="JavaScript">
+<!--
+
+	document.write('<applet CODEBASE="../"');
+	document.write(archiveTag);
+	document.write('CODE="start.jiViewONE.class" NAME="viewONE" ID="viewONE"'); 
+	document.write('WIDTH = "0" HEIGHT = "0"');
+	document.write('HSPACE="0" VSPACE="0" ALIGN="middle">');
+	document.write('<param name="cabbase" value="viewone.cab">');
+	document.write('<param name="preparejava" value="true">');
+	document.write('</applet>');
+//-->
+</script>
+    
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+/* Docushare Lyte Apache Login Form Styling */
+
+/* Mixins and variables */
+
+// Button Styling
+$buttons-border-radius: 0;
+
+// Primary Button
+$primary-button-background-color: #3498db;
+$primary-button-hover-background-color: #3cb0fd;
+$primary-button-disabled-background-color: #edeff1;
+$primary-button-text-color: #fff;
+$primary-button-hover-text-color: $primary-button-text-color;
+$primary-button-disabled-text-color: #d2d9dc;
+$primary-button-border-width:1px;
+$primary-button-border-style:solid;
+$primary-button-border-color: #3498db;
+$primary-button-hover-border-color: #3cb0fd;
+//$primary-button-disabled-border-color: ;
+$primary-button-padding: 10px 20px;
+
+@mixin hide-text{
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+}
+
+/*! normalize.css v4.2.0 | MIT License | github.com/necolas/normalize.css */html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}template,[hidden]{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:0.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:bold}button,input{overflow:visible}button,select{text-transform:none}button,html [type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-cancel-button,[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:0.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}
+
+
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Basic Typography Styling */
+html{
+  height: 100%;
+}
+body {
+  font-size:85.5%;
+  color:#222;
+  font-family:'Roboto', "Helvetica Neue", Arial, Helvetica, sans-serif;
+  background-color: #263238;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {font-family:'Roboto', sans-serif}
+h1 {font-size:1.60em; font-weight: 400; line-height:1; margin-bottom:0.5em;}
+h2 {font-size:1.4em; margin-bottom:0.5em;}
+h3 {font-size:1.3em; line-height:1; margin-bottom:1em;}
+h4 {font-size:1.2em; line-height:1.25; margin-bottom:1.25em;}
+h5 {font-size:1em; font-weight:bold; margin-bottom:1.5em;}
+h6 {font-size:1em; font-weight:bold;}
+p {margin:0 0 1em;}
+
+a {
+  outline: 0;
+  color: #248FEF;
+  &:hover {
+    color: rgba(36, 143, 239, 0.8);
+  }
+}
+
+button {
+  border-radius: $buttons-border-radius;
+  color: $primary-button-text-color;
+  background: $primary-button-background-color;
+  padding: $primary-button-padding;
+  border-width: $primary-button-border-width;
+  border-color: $primary-button-border-color;
+  border-style: $primary-button-border-style;
+  transition: all 0.15s ease-in-out;
+  margin-right: 5px;
+  &:hover {
+    background: $primary-button-hover-background-color;
+    border-color: $primary-button-hover-border-color;
+  }
+}
+
+h1{
+  @include hide-text;
+  display:inline-block;
+  height: 36px;
+  width: 36px;
+  background-size: 72px 36px;
+  background-image: url(logo.svg);
+  background-repeat: no-repeat;
+  margin: 20px auto;
+  &:hover{
+    background-position: -36px 0;
+  }
+} 
+
+form{
+  text-align: center;
+}
+
+fieldset {
+  background-color: #fff;
+  padding: 30px;
+  width: 550px;
+  margin: 20px auto;
+  p{
+    margin-bottom: 30px;
+  }
+  label{
+    width: 130px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 10px;
+  }
+  input[type='text'],
+  input[type='password']{
+    height:30px;
+    padding: 5px;
+    width: 300px;
+  }
+  .btnrow{
+    margin: 30px 0 0 160px;
+    text-align: left;
+  }
+  ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li{
+      margin-bottom: 5px;
+    }
+  }
+}

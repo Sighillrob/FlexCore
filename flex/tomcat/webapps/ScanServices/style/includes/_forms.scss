@@ -1,0 +1,170 @@
+
+/* ------------ */
+/* Form Styling */
+/* ------------ */
+
+label{
+  font-weight:normal;
+  color: #474D55;
+}
+
+input, textarea, select{
+  border: 1px solid #D2D7DD;
+  padding: 5px;
+  color: #6B737F;
+  &:focus{
+    border-color: #8E9AA9;
+  }
+}
+
+fieldset{
+  border: none;
+  padding-left: 0;
+}
+
+fieldset p:first-of-type{
+  color: #6B737F;
+  margin-top: -1em;
+}
+
+fieldset ul{
+  margin:0 0 1em 0;
+  padding:0;
+  list-style: none;
+}
+fieldset ul li{
+  overflow: hidden;
+  padding: 5px 0;
+}
+
+fieldset label{
+  width: 12em;
+  display: block;
+  float: left;
+  margin: 0 10px 0 0;
+  text-align: left;
+  padding: 5px 5px 2px 0;
+  display: inline-block;
+  &.label-required{
+    font-weight: 500;
+    &:after{
+      content: "*";
+      color: #a3272a;
+    }
+  }
+}
+fieldset label[for]{
+  color: #474D55;
+  cursor:help;
+  &:hover{
+    background-color: rgba(36, 143, 239, 0.1);
+  }
+}
+
+fieldset h3{
+  padding:20px 0;
+  border-top: 1px solid rgba(142, 154, 169, 0.25);
+  margin-bottom: 1em;
+  color: #474D55;
+  font-size: 95%;
+  text-transform: uppercase;
+}
+
+fieldset input, fieldset textarea{
+  float:left;
+}
+fieldset .field{float:left;}
+fieldset input.large, fieldset textarea.large{width:500px;}
+fieldset input.medium, fieldset textarea.medium{width:250px;}
+fieldset input[type='checkbox']{
+  margin-top:6px;
+}
+fieldset span.inputhintwrapper{display:inline-block;width:100%}
+fieldset p.fieldnote{display:inline;color:#8E9AA9;font-size:85%}
+fieldset p.fieldnote_below{
+  background:url(../images/admin/icon_notice_info.svg) left 0 no-repeat;
+  background-size: 16px 16px;
+  color:#8E9AA9;
+  font-size: 90%;
+  margin:5px 0 5px 14.5em;
+  clear:left;
+  padding: 2px 0 0 20px;
+  line-height: 1.3;
+  float: left;
+}
+
+fieldset p.fieldnote_below_nofieldcontainer{
+  background:url(../images/admin/icon_notice_info.svg) left 0 no-repeat;
+  background-size: 16px 16px;
+  color:#999;
+  font-size:85%;
+  clear:both;
+  margin:0 0 3px 0;
+  padding: 2px 0 0 20px;
+}
+
+fieldset .field p.fieldnote_below{
+  margin-left:0;
+}
+
+fieldset p.fielderror{
+  color:#860000;
+  float:left;
+  width:300px;
+  background:url(../images/admin/icon_notice_majorwarning.svg) left top no-repeat;
+  background-size: 16px 16px;
+  margin:3px 0 3px 5px;
+  padding:2px 0 0 20px;
+  font-size:85%;
+  min-height: 16px;
+}
+
+fieldset p.fielderror code{background:#f9e5e6;padding:0 3px;color:#860000}
+
+button{
+  width:auto;
+  background: #EBEEF2;
+  overflow:visible;
+  padding:10px 15px;
+  display:inline-block;
+  border: 1px solid #EBEEF2;
+  color: rgba(38, 50, 56, 0.75);
+  &:hover{
+    background:#fff;
+    border:1px solid #EBEEF2;
+  }
+}
+
+button[disabled]{
+  border:1px solid #f3f3f3;
+  background:#fff;
+  color:#ccc;
+  cursor: not-allowed;
+}
+
+button.btn_danger {
+  background: #a3272a;
+  color: #FFFFFF;
+  border: 1px solid #a3272a;
+  &:hover{
+    background: #CC292F;
+    border: 1px solid #CC292F;
+  }
+}
+
+
+button.btn_danger[disabled] {
+  background: #ffd8d8;
+  color:#fff;
+  border:1px solid #ffc8ca;
+  text-shadow:none;
+  cursor:not-allowed;
+}
+
+select:disabled, input:disabled{opacity:.75}
+input[type="text"]:disabled { background: #f3f3f3; }
+
+input.required_error, input.duplicate_error, textarea.required_error, input.illegalchars_error{
+  border:1px solid rgba(153, 0, 0, 0.5);
+  border-left: 4px solid #990000;
+}

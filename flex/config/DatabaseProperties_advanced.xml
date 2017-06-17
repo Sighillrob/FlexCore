@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <tableSuffixes>
+        <!-- Suffix text is any syntax to be appended after the CREATE TABLE.-->
+        <!-- Intended for specifying tablespaces, partitioning, or other options -->
+        <!-- All elements are optional. -->
+
+        <suffixForMainTable></suffixForMainTable>
+
+        <suffixForMVProperty></suffixForMVProperty>
+            <!-- Optional propertyName attribute designates specific MV property.  Example: com.xerox.xcm.elf.Principals/memberOf -->
+            <!-- An element with no propertyName attribute is the default for all MV properties w/o their own spec. -->
+            <!-- Specify the property name in any suffix text that needs it with $propertyName. -->
+
+        <suffixForSystem></suffixForSystem>
+            <!-- Optional keyword attribute designates specific system keyword. -->
+            <!-- An element with no keyword attribute is the default for all system keywords w/o their own spec. -->
+            <!-- Keywords: -->
+            <!--   com.xerox.xcm.elf.AuditEvent -->
+            <!--   com.xerox.xcm.elf.ContentRule -->
+            <!--   com.xerox.xcm.elf.IndexEventTrigger -->
+            <!--   com.xerox.xcm.elf.EventFilter -->
+            <!--   walker -->
+            <!--   metadataTables -->
+    </tableSuffixes>
+
+    <indexSuffixes>
+        <!-- Suffix text is any syntax to be appended after the CREATE TABLE.-->
+        <!-- Intended for specifying tablespaces, partitioning, or other options -->
+        <!-- All elements are optional. -->
+
+        <suffixForMainTable></suffixForMainTable>
+
+        <suffixForDataType type=""></suffixForDataType>
+            <!-- Required type attribute specifies data type. -->
+            <!-- data types: -->
+            <!--   INTEGER    -->
+            <!--   FLOAT      -->
+            <!--   BOOLEAN    -->
+            <!--   DATE       -->
+            <!--   DATETIME   -->
+            <!--   STRING     -->
+            <!--   TEXT       -->
+            <!--   XML        -->
+            <!--   BIGDECIMAL -->
+            <!--   LONG       -->
+            <!--   REFERENCE  -->
+
+        <suffixForMVProperty></suffixForMVProperty>
+            <!-- Optional propertyName attribute designates specific MV property.  Example: com.xerox.xcm.elf.Principals/memberOf -->
+            <!-- An element with no propertyName attribute is the default for indexes for all MV properties w/o their own spec. -->
+            <!-- Specify the property name in any suffix text that needs it with $propertyName. -->
+            <!-- Element for specific MV property name overrides data type and default MV property. -->
+
+        <suffixForSystem></suffixForSystem>
+            <!-- Optional keyword attribute designates specific system keyword, same list as tableSuffixes. -->
+            <!-- An element with no keyword attribute is the default for all system keywords w/o their own spec. -->
+    </indexSuffixes>
+
+    <specialIndexes>
+        <!-- Use this for standard infrastructure indexes, custom indexes, your own version of otherwise generated indexes, etc. -->
+        <!-- Uses indexSuffix applicable for table specified. -->
+
+        <specialIndex>
+            <!-- Required attributes name and table, element create containing create index text -->
+            <create></create>
+        </specialIndex>
+
+    </specialIndexes>
+</root>

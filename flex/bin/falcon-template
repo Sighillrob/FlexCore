@@ -1,0 +1,100 @@
+#!/bin/bash
+#
+# falcon This is the init script for starting up the Falcon service
+#
+# chkconfig: - 64 36
+# description:  Falcon main service
+# processname: 
+# pidfile: /var/run/falcon.PORT.pid
+
+# root?
+if [ ${EUID} -ne 0 ]
+then
+	ISROOT=0
+else
+	ISROOT=1
+fi
+
+# Find the name of the script
+NAME=`basename $0`
+if [ ${NAME:0:1} = "S" -o ${NAME:0:1} = "K" ]
+then
+	NAME=${NAME:3}
+fi
+
+# For SELinux we need to use 'runuser' not 'su'
+if [ -x /sbin/runuser ]
+then
+    SU=runuser
+else
+    SU=su
+fi
+
+# Set defaults for configuration variables
+FalconHome=@install_dir@
+FalconUser=@ds_user@
+FalconLog=${FalconHome}/logs
+FalconBin=${FalconHome}/bin
+FalconTomcatBin=${FalconHome}/tomcat/bin
+
+if [ ${EUID} -ne 0 ]
+then
+	SU="sh -c "
+else
+	SU="${SU} -l ${FalconUser} -c "
+fi
+
+script_result=0
+
+start(){
+	echo -n "Starting ${NAME} services: "
+	echo -n "....falcon"
+	$SU "(cd ${FalconTomcatBin}; nohup ${FalconTomcatBin}/startup.sh & )" >> "${FalconLog}/falcon-service.log" 2>&1 < /dev/null
+	sleep 2
+	echo
+}
+
+stop(){
+	echo -n $"Stopping ${NAME} services: "
+	echo "....falcon"
+	echo
+	$SU "(cd ${FalconTomcatBin}; ${FalconTomcatBin}/shutdown.sh & )" >> "${FalconLog}/falcon-service.log" 2>&1 < /dev/null
+	echo
+}
+
+restart(){
+    stop
+    start
+}
+
+status(){
+	echo ""
+	echo "FalconHome      = ${FalconHome}"
+	echo "FalconLog       = ${FalconLog}"
+	echo "FalconBin       = ${FalconBin}"
+	echo "FalconTomcatBin = ${FalconTomcatBin}"
+	echo "FalconUser      = ${FalconUser}"
+	echo "root            = ${ISROOT}"
+	echo "SU              = ${SU}"
+	echo ""
+}
+# See how we were called.
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  status)
+	status
+	;;
+  restart)
+	restart
+	;;
+  *)
+	echo $"Usage: $0 {start|stop|status|restart}"
+	exit 2
+esac
+
+exit $script_result

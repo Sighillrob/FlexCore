@@ -1,0 +1,29 @@
+{ "Arabic", "ar", "UTF8", "ar.txt", "UTF8", "UTF8", "UTF8" }
+{ "Bulgarian", "bg", "UTF8", "bg.txt", "UTF8", "UTF8", "UTF8" }
+{ "Catalan", "ca", "UTF8", "ca.txt", "UTF8", "UTF8", "UTF8" }
+{ "Croatian", "hr", "UTF8", "hr.txt", "UTF8", "UTF8", "UTF8" }
+{ "Czech", "cs", "UTF8", "cs.txt", "UTF8", "UTF8", "UTF8" }
+{ "Danish", "da", "UTF8", "da.txt", "UTF8", "UTF8", "UTF8" }
+{ "German", "de", "UTF8", "de.txt", "UTF8", "UTF8", "UTF8" }
+{ "English", "en", "UTF8", "en.txt", "UTF8", "UTF8", "UTF8" }
+{ "Spanish", "es", "UTF8", "es.txt", "UTF8", "UTF8", "UTF8" }
+{ "Finnish", "fi", "UTF8", "fi.txt", "UTF8", "UTF8", "UTF8" }
+{ "French", "fr", "UTF8", "fr.txt", "UTF8", "UTF8", "UTF8" }
+{ "Hebrew", "iw", "UTF8", "he.txt", "UTF8", "UTF8", "UTF8" }
+{ "Hungarian", "hu", "UTF8", "hu.txt", "UTF8", "UTF8", "UTF8" }
+{ "Italian", "it", "UTF8", "it.txt", "UTF8", "UTF8", "UTF8" }
+{ "Japanese", "ja", "UTF8", "ja.txt", "UTF8", "UTF8", "UTF8" }
+{ "Korean", "ko", "UTF8", "ko.txt", "UTF8", "UTF8", "UTF8" }
+{ "Dutch", "nl", "UTF8", "nl.txt", "UTF8", "UTF8", "UTF8" }
+{ "Nowegian", "no", "UTF8", "no.txt", "UTF8", "UTF8", "UTF8" }
+{ "Polish", "pl", "UTF8", "pl.txt", "UTF8", "UTF8", "UTF8" }
+{ "Portuguese", "pt", "UTF8", "pt.txt", "UTF8", "UTF8", "UTF8" }
+{ "Portuguese Brazil", "pt_br", "UTF8", "pt_br.txt", "UTF8", "UTF8", "UTF8" }
+{ "Romanian", "ro", "UTF8", "ro.txt", "UTF8", "UTF8", "UTF8" }
+{ "Russian", "ru", "UTF8", "ru.txt", "UTF8", "UTF8", "UTF8" }
+{ "Slovak", "sk", "UTF8", "sk.txt", "UTF8", "UTF8", "UTF8" }
+{ "Swedish", "sv", "UTF8", "sv.txt", "UTF8", "UTF8", "UTF8" }
+{ "Thai", "th", "UTF8", "th.txt", "UTF8", "UTF8", "UTF8" }
+{ "Turkish", "tr", "UTF8", "tr.txt", "UTF8", "UTF8", "UTF8" }
+{ "Simplified Chinese", "zh_cn", "UTF8", "zh_cn.txt", "UTF8", "UTF8", "UTF8" }
+{ "Traditional Chinese", "zh_tw", "UTF8", "zh_tw.txt", "UTF8", "UTF8", "UTF8" }

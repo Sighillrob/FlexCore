@@ -1,0 +1,1810 @@
+<project name="build_test" basedir="." default="install_help">
+  <!-- This is the merged file between this and DocuShare3/tools/install/build.xml.
+       Please only update this file
+  -->
+
+  <property name="test.host.id"        value="5030303D8E9C8950505419ACFD3" />
+  <property name="license.server"      value="mantis.adoc.xerox.com" />
+  <property name="license.server.port" value="8182" />
+  <property name="docushare.rmi.host"  value="localhost" />
+  <property name="docushare.rmi.port"  value="1099" />
+  <property name="tomcat.context"      value="xcm" />
+  <property name="base.dir"            location="${basedir}" />
+  <property name="log.file"            value="install.log" />
+  <property name="script.version"      value="3.0" />
+
+  <target name="set_devloc" if="devloc" >
+    <echo message ="setting location for development"/>
+	<property name="dist.path.setting"   value="${platform.slash}dist" />
+	<property name="dist.dir"            location="${basedir}/dist" />
+	<property name="client-test.dir"     location="${basedir}/client-test" />
+	<property name="dist.bin.dir"        location="${basedir}/dist/bin" />
+	<property name="dist.tomcat.bin.dir" location="${basedir}/dist/tomcat/bin" />
+	<property name="dist.idol.dir"       location="${basedir}/dist/IDOLServer" />
+	<property name="dist.solr.dir"       location="${basedir}/dist/Solr" />
+	<property name="dist.config.dir"     location="${basedir}/dist/config" />
+	<property name="dist.lib.dir"        location="${basedir}/dist/lib" />
+    <path id="setup.database.classpath">
+      <fileset dir="${dist.lib.dir}">
+        <include name="jdom.jar" />
+        <include name="jdomutil.jar" />
+        <include name="xercesImpl.jar"/>
+        <include name="xml-apis.jar"/>
+        <include name="xalan.jar"/>
+        <include name="log4j.jar"/>
+        <include name="monitor.jar"/>
+        <include name="stubs.jar"/>
+        <include name="ds4monitor.jar"/>
+        <include name="dsapi.jar"/>
+        <include name="dscommon.jar"/>
+        <include name="jaxen.jar"/>
+        <include name="docushare3.jar"/>
+        <include name="mssql.jar"/>
+        <include name="oracle.jar"/>
+        <include name="mysql.jar"/>
+        <include name="pgjdbc2.jar"/>
+        <include name="d4oracle.jar"/>
+        <include name="d4sqlserver.jar"/>
+        <include name="d4db2.jar"/>
+      </fileset>
+    </path>
+    <path id="config.classpath">
+      <fileset dir="${dist.lib.dir}">
+        <include name="installer.jar" />
+        <include name="jdom.jar" />
+        <include name="jdomutil.jar" />
+        <include name="jaxen.jar" />
+        <include name="xercesImpl.jar" />
+        <include name="xml-apis.jar" />
+        <include name="xalan.jar" />
+        <include name="dsutil.jar" />
+        <include name="log4j.jar"/>
+        <include name="docushare3.jar" />
+        <include name="monitor.jar" />
+        <include name="dscli.jar" />
+        <include name="dscommon.jar" />
+        <include name="conversion.jar" />
+        <include name="dsworkflow.jar" />
+        <include name="jakarta-oro-2.0.jar" />
+        <include name="oracle.jar" />
+        <include name="pgjdbc2" />
+      </fileset>
+    </path>
+    <path id="dbconfig.classpath">
+      <fileset dir="${dist.dir}">
+        <include name="falconInstaller.jar" />
+      </fileset>
+    </path>
+    <path id="keys.classpath">
+      <fileset dir="${dist.lib.dir}">
+        <include name="docushare3.jar" />
+        <include name="tools.jar" />
+      </fileset>
+    </path>
+  </target>
+  
+  <target name="set_distloc" unless="devloc" >
+    <echo message ="setting location for distribution"/>
+	<property name="dist.path.setting"   value="" />
+	<property name="dist.dir"            location="${basedir}" />
+	<property name="client-test.dir"     location="${basedir}" />
+	<property name="dist.bin.dir"        location="${basedir}/bin" />
+	<property name="dist.tomcat.bin.dir" location="${basedir}/tomcat/bin" />
+	<property name="dist.solr.dir"       location="${basedir}/Solr" />
+	<property name="dist.idol.dir"       location="${basedir}/IDOLServer" />
+	<property name="dist.config.dir"     location="${basedir}/config" />
+	<property name="dist.lib.dir"        location="${basedir}/lib" />
+    <path id="setup.database.classpath">
+      <fileset dir="${dist.lib.dir}">
+        <include name="jdom.jar" />
+        <include name="jdomutil.jar" />
+        <include name="xercesImpl.jar"/>
+        <include name="xml-apis.jar"/>
+        <include name="xalan.jar"/>
+        <include name="log4j.jar"/>
+        <include name="monitor.jar"/>
+        <include name="stubs.jar"/>
+        <include name="ds4monitor.jar"/>
+        <include name="dsapi.jar"/>
+        <include name="dscommon.jar"/>
+        <include name="jaxen.jar"/>
+        <include name="docushare3.jar"/>
+        <include name="mssql.jar"/>
+        <include name="oracle.jar"/>
+        <include name="mysql.jar"/>
+        <include name="pgjdbc2.jar"/>
+        <include name="d4oracle.jar"/>
+        <include name="d4sqlserver.jar"/>
+        <include name="d4db2.jar"/>
+      </fileset>
+    </path>
+    <path id="config.classpath">
+      <fileset dir="${dist.lib.dir}">
+        <include name="installer.jar" />
+        <include name="jdom.jar" />
+        <include name="jdomutil.jar" />
+        <include name="jaxen.jar" />
+        <include name="xercesImpl.jar" />
+        <include name="xml-apis.jar" />
+        <include name="xalan.jar" />
+        <include name="dsutil.jar" />
+        <include name="log4j.jar"/>
+        <include name="docushare3.jar" />
+        <include name="monitor.jar" />
+        <include name="dscli.jar" />
+        <include name="dscommon.jar" />
+        <include name="conversion.jar" />
+        <include name="dsworkflow.jar" />
+        <include name="jakarta-oro-2.0.jar" />
+        <include name="oracle.jar" />
+        <include name="pgjdbc2" />
+      </fileset>
+    </path>
+    <path id="dbconfig.classpath">
+      <fileset dir="${dist.dir}">
+        <include name="falconInstaller.jar" />
+      </fileset>
+    </path>
+    <path id="keys.classpath">
+      <fileset dir="${dist.lib.dir}">
+        <include name="docushare3.jar" />
+        <include name="tools.jar" />
+      </fileset>
+    </path>
+  </target>
+  
+  <target name="find_location" >
+	<condition property="devloc">
+		<matches string="${basedir}" pattern="DocuShare3$"/>
+	</condition>
+  </target>
+
+  <target name="get_location" depends="define_arch, find_location, set_devloc, set_distloc" >
+    <!--
+	<echo message ="basedir                 ${basedir}"/>
+    <echo message ="devloc                  ${devloc}"/>
+    <echo message ="dist.path.setting       ${dist.path.setting}"/>
+    <echo message ="dist.dir                ${dist.dir}"/>
+    <echo message ="client-test.dir         ${client-test.dir}"/>
+    <echo message ="dist.bin.dir            ${dist.bin.dir}"/>
+    <echo message ="dist.tomcat.bin.dir     ${dist.tomcat.bin.dir}"/>
+    <echo message ="dist.idol.dir           ${dist.idol.dir}"/>
+    <echo message ="dist.config.dir         ${dist.config.dir}"/>
+    <echo message ="dist.lib.dir            ${dist.lib.dir}"/>
+    <echo message ="dist.solr.dir           ${dist.solr.dir}"/>
+	-->
+  </target>
+
+  <target name="init_ant" >
+    <record name="${log.file}" action="start"  append="true" loglevel="verbose" />
+  </target>
+
+  <target name="get_config" >
+    <echo message ="basedir         ${basedir}"/>
+    <echo message ="dist.config.dir ${dist.config.dir}"/>
+    <echo message ="tofile=./config.properties file=${dist.config.dir}/config.properties"/>
+    <copy overwrite="true" tofile="./config.properties" file="${dist.config.dir}/config.properties"/>
+  </target>
+
+  <target name="parse_config" depends="init_ant, define_arch, get_config, load_config, convert_path" >
+    <exec executable="hostname" outputproperty="computer.hostname"/>
+    <propertyfile file="./config.properties" comment=" config file parged for host ${computer.hostname}">
+      <entry  key="com.xerox.docushare.config.home" value="${dist.dir}"/>
+      <entry  key="com.xerox.docushare.contentstore" value="${dist.convert.dir}"/>
+      <entry  key="com.xerox.docushare.config.database.type" value="${target.database.type}"/>
+      <entry  key="com.xerox.docushare.config.database.name" value="${target.database.name}"/>
+      <entry  key="com.xerox.docushare.config.database.host" value="${target.database.host}"/>
+      <entry  key="com.xerox.docushare.config.database.port" value="${target.database.port}"/>
+      <entry  key="com.xerox.docushare.config.database.user" value="${target.database.user}"/>
+      <entry  key="com.xerox.docushare.config.database.sid" value="${target.database.sid}"/>
+      <entry  key="com.xerox.docushare.config.database.password" value="${target.database.password}"/>
+      <entry  key="com.xerox.docushare.config.database.jdbc.class" value="${target.database.class}"/>
+	  <entry  key="com.xerox.docushare.config.tomcat.port" value="${target.tomcat.port}"/>
+      <entry  key="com.xerox.docushare.config.idol.IDOLInstallDir" value="${search.server.dir}"/>
+	  <entry  key="com.xerox.docushare.config.idol.searchPort" value="${search.server.port}"/>
+    </propertyfile>
+  </target>
+
+  <target name="load_config_dist" unless="devloc" >
+    <exec executable="hostname" outputproperty="computer.hostname"/>
+    <echo message="loading localhost.properties" />
+    <loadproperties srcFile="localhost.properties" />
+  </target>
+
+  <target name="load_config_develop" if="devloc" >
+    <exec executable="hostname" outputproperty="computer.hostname"/>
+    <echo message="loading ${client-test.dir}${platform.slash}${computer.hostname}.properties" />
+    <loadproperties srcFile="${client-test.dir}${platform.slash}${computer.hostname}.properties" />
+  </target>
+
+  <target name="load_config" depends="define_arch, get_location, load_config_dist, load_config_develop" />
+  
+  <target name="create_database_oracle" depends="init_ant, load_config" if="database.oracle"  >
+    <echo message="currently not an operation for Oracle" />
+  </target>
+
+  <target name="create_database_postgres" depends="load_config" if="database.postgresql"  >
+    <sql driver="${target.database.class}"
+         url="${target.database.create.url}"
+         userid="${target.database.user}" 
+         password="${target.database.password}"
+         classpathref="setup.database.classpath"
+         autocommit="true">
+      CREATE DATABASE &quot;${target.database.name}&quot;;
+    </sql>
+  </target>
+
+  <target name="create_database_sqlserver" depends="load_config" if="database.sqlserver" >
+    <sql driver="${target.database.class}"
+         url="${target.database.create.url}"
+         userid="${target.database.user}" 
+         password="${target.database.password}"
+         classpathref="setup.database.classpath"
+         autocommit="true">
+      IF NOT EXISTS (SELECT * FROM SYS.DATABASES WHERE NAME='${target.database.name}') CREATE DATABASE ${target.database.name};
+    </sql>
+  </target>
+
+  <target name="create_database" depends="load_config" description="create the target database" >
+    <condition property="database.postgresql">
+      <equals arg1="${target.database.type}" arg2="PostgreSQL"/>
+    </condition>
+    <condition property="database.sqlserver">
+      <equals arg1="${target.database.type}" arg2="SQLServer"/>
+    </condition>
+    <condition property="database.oracle">
+      <equals arg1="${target.database.type}" arg2="Oracle"/>
+    </condition>
+    <antcall target="create_database_postgres" />
+    <antcall target="create_database_sqlserver" />
+    <antcall target="create_database_oracle" />
+  </target>
+
+  <target name="drop_database_oracle" depends="init_ant, load_config" if="database.oracle" >
+    <echo message ="droping database ${target.database.name} from Oracle"/>
+	<sql driver="${target.database.class}"
+         url="${target.database.schema.url}"
+         userid="${target.database.user}" 
+         password="${target.database.password}"
+         classpathref="setup.database.classpath"
+         autocommit="true"
+		 onerror="continue"
+         src="${dist.config.dir}${platform.slash}${target.database.drop.schema}">	
+    </sql>
+  </target>
+
+  <target name="drop_database_postgres" depends="load_config" if="database.postgresql" >
+    <echo message ="droping database ${target.database.name} from PostgreSQL"/>
+    <sql driver="${target.database.class}"
+         url="${target.database.create.url}"
+         userid="${target.database.user}" 
+         password="${target.database.password}"
+         classpathref="setup.database.classpath"
+         autocommit="true" >
+      DROP DATABASE IF EXISTS ${target.database.name};
+    </sql>
+  </target>
+
+  <target name="drop_database_sqlserver" depends="load_config" if="database.sqlserver" >
+    <echo message ="droping database ${target.database.name} from SQLServer"/>
+    <sql driver="${target.database.class}"
+         url="${target.database.create.url}"
+         userid="${target.database.user}" 
+         password="${target.database.password}"
+         classpathref="setup.database.classpath"
+         autocommit="true" >
+      IF EXISTS (SELECT * FROM SYS.DATABASES WHERE NAME='${target.database.name}') DROP DATABASE ${target.database.name};
+    </sql>
+  </target>
+  
+  <target name="stop_idol_windows" if="is-windows" >
+    <exec executable="net.exe" 
+          failifexecutionfails="false" failonerror="false">
+      <arg value="stop"/>
+      <arg value="AutonomyFileSystemFetch"/>
+    </exec>
+    <antcall target="stop_content0" />
+    <antcall target="stop_content1" />
+    <antcall target="stop_content2" />
+    <antcall target="stop_content3" />
+    <antcall target="stop_content4" />
+    <exec executable="net.exe" 
+          failifexecutionfails="false" failonerror="false">
+      <arg value="stop"/>
+      <arg value="AutonomyIDOLServer"/>
+    </exec>    
+    <exec executable="net.exe" 
+          failifexecutionfails="false" failonerror="false">
+      <arg value="stop"/>
+      <arg value="AutonomyDiSH"/>
+    </exec>
+  </target>
+  
+  <target name="stop_idol_linux" if="is-linux" >
+    <exec executable="${dist.bin.dir}/idol" dir="${dist.bin.dir}" >
+      <arg line="stop" />
+    </exec>
+  </target>
+  
+  <target name="stop_idol" description="stop IDOL services" depends="init_ant, define_arch" >
+    <antcall target="stop_idol_windows" />
+    <antcall target="stop_idol_linux" />
+  </target>
+  
+  <target name="stop_idolService_windows" if="is-windows" >
+  </target>
+  
+  <target name="stop_idolService_linux" if="is-linux" >
+    <exec executable="/etc/init.d/idol" dir="/etc/init.d" >
+      <arg line="stop" />
+    </exec>
+  </target>
+  
+  <target name="stop_idolService" description="stop IDOL Linux services" depends="define_arch" >
+    <antcall target="stop_idolService_windows" />
+    <antcall target="stop_idolService_linux" />
+  </target>
+  
+  <target name="start_idol_windows" if="is-windows" >
+    <exec executable="net.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="start"/>
+      <arg value="AutonomyDiSH"/>
+    </exec>    
+    <antcall target="start_content0" />
+    <antcall target="start_content1" />
+    <antcall target="start_content2" />
+    <antcall target="start_content3" />
+    <antcall target="start_content4" />
+    <exec executable="net.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="start"/>
+      <arg value="AutonomyIDOLServer"/>
+    </exec>
+    <exec executable="net.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="start"/>
+      <arg value="AutonomyFileSystemFetch"/>
+    </exec>    
+  </target>
+    
+  <target name="start_idol_linux" if="is-linux" >
+    <exec executable="${dist.bin.dir}/idol" dir="${dist.bin.dir}" >
+      <arg line="start" />
+    </exec>
+  </target>
+  
+  <target name="start_idol" description="start IDOL services" depends="init_ant, define_arch" >
+    <antcall target="start_idol_windows" />
+    <antcall target="start_idol_linux" />
+  </target>
+  
+  <target name="start_idolService_windows" if="is-windows" >
+  </target>
+  
+  <target name="start_idolService_linux" if="is-linux" >
+    <exec executable="/etc/init.d/idol" dir="/etc/init.d" >
+      <arg line="start" />
+    </exec>
+  </target>
+  
+  <target name="start_idolService" description="start IDOL Linux services" depends="define_arch" >
+    <antcall target="start_idolService_windows" />
+    <antcall target="start_idolService_linux" />
+  </target>
+  
+  <target name="rsw_sqlserver" if="database.sqlserver">
+    <echo message="reset schema for windows" />
+    <echo message="${dist.bin.dir}${platform.slash}resetDbSchema_sqlserver.bat" />
+    <exec executable="cmd" dir="${dist.bin.dir}" logError="true" output="ant.txt">
+      <arg line="/c resetDbSchema_sqlserver.bat"/>
+    </exec>
+  </target>
+  
+  <target name="rsw_oracle" if="database.oracle">
+    <echo message="reset schema for windows" />
+    <echo message="${dist.bin.dir}${platform.slash}resetDbSchema_oracle.bat" />
+    <exec executable="cmd" dir="${dist.bin.dir}" logError="true" output="ant.txt">
+      <arg line="/c resetDbSchema_oracle.bat"/>
+    </exec>
+  </target>
+  
+  <target name="rsw_postgres" if="database.postgresql">
+    <echo message="reset schema for windows" />
+    <echo message="${dist.bin.dir}${platform.slash}resetDbSchema_postgres.bat" />
+    <exec executable="cmd" dir="${dist.bin.dir}" logError="true" output="ant.txt">
+      <arg line="/c resetDbSchema_postgres.bat"/>
+    </exec>
+  </target>
+  
+  <target name="reset_schema_windows" depends="rsw_postgres,rsw_sqlserver,rsw_oracle" if="is-windows">
+  </target>
+
+  <target name="reset_schema_linux" depends="rsw_postgres,rsw_sqlserver,rsw_oracle" if="is-linux">
+  </target>
+  
+  <target name="reset_schema" description="reset the database schema" depends="define_arch,load_config" >
+    <condition property="database.postgresql">
+      <equals arg1="${target.database.type}" arg2="PostgreSQL"/>
+    </condition>
+    <condition property="database.sqlserver">
+      <equals arg1="${target.database.type}" arg2="SQLServer"/>
+    </condition>
+    <condition property="database.oracle">
+      <equals arg1="${target.database.type}" arg2="Oracle"/>
+    </condition>
+    <antcall target="reset_schema_windows" />
+    <antcall target="reset_schema_linux" />
+  </target>
+  
+  <target name="start_tomcat_windows" if="is-windows">
+    <exec executable="net.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="start"/>
+      <arg value="falcon-tomcat"/>
+    </exec>
+  </target>
+  
+  <target name="start_tomcat_linux" if="is-linux">
+    <exec executable="${dist.bin.dir}/falcon" dir="${dist.bin.dir}" >
+      <arg line="start" />
+    </exec>
+  </target>
+
+  <target name="stop_tomcat_windows" if="is-windows">
+    <exec executable="net.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="stop"/>
+      <arg value="falcon-tomcat"/>
+    </exec>
+  </target>
+
+  <target name="stop_tomcat_linux" if="is-linux">
+    <exec executable="${dist.bin.dir}/falcon" dir="${dist.bin.dir}" >
+      <arg line="stop" />
+    </exec>
+  </target>
+
+  <target name="start_tomcatService_windows" if="is-windows">
+  </target>
+
+  <target name="start_tomcatService_linux" if="is-linux">
+    <exec executable="/etc/init.d/falcon" dir="/etc/init.d" >
+      <arg line="start" />
+    </exec>
+  </target>
+
+  <target name="stop_tomcatService_windows" if="is-windows">
+  </target>
+
+  <target name="stop_tomcatService_linux" if="is-linux">
+    <exec executable="/etc/init.d/falcon" dir="/etc/init.d" >
+      <arg line="stop" />
+    </exec>
+  </target>
+
+  <target name="startFalconService" depends="define_arch" >
+    <antcall target="start_tomcatService_windows" />
+    <antcall target="start_tomcatService_linux" />
+  </target>
+
+  <target name="stopFalconService" depends="define_arch" >
+    <antcall target="stop_tomcatService_windows" />
+    <antcall target="stop_tomcatService_linux" />
+  </target>
+
+  <target name="remove_idol_windows" if="is-windows" >
+    <exec executable="sc.exe" 
+          failifexecutionfails="false" failonerror="false">
+      <arg value="delete"/>
+      <arg value="AutonomyDiSH"/>
+    </exec>
+    <exec executable="sc.exe" 
+          failifexecutionfails="false" failonerror="false">
+      <arg value="delete"/>
+      <arg value="AutonomyIDOLServer"/>
+    </exec>
+    <exec executable="sc.exe" 
+          failifexecutionfails="false" failonerror="false">
+      <arg value="delete"/>
+      <arg value="AutonomyFileSystemFetch"/>
+    </exec>
+  </target>
+  
+  <target name="remove_idol_linux" if="is-linux" >
+    <exec executable="${dist.bin.dir}/idol-service.sh" dir="${dist.bin.dir}" >
+      <arg line="remove" />
+    </exec>
+  </target>
+  
+  <target name="remove_idol" description="remove IDOL services" depends="init_ant, define_arch" >
+    <antcall target="remove_idol_windows" />
+    <antcall target="remove_idol_linux" />
+  </target>
+  
+  <target name="install_idol_windows" if="is-windows" >
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="create"/>
+      <arg value="AutonomyDiSH"/>
+      <arg value="binPath="/>
+      <arg value="${dist.idol.dir}/DiSH/AutonomyDiSH.exe"/>
+      <arg value="start="/>
+      <arg value="auto"/>
+      <arg value="DisplayName="/>
+      <arg value="Falcon AutonomyDiSH Server"/>
+    </exec>
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="description"/>
+      <arg value="AutonomyDiSH"/>
+      <arg value="Falcon AutonomyDiSH Server"/>
+    </exec>
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="create"/>
+      <arg value="AutonomyIDOLServer"/>
+      <arg value="binPath="/>
+      <arg value="${dist.idol.dir}/IDOL/AutonomyIDOLServer.exe"/>
+      <arg value="start="/>
+      <arg value="auto"/>
+      <arg value="DisplayName="/>
+      <arg value="Falcon AutonomyIDOLServer Server"/>
+      <arg value="depend="/>
+      <arg value="AutonomyDiSH"/>
+    </exec>
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="description"/>
+      <arg value="AutonomyIDOLServer"/>
+      <arg value="Falcon AutonomyIDOLServer Server"/>
+    </exec>
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="create"/>
+      <arg value="AutonomyFileSystemFetch"/>
+      <arg value="binPath="/>
+      <arg value="${dist.idol.dir}/FileSystemFetch/AutonomyFileSystemFetch.exe"/>
+      <arg value="start="/>
+      <arg value="auto"/>
+      <arg value="DisplayName="/>
+      <arg value="Falcon AutonomyFileSystemFetch Server"/>
+      <arg value="depend="/>
+      <arg value="AutonomyDiSH/AutonomyIDOLServer"/>
+    </exec>
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="description"/>
+      <arg value="AutonomyFileSystemFetch"/>
+      <arg value="Falcon AutonomyFileSystemFetch Server"/>
+    </exec>
+  </target>
+  
+  <target name="install_idol_linux" if="is-linux" >
+    <exec executable="${dist.bin.dir}/idol-service.sh" dir="${dist.bin.dir}" >
+      <arg line="install" />
+    </exec>
+  </target>
+  
+  <target name="install_idol" description="install IDOL services" depends="init_ant, define_arch" >
+    <antcall target="install_idol_windows" />
+    <antcall target="install_idol_linux" />
+  </target>
+  
+  <target name="install_tomcat" depends="init_ant, define_arch, install_tomcat_windows, install_tomcat_linux">
+  </target>
+
+  <target name="install_tomcat_mon" depends="init_ant, define_arch, install_tomcat_mon_windows, install_tomcat_mon_linux">
+  </target>
+
+  <target name="uninstall_tomcat" depends="init_ant, define_arch, load_config, uninstall_tomcat_windows, uninstall_tomcat_linux">
+  </target>
+
+  <target name="install_tomcat_windows" if="is-windows">
+    <exec executable="cmd" dir="${dist.tomcat.bin.dir}" logError="true" output="ant.txt">
+      <arg line="/c falcon-service.bat install falcon-tomcat"/>
+    </exec>
+  </target>
+
+  <target name="install_tomcat_mon_windows" if="is-windows">
+    <exec executable="cmd" dir="${dist.tomcat.bin.dir}" logError="true" output="ant.txt">
+      <arg line="/c falcon-service.bat monitor falcon-tomcat"/>
+    </exec>
+  </target>
+
+  <target name="install_tomcat_linux" if="is-linux" >
+    <exec executable="${dist.bin.dir}/falcon-service.sh" dir="${dist.bin.dir}" >
+      <arg line="install" />
+    </exec>
+  </target>
+
+  <target name="install_tomcat_mon_linux" if="is-linux" >
+    <exec executable="${dist.bin.dir}/falcon-service.sh" dir="${dist.bin.dir}" >
+      <arg line="monitor" />
+    </exec>
+  </target>
+
+  <target name="uninstall_tomcat_windows" if="is-windows" >
+    <exec executable="cmd" dir="${dist.tomcat.bin.dir}" >
+      <arg line="/c falcon-service.bat uninstall falcon-tomcat"/>
+    </exec>
+  </target>
+
+  <target name="uninstall_tomcat_linux" if="is-linux" >
+    <exec executable="${dist.bin.dir}/falcon-service.sh" dir="${dist.bin.dir}" >
+      <arg line="remove" />
+    </exec>
+  </target>
+
+<!-- Solr -->
+  <target name="start_solr" description="start falcon's tomcat" depends="init_ant, define_arch" >
+    <antcall target="start_solr_windows" />
+    <antcall target="start_solr_linux" />
+  </target>
+
+  <target name="start_solrService" description="start falcon's tomcat service" depends="init_ant, define_arch" >
+    <antcall target="start_solrService_linux" />
+  </target>
+
+  <target name="stop_solr" description="stop falcon's tomcat" depends="init_ant, define_arch" >
+    <antcall target="stop_solr_windows" />
+    <antcall target="stop_solr_linux" />
+  </target>
+
+  <target name="stop_solrService" description="stop falcon's tomcat service" depends="init_ant, define_arch" >
+    <antcall target="stop_solrService_linux" />
+  </target>
+
+  <!--
+  <target name="start_solr_windows" if="is-windows">
+    <exec executable="net.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="start"/>
+      <arg value="falcon-solr"/>
+    </exec>
+  </target>
+  -->
+  <!-- AR35679 -->
+  <target name="start_solr_windows" if="is-windows">
+    <exec executable="net.exe" dir="${dist.bin.dir}" logError="true" output="start_solr.txt"
+          failifexecutionfails="true" failonerror="true" resolveexecutable="true">
+      <arg value="start"/>
+      <arg value="falcon-solr"/>
+    </exec>	
+  </target>
+  
+  <target name="start_solr_linux" if="is-linux">
+    <exec executable="${dist.bin.dir}/solr-user" dir="${dist.bin.dir}" >
+      <arg line="start" />
+    </exec>
+  </target>
+
+  <target name="start_solrService_linux" if="is-linux">
+    <exec executable="/etc/init.d/solr" dir="${dist.bin.dir}" >
+      <arg line="start" />
+    </exec>
+  </target>
+
+  <!--
+  <target name="stop_solr_windows" if="is-windows">
+    <exec executable="net.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="stop"/>
+      <arg value="falcon-solr"/>
+    </exec>
+  </target>
+  -->
+    <!-- AR35679 -->
+  <target name="stop_solr_windows" if="is-windows">
+    <exec executable="net.exe" dir="${dist.bin.dir}" logError="true" output="stop_solr.txt"
+          failifexecutionfails="true" failonerror="true" resolveexecutable="true">
+      <arg value="stop"/>
+      <arg value="falcon-solr"/>
+    </exec>
+  </target>
+
+  <target name="stop_solr_linux" if="is-linux">
+    <exec executable="${dist.bin.dir}/solr-user" dir="${dist.bin.dir}" >
+      <arg line="stop" />
+    </exec>
+  </target>
+
+  <target name="stop_solrService_linux" if="is-linux">
+    <exec executable="/etc/init.d/solr" dir="${dist.bin.dir}" >
+      <arg line="stop" />
+    </exec>
+  </target>
+
+  <target name="install_solr" depends="init_ant, define_arch, install_solr_windows, install_solr_linux">
+  </target>
+
+  <target name="uninstall_solr" depends="init_ant, define_arch, load_config, uninstall_solr_windows, uninstall_solr_linux">
+  </target>
+
+  <target name="install_solr_windows" if="is-windows">
+    <exec executable="cmd" dir="${dist.bin.dir}" logError="true" output="ant.txt">
+      <arg line='/c ${dist.bin.dir}/nssm install falcon-solr ${dist.solr.dir}/bin/solr.cmd start -c -f -p 8983'/>
+    </exec>
+  </target>
+
+  <target name="install_solr_linux" if="is-linux" >
+    <exec executable="${dist.bin.dir}/solr-service.sh" dir="${dist.bin.dir}" >
+      <arg line="install" />
+    </exec>
+  </target>
+
+  <target name="uninstall_solr_windows" if="is-windows" >
+    <exec executable="sc.exe" 
+          failifexecutionfails="false" failonerror="false">
+      <arg value="delete"/>
+      <arg value="falcon-solr"/>
+    </exec>
+  </target>
+
+  <target name="uninstall_solr_linux" if="is-linux" >
+    <exec executable="${dist.bin.dir}/solr-service.sh" dir="${dist.bin.dir}" >
+      <arg line="remove" />
+    </exec>
+  </target>
+
+  <target name="install_solr_config" depends="init_ant, define_arch, install_solr_config_windows, install_solr_config_linux">
+  </target>
+
+  <target name="install_solr_config_windows" if="is-windows">
+    <exec executable="cmd" dir="${dist.bin.dir}" logError="true" output="ant.txt" vmlauncher="false">
+      <arg line='/c ${dist.dir}\Solr\server\scripts\cloud-scripts\zkcli.bat -zkhost localhost:9983 -cmd upconfig -confdir ${dist.dir}\Solr\FalconConfig -confname falconCfg'/>
+    </exec>
+  </target>
+
+  <target name="install_solr_config_linux" if="is-linux" >
+    <exec executable="${dist.dir}/Solr/server/scripts/cloud-scripts/zkcli.sh" dir="${dist.dir}/Solr/server/scripts/cloud-scripts" >
+      <arg line='-zkhost localhost:9983 -cmd upconfig -confdir ${dist.dir}/Solr/FalconConfig -confname falconCfg'/>
+      <arg line="install" />
+    </exec>
+  </target>
+
+  <target name="install_solr_coll" depends="init_ant, define_arch, install_solr_coll_windows, install_solr_coll_linux">
+  </target>
+
+  <target name="install_solr_coll_windows" if="is-windows">
+    <exec executable="cmd" dir="${dist.bin.dir}" logError="true" output="ant.txt">
+      <arg line='/c ${dist.dir}\Solr\bin\solr.cmd create_collection -c Falcon -shards 2 -replicationFactor 1 -n falconCfg'/>
+    </exec>
+  </target>
+
+  <target name="install_solr_coll_linux" if="is-linux" >
+    <exec executable="${dist.dir}/Solr/bin/solr" dir="${dist.dir}/Solr/bin" >
+      <arg line='create_collection -c Falcon -shards 2 -replicationFactor 1 -n falconCfg'/>
+    </exec>
+  </target>
+  <!-- Solr -->
+
+  <target name="drop_database" depends="load_config" description="drop the target database" >
+    <condition property="database.postgresql">
+      <equals arg1="${target.database.type}" arg2="PostgreSQL"/>
+    </condition>
+    <condition property="database.sqlserver">
+      <equals arg1="${target.database.type}" arg2="SQLServer"/>
+    </condition>
+    <condition property="database.oracle">
+      <equals arg1="${target.database.type}" arg2="Oracle"/>
+    </condition>
+    <antcall target="drop_database_postgres" />
+    <antcall target="drop_database_sqlserver" />
+    <antcall target="drop_database_oracle" />
+  </target>
+
+  <target name="load_database_sqlserver" depends="load_config" if="database.sqlserver"  >
+	<sql driver="${target.database.class}"
+         url="${target.database.schema.url}"
+         userid="${target.database.user}" 
+         password="${target.database.password}"
+         classpathref="setup.database.classpath"
+         autocommit="true"
+         src="${dist.config.dir}${platform.slash}${target.database.schema.one}">	
+    </sql>
+    <sql driver="${target.database.class}"
+         url="${target.database.schema.url}"
+         userid="${target.database.user}" 
+         password="${target.database.password}"
+         classpathref="setup.database.classpath"
+         autocommit="true"
+         src="${dist.config.dir}${platform.slash}${target.database.schema.two}">	
+    </sql>
+  </target>
+
+  <target name="load_database_postgres" depends="load_config" if="database.postgresql"  >
+	<sql driver="${target.database.class}"
+         url="${target.database.schema.url}"
+         userid="${target.database.user}" 
+         password="${target.database.password}"
+         classpathref="setup.database.classpath"
+         autocommit="true"
+         src="${dist.config.dir}${platform.slash}${target.database.schema.one}">	
+    </sql>
+    <sql driver="${target.database.class}"
+         url="${target.database.schema.url}"
+         userid="${target.database.user}" 
+         password="${target.database.password}"
+         classpathref="setup.database.classpath"
+         autocommit="true"
+         src="${dist.config.dir}${platform.slash}${target.database.schema.two}">	
+    </sql>
+  </target>
+
+  <target name="load_database_oracle" depends="load_config" if="database.oracle"  >
+	<sql driver="${target.database.class}"
+         url="${target.database.schema.url}"
+         userid="${target.database.user}" 
+         password="${target.database.password}"
+         classpathref="setup.database.classpath"
+         autocommit="true"
+         src="${dist.config.dir}${platform.slash}${target.database.schema.one}">	
+    </sql>
+    <sql driver="${target.database.class}"
+         url="${target.database.schema.url}"
+         userid="${target.database.user}" 
+         password="${target.database.password}"
+         classpathref="setup.database.classpath"
+         autocommit="true"
+         src="${dist.config.dir}${platform.slash}${target.database.schema.two}">	
+    </sql>
+  </target>
+
+  <target name="load_database" depends="load_config" description="load the schema into the target database" >
+    <condition property="database.postgresql">
+      <equals arg1="${target.database.type}" arg2="PostgreSQL"/>
+    </condition>
+    <condition property="database.sqlserver">
+      <equals arg1="${target.database.type}" arg2="SQLServer"/>
+    </condition>
+    <condition property="database.oracle">
+      <equals arg1="${target.database.type}" arg2="Oracle"/>
+    </condition>
+    <antcall target="load_database_postgres" />
+    <antcall target="load_database_sqlserver" />
+    <antcall target="load_database_oracle" />
+  </target>
+  
+  <target name="load_database_postgres_installer" depends="load_config" if="database.postgresql"  >
+    <sql driver="${target.database.class}"
+         url="${target.database.schema.url}"
+         userid="${target.database.user}" 
+         password="${target.database.password}"
+         classpathref="setup.database.classpath"
+         autocommit="true"
+         src="${dist.config.dir}${platform.slash}${target.database.schema.two}">	
+    </sql>
+  </target>
+  
+  <target name="load_database_sqlserver_installer" depends="load_config" if="database.sqlserver"  >
+    <sql driver="${target.database.class}"
+         url="${target.database.schema.url};Database=${target.database.name}"
+         userid="${target.database.user}" 
+         password="${target.database.password}"
+         classpathref="setup.database.classpath"
+         autocommit="true"
+         src="${dist.config.dir}${platform.slash}${target.database.schema.two}">	
+    </sql>
+  </target>  
+  
+  <target name="load_database_oracle_installer" depends="load_config" if="database.oracle"  >
+    <sql driver="${target.database.class}"
+         url="${target.database.schema.url}"
+         userid="${target.database.user}" 
+         password="${target.database.password}"
+         classpathref="setup.database.classpath"
+         autocommit="true"
+         src="${dist.config.dir}${platform.slash}${target.database.schema.two}">	
+    </sql>
+  </target>
+  
+  <target name="load_database_installer" depends="load_config" description="load the schema into the target database" >
+    <condition property="database.postgresql">
+      <equals arg1="${target.database.type}" arg2="PostgreSQL"/>
+    </condition>
+    <condition property="database.sqlserver">
+      <equals arg1="${target.database.type}" arg2="SQLServer"/>
+    </condition>
+    <condition property="database.oracle">
+      <equals arg1="${target.database.type}" arg2="Oracle"/>
+    </condition>
+    <antcall target="load_database_postgres_installer" />
+    <antcall target="load_database_sqlserver_installer" />
+    <antcall target="load_database_oracle_installer" />
+  </target>
+
+  <target name="falcon_install_mode" depends="init_ant, load_config" description="set server mode to install">
+    <java classname="com.xerox.elf.kolvir.bootstrap.resetKVServiceMode"
+          classpathref="config.classpath"
+          fork="true"
+          dir="${dist.bin.dir}"
+          maxmemory="128m"
+          >
+      <arg value="${dist.config.dir}${platform.slash}kvService.xml" />
+    </java>
+  </target>
+
+  <target name="falcon_install_url" depends="init_ant, load_config" description="update schema for falcon" >
+    <get src="${falcon.install.url}" dest="client-test"/>
+  </target>
+
+  <target name="config_jdbc" depends="init_ant, getTime, load_config" description="configure target database">
+    <echo message="run the falcon database configuration utility with ${basedir}/config.properties" />
+    <echo message=" in directory ${dist.bin.dir}" />
+    <java classname="com.xerox.docushare.cli.ConfigDriver"
+          classpathref="config.classpath"
+          fork="true"
+          dir="${dist.bin.dir}"
+          maxmemory="128m"
+          >
+      <arg value="jdbc" />
+      <arg value="${basedir}/config.properties" />
+      <sysproperty key="java.library.path" value="${dist.bin.dir}"/>
+      <sysproperty key="com.xerox.docushare.install" value="${dist.dir}"/>
+    </java>
+  </target>
+
+  <target name="setup_database" depends="init_ant, getTime" description="update database schema">
+    <echo message="run the falcon database update database schema utility" />
+    <echo message=" in directory ${dist.bin.dir}" />
+    <java classname="com.xerox.docushare.db.jdbc.setupDatabase"
+          classpathref="setup.database.classpath"
+          fork="true"
+          dir="${dist.bin.dir}"
+          maxmemory="512m"
+          >
+      <sysproperty key="com.xerox.docushare.install" value="${dist.dir}"/>
+    </java>
+  </target>
+
+  <target name="do_config_server_linux_solr" if="solr.exists">
+    <echo message="setup Solr service script for linux" />
+    <filter token="install_dir" value="${dist.dir}" />
+    <filter token="ds_user" value="${user.name}" />
+    <copy failonerror="false" filtering="true" overwrite="true" tofile="${dist.bin.dir}/solr" file="${dist.bin.dir}/solr-template" />
+    <copy failonerror="false" filtering="true" overwrite="true" tofile="${dist.bin.dir}/solr-service.sh" file="${dist.bin.dir}/solr-service-template" />
+    <copy failonerror="false" filtering="true" overwrite="true" tofile="${dist.bin.dir}/solr.in.sh" file="${dist.bin.dir}/solr.in-template" />
+    <copy failonerror="false" filtering="true" overwrite="true" tofile="${dist.bin.dir}/solr-user" file="${dist.bin.dir}/solr-user-template" />
+    <chmod file="${dist.bin.dir}/solr" perm="755" />
+    <chmod file="${dist.bin.dir}/solr-user" perm="755" />
+    <chmod file="${dist.bin.dir}/solr-service.sh" perm="755" />
+    <chmod file="${dist.bin.dir}/solr.in.sh" perm="755" />
+    <chmod file="${dist.dir}/Solr/bin/oom_solr.sh" perm="755" />
+    <chmod file="${dist.dir}/Solr/bin/post" perm="755" />
+    <chmod file="${dist.dir}/Solr/bin/solr" perm="755" />
+    <chmod file="${dist.dir}/Solr/bin/solr.cmd" perm="755" />
+    <chmod file="${dist.dir}/Solr/bin/solr.in.cmd" perm="755" />
+    <chmod file="${dist.dir}/Solr/bin/solr.in.sh" perm="755" />
+    <chmod file="${dist.dir}/Solr/server/scripts/cloud-scripts/zkcli.sh" perm="755" />
+  </target>
+
+  <target name="do_config_server_linux_idol" if="idol.exists">
+    <echo message="setup idol service script for linux" />
+    <filter token="install_dir" value="${dist.dir}" />
+    <filter token="ds_user" value="${user.name}" />
+    <copy failonerror="false" filtering="true" overwrite="true" tofile="${dist.bin.dir}/idol" file="${dist.bin.dir}/idol-template" />
+    <copy failonerror="false" filtering="true" overwrite="true" tofile="${dist.bin.dir}/idol-service.sh" file="${dist.bin.dir}/idol-service-template" />
+    <chmod file="${dist.dir}/IDOLServer/IDOL/content/content.exe" perm="755" />
+    <chmod file="${dist.bin.dir}/idol" perm="755" />
+    <chmod file="${dist.bin.dir}/idol-service.sh" perm="755" />
+  </target>
+
+  <target name="do_config_server_linux" if="is-linux">
+    <echo message="setup falcon service script for linux" />
+    <filter token="install_dir" value="${dist.dir}" />
+    <filter token="ds_user" value="${user.name}" />
+    <copy failonerror="false" filtering="true" overwrite="true" tofile="${dist.bin.dir}/falcon" file="${dist.bin.dir}/falcon-template" />
+    <copy failonerror="false" filtering="true" overwrite="true" tofile="${dist.bin.dir}/falcon-service.sh" file="${dist.bin.dir}/falcon-service-template" />
+    <chmod file="${dist.bin.dir}/falcon" perm="755" />
+    <chmod file="${dist.bin.dir}/falcon-service.sh" perm="755" />
+    <chmod file="${dist.bin.dir}/convertJDBCConfig.sh" perm="755" />
+    <chmod file="${dist.bin.dir}/createDBConfig.sh" perm="755" />
+    <chmod file="${dist.bin.dir}/resetDbSchemaAndConfigs_oracle.sh" perm="755" />
+    <chmod file="${dist.bin.dir}/resetDbSchemaAndConfigs_postgres.sh" perm="755" />
+    <chmod file="${dist.bin.dir}/resetDbSchema_oracle.sh" perm="755" />
+    <chmod file="${dist.bin.dir}/resetDbSchema_postgres.sh" perm="755" />
+    <chmod file="${dist.tomcat.bin.dir}/catalina.sh" perm="755" />
+    <chmod file="${dist.tomcat.bin.dir}/deamon.sh" perm="755" />
+    <chmod file="${dist.tomcat.bin.dir}/digest.sh" perm="755" />
+    <chmod file="${dist.tomcat.bin.dir}/setclasspath.sh" perm="755" />
+    <chmod file="${dist.tomcat.bin.dir}/shutdown.sh" perm="755" />
+    <chmod file="${dist.tomcat.bin.dir}/startup.sh" perm="755" />
+    <chmod file="${dist.tomcat.bin.dir}/tool-wrapper.sh" perm="755" />
+    <chmod file="${dist.tomcat.bin.dir}/version.sh" perm="755" />
+    <chmod file="${dist.tomcat.bin.dir}/setenv.sh" perm="755" />
+    <chmod file="${dist.tomcat.bin.dir}/setenv.sh" perm="755" />
+    <antcall target="do_config_server_linux_idol" />
+    <antcall target="do_config_server_linux_solr" />
+  </target>
+  
+  <target name="check_solr">
+    <condition property="solr.exists">
+      <available file="Solr" type="dir"/>
+    </condition>
+  </target>
+
+  <target name="check_idol">
+    <condition property="idol.exists">
+      <available file="IDOLServer" type="dir"/>
+    </condition>
+  </target>
+
+  <target name="config_server_linux" depends="init_ant, getTime, define_arch, check_idol, check_solr" description="configure linux for falcon">
+    <antcall target="do_config_server_linux" />
+  </target>
+
+  <target name="config_server" depends="init_ant, getTime, define_arch" description="configure falcon">
+    <echo message="run the falcon configuration utility" />
+    <java classname="com.xerox.docushare.cli.ConfigDriver"
+          classpathref="config.classpath"
+          fork="true"
+          dir="${dist.bin.dir}"
+          maxmemory="128m"
+          >
+      <arg value="config" />
+      <arg value="${basedir}/config.properties" />
+      <sysproperty key="java.library.path" value="${dist.bin.dir}"/>
+      <sysproperty key="com.xerox.docushare.install" value="${dist.dir}"/>
+    </java>
+    <java classname="com.xerox.docushare.cli.ConfigDriver"
+          classpathref="config.classpath"
+          fork="true"
+          dir="${dist.bin.dir}"
+          maxmemory="128m"
+          >
+      <arg value="bits" />
+      <arg value="7" />
+      <arg value="config" />
+      <arg value="${basedir}/config.properties" />
+      <sysproperty key="java.library.path" value="${dist.bin.dir}"/>
+      <sysproperty key="com.xerox.docushare.install" value="${dist.dir}"/>
+    </java>
+    <antcall target="config_server_linux" />
+  </target>
+
+  <target name="check_arch" >
+    <condition property="is-windows">
+      <os family="windows"/>
+    </condition>
+    <condition property="is-windows-32">
+      <and>
+        <os family="windows"/>
+        <os arch="x86" />
+      </and>
+    </condition>
+    <condition property="is-windows-64">
+      <and>
+        <os arch="amd64" />
+      </and>
+    </condition>
+    <condition property="is-unix">
+      <os family="unix"/>
+    </condition>
+    <condition property="is-solaris">
+      <os family="unix" name="SunOS" arch="sparc"/>
+    </condition>
+    <condition property="is-linux">
+      <os family="unix" name="Linux"/>
+    </condition>
+  </target>
+
+  <target name="define_windows_arch" if="is-windows" >
+    <echo message="running on windows" />
+    <property name="start.docushare.exe" value="dist/bin/start_docushare.exe" />
+    <property name="platform.slash" value="\" />
+    <property name="start.docushare.cmd" value="cmd /c start ${basedir}${platform.slash}${start.docushare.exe} console" />
+  </target>
+
+  <target name="define_solaris_arch" if="is-solaris" >
+    <echo message="running on solaris" />
+    <property name="start.docushare.exe" value="${dist.bin.dir}/start_docushare.sh" />
+    <property name="platform.slash" value="/" />
+    <property name="start.docushare.cmd" value="${basedir}${platform.slash}${start.docushare.exe} console" />
+  </target>
+
+  <target name="define_linux_arch" if="is-linux" >
+    <echo message="running on linux" />
+    <property name="start.docushare.exe" value="${dist.bin.dir}/start_docushare.sh" />
+    <property name="platform.slash" value="/" />
+    <property name="start.docushare.cmd" value="${basedir}${platform.slash}${start.docushare.exe} console" />
+  </target>
+
+  <target name="define_arch" depends="check_arch, 
+                                      define_windows_arch, 
+									  define_solaris_arch, 
+									  define_linux_arch,
+									  find_location, 
+									  set_devloc, 
+									  set_distloc" >
+  </target>
+  
+  <target name="stop_iis" depends="init_ant, define_arch" >
+	<sleep seconds="10" />
+    <exec executable="net">
+      <arg value="stop"/>
+      <arg value="w3svc"/>
+    </exec>
+	<sleep seconds="10" />
+  </target>
+
+  <target name="start_iis" depends="init_ant, define_arch" >
+	<sleep seconds="10" />
+    <exec executable="net">
+      <arg value="start"/>
+      <arg value="w3svc"/>
+    </exec>
+	<sleep seconds="10" />
+  </target>
+  
+  <target name="is_iis_installed"  depends="init_ant, define_arch" >
+    <exec executable="reg" resultproperty="iis.installed"  failonerror="false" >
+      <arg value="query"/>
+      <arg value="HKLM\SYSTEM\CurrentControlSet\Services\W3SVC"/>
+      <arg value="/v"/>
+      <arg value="Description"/>
+	</exec>
+	<echo message="iis installed ${iis.installed}" />
+  </target>
+  
+  <target name="install_iis" depends="init_ant, define_arch" >
+    <exec executable="dism.exe" >
+      <arg value="/enable-feature"/>
+      <arg value="/online"/>
+      <arg value="/featureName:IIS-WebServerRole"/>
+      <arg value="/featureName:IIS-WebServer"/>
+      <arg value="/featureName:IIS-CommonHttpFeatures"/>
+      <arg value="/featureName:IIS-StaticContent"/>
+      <arg value="/featureName:IIS-DefaultDocument"/>
+      <arg value="/featureName:IIS-DirectoryBrowsing"/>
+      <arg value="/featureName:IIS-HttpErrors"/>
+	  <arg value="/featureName:IIS-HttpRedirect"/>
+      <arg value="/featureName:IIS-ApplicationDevelopment"/>
+	  <arg value="/featureName:IIS-ISAPIExtensions"/>
+	  <arg value="/featureName:IIS-ISAPIFilter"/>
+      <arg value="/featureName:IIS-HealthAndDiagnostics"/>
+      <arg value="/featureName:IIS-HttpLogging"/>
+      <arg value="/featureName:IIS-LoggingLibraries"/>
+      <arg value="/featureName:IIS-Security"/>
+      <arg value="/featureName:IIS-BasicAuthentication"/>
+      <arg value="/featureName:IIS-WindowsAuthentication"/>
+      <arg value="/featureName:IIS-RequestFiltering"/>
+      <arg value="/featureName:IIS-Performance"/>
+      <arg value="/featureName:IIS-HttpCompressionStatic"/>
+      <arg value="/featureName:IIS-WebServerManagementTools"/>
+      <arg value="/featureName:IIS-ManagementScriptingTools"/>
+      <arg value="/featureName:IIS-Metabase"/>
+      <arg value="/featureName:IIS-CertProvider"/>
+      <arg value="/featureName:IIS-ManagementConsole"/>
+      <arg value="/featureName:IIS-URLAuthorization"/>
+    </exec>
+  </target>
+
+  <target name="install_bridge" depends="init_ant, define_arch" >
+    <antcall target="stop_iis" />
+    <exec executable="cscript">
+      <arg value="bridge/isapi_install.vbs"/>
+      <arg value="Default Web Site"/>
+      <arg value="${basedir}\tomcat\bin\native\iis64amd"/>
+      <arg value="${basedir}\tomcat\conf\ntiis\workers.properties" />
+      <arg value="${basedir}\tomcat\conf\ntiis\uriworkermap.properties" />
+      <arg value="${basedir}\tomcat\logs\isapi.log" />
+      <arg value="emerg" />
+      <arg value="install" />
+    </exec>
+    <antcall target="start_iis" />
+  </target>
+
+  <target name="remove_bridge" depends="init_ant, define_arch" >
+    <antcall target="stop_iis" />
+    <exec executable="cscript">
+      <arg value="bridge/isapi_install.vbs"/>
+      <arg value="Default Web Site"/>
+      <arg value="${basedir}\tomcat\bin\native\iis64amd"/>
+      <arg value="${basedir}\tomcat\conf\ntiis\workers.properties" />
+      <arg value="${basedir}\tomcat\conf\ntiis\uriworkermap.properties" />
+      <arg value="${basedir}\tomcat\logs\isapi.log" />
+      <arg value="debug" />
+      <arg value="remove" />
+    </exec>
+    <antcall target="start_iis" />
+  </target>
+
+  <target name="print_windows_32" if="is-windows-32" >
+    <echo message="windows 32bit" />
+  </target>
+
+  <target name="print_windows_64" if="is-windows-64" >
+    <echo message="windows 64bit" />
+  </target>
+
+  <target name="dotest" depends="define_arch, convert_path" >
+    <antcall target="print_windows_32" />
+    <antcall target="print_windows_64" />
+    <echo message="base.dir = ${base.dir}" />
+    <echo message="platform.slash = ${platform.slash}" />
+  </target>
+  
+  <target name="setup_server" depends="parse_config, 
+                                       drop_database, 
+									   create_database, 
+									   load_database, 
+									   falcon_install_mode, 
+									   config_jdbc, 
+									   config_server, 
+									   convertJDBCConfig" />
+
+  <target name="recycle_server" depends="stop_idol, 
+										 remove_idol,
+										 parse_config, 
+										 drop_database, 
+										 create_database, 
+										 load_database,
+										 falcon_install_mode,
+										 config_jdbc, 
+										 config_server, 
+										 convertJDBCConfig" />
+
+  <target name="install_help_windows" if="is-windows" >
+    <echo message="This build script will configure and start Falcon for Windows" />
+    <echo message="  call sequence" />
+    <echo message="       parse_config        - will work with a target machine config" />
+    <echo message="                             in the client-test directory" />
+    <echo message="       drop_database       - drop the target database if desired" />
+    <echo message="       create_database     - create the target database if desired" />
+    <echo message="       load_database       - load the schema into the target database if desired" />
+    <echo message="       config_jdbc         - configure the jdbc properties" />
+    <echo message="       config_server       - configure the main server" />
+    <echo message="       convertJDBCConfig   - convert the database config file to xml" />
+    <echo message="       createDBConfig      - create the database config file" />
+    <echo message="       setup_database      - update the database schema" />
+    <echo message="       reset_schema        - update the database schema to a pre-installed state" />
+    <echo message="       falcon_install_mode - set server mode to install" />
+    <echo message="       falcon_install_url  - update schema for falcon" />
+    <echo message="       startFalcon         - start the server" />
+    <echo message="   " />
+    <echo message="   tomcat commands" />
+    <echo message="       install_tomcat      - this will install the Falcon service" />
+    <echo message="       install_tomcat_mon  - this will install the Falcon service with monitoring enabled" />
+    <echo message="       startFalcon         - this will start the Falcon service" />
+    <echo message="       stopFalcon          - this will stop the Falcon service" />
+    <echo message="       uninstall_tomcat    - this will uninstall the Falcon service" /> 
+    <echo message="   " />
+    <echo message="   IDOL commands" />
+    <echo message="       initIDOL            - create the initial setup for IDOL" />
+    <echo message="       install_idol        - this will install the IDOL services" />
+    <echo message="       start_idol          - this will start the IDOL services" />
+    <echo message="       stop_idol           - this will stop the IDOL services" />
+    <echo message="       remove_idol         - this will stop the IDOL services" /> 
+    <echo message="                             if running and remove the IDOL services" />
+    <echo message="   " />
+    <echo message="   Solr commands" />
+    <echo message="       install_solr        - this will install the Solr service" />
+    <echo message="       start_solr          - this will start the Solr service" />
+    <echo message="       install_solr_config - this will install the Solr config" />
+    <echo message="                           -    needs to be run after start_solr" />
+    <echo message="       install_solr_coll   - this will install the Solr collection" />
+    <echo message="                           -    needs to be run after install_solr_config" />
+    <echo message="       stop_solr           - this will stop the Solr service" />
+    <echo message="       uninstall_solr      - this will uninstall the Solr service" /> 
+    <echo message="   " />
+  	<echo message="   note: setup_server will run the command list from the install readme" />
+  	<echo message="       ${script.version}" />
+  </target>
+
+  <target name="install_help_linux" if="is-linux" >
+    <echo message="This build script will configure and start Falcon for Linux" />
+    <echo message="  call sequence" />
+    <echo message="       parse_config         - will work with a target machine config" />
+    <echo message="                              in the client-test directory" />
+    <echo message="       drop_database        - drop the target database if desired" />
+    <echo message="       create_database      - create the target database if desired" />
+    <echo message="       load_database        - load the schema into the target database if desired" />
+    <echo message="       config_jdbc          - configure the jdbc properties" />
+    <echo message="       config_server        - configure the main server" />
+    <echo message="       config_server_linux  - reset the permissions for Linux" />
+    <echo message="       convertJDBCConfig    - convert the database config file to xml" />
+    <echo message="       createDBConfig       - create the database config file" />
+    <echo message="       setup_database       - update the database schema" />
+    <echo message="       reset_schema         - update the database schema to a pre-installed state" />
+    <echo message="       falcon_install_mode  - set server mode to install" />
+    <echo message="       falcon_install_url   - update schema for falcon" />
+    <echo message="       startFalcon          - start the server" />
+    <echo message="   " />
+    <echo message="   tomcat commands" />
+    <echo message="       install_tomcat       - this will install the Falcon service (root)" />
+    <echo message="       install_tomcat_mon   - this will install the Falcon service with monitoring enabled (root)" />
+    <echo message="       startFalcon          - this will start Falcon" />
+    <echo message="       startFalconService   - this will start the Falcon service (root)" />
+    <echo message="       stopFalcon           - this will stop Falcon" />
+    <echo message="       stopFalconService    - this will stop the Falcon service (root)" />
+    <echo message="       uninstall_tomcat     - this will remove the Falcon service" /> 
+    <echo message="   " />
+    <echo message="   IDOL commands" />
+    <echo message="       initIDOL             - create the initial setup for IDOL" />
+    <echo message="       install_idol         - this will install the IDOL services (root)" />
+    <echo message="       start_idol           - this will start IDOL" />
+    <echo message="       start_idolService    - this will start the IDOL services (root)" />
+    <echo message="       stop_idol            - this will stop IDOL" />
+    <echo message="       stop_idolService     - this will stop the IDOL services (root)" />
+    <echo message="       remove_idol          - this will remove the IDOL services (root)" /> 
+    <echo message="   " />
+    <echo message="   Solr commands" />
+    <echo message="       install_solr        - this will install the Solr service (root)" />
+    <echo message="       start_solr          - this will start the Solr" />
+    <echo message="       start_solrService   - this will start the Solr service (root)" />
+    <echo message="       install_solr_config - this will install the Solr config" />
+    <echo message="                           -    needs to be run after start_solr" />
+    <echo message="       install_solr_coll   - this will install the Solr collection" />
+    <echo message="                           -    needs to be run after install_solr_config" />
+    <echo message="       stop_solr           - this will stop the Solr" />
+    <echo message="       stop_solrService    - this will stop the Solr service (root)" />
+    <echo message="       uninstall_solr      - this will uninstall the Solr service (root)" /> 
+    <echo message="   " />
+  	<echo message="   note: setup_server will run the command list from the install readme" />
+  	<echo message="       ${script.version}" />
+  </target>
+
+  <target name="install_help" description="Help for the configuration build script" depends="define_arch" >
+    <antcall target="install_help_windows" />
+    <antcall target="install_help_linux" />
+  </target>
+
+  <target name="check_docushare_port" >
+    <echo message="Checking whether falcon is running"/>
+    <condition property="docushare.running">
+      <socket server="${docushare.rmi.host}" port="${docushare.rmi.port}"/>
+    </condition>
+  </target>
+
+  <!-- Stop previous DS Server -->
+  <target name="stopDS" depends="define_arch, check_docushare_port" if="docushare.running" >
+    <antcall target="stopDS_windows" />
+    <antcall target="stopDS_solaris" />
+    <antcall target="stopDS_linux" />
+  </target>
+
+  <target name="stopDS_windows" if="is-windows" >
+    <exec executable="cmd" dir="${dist.bin.dir}" >
+      <arg line="/c monitor.bat shutdown q"/>
+    </exec>
+    <sleep minutes="5"/>
+    <echo message="Sleep for 5 minutes while waiting for DS Server to be stopped" />
+  </target>
+
+  <target name="stopDS_solaris" if="is-solaris" >
+    <exec executable="${dist.bin.dir}/monitor.sh" dir="${dist.bin.dir}" >
+      <arg line="shutdown q" />
+    </exec>
+    <sleep minutes="2" />
+    <echo message="Sleep for 2 minutes while waiting for DS Server to be stopped" />
+  </target>
+
+  <target name="stopDS_linux" if="is-linux" >
+    <exec executable="${dist.bin.dir}/monitor.sh" dir="${dist.bin.dir}" >
+      <arg line="shutdown q" />
+    </exec>
+    <sleep minutes="2" />
+    <echo message="Sleep for 2 minutes while waiting for DS Server to be stopped" />
+  </target>
+  <!-- Stop previous DS Server -->
+
+  <!-- Gethostid and apply DS license -->
+  <target name="transform_license_template"  description="transform license template">
+    <exec executable="dist/bin/start_docushare.exe" output='env.tmp.log'>
+      <arg line="env"/>
+    </exec>
+    <replace file="env.tmp.log" token="Host id" value="Hostid"/>
+    <property file = "env.tmp.log" prefix="dsenv"/>
+    <echo>Hostid = ${dsenv.Hostid}</echo>
+    <delete file="env.tmp.log"/>
+    <echo message="transform the license template" />
+    <echo message="host id is ${test.host.id}" />
+    <tstamp>
+      <format property="create.date" pattern="yyyy-MM-dd" locale="en,UK"/>
+    </tstamp>
+    <tstamp>
+      <format property="end.date" pattern="yyyy-MM-dd" locale="en,UK" offset="15" unit="day" />
+    </tstamp>
+    <echo message="creation date = ${create.date} expiration date ${end.date}" />
+    <delete file="output/license_template.xml"/>
+    <xslt basedir="."
+          includes="license_template.xml"
+          extension=".xml"
+          destdir="output"
+          style="license.xsl" >
+      <param name="host-id" expression="${dsenv.Hostid}"/>
+      <param name="dsversion" expression="07.00.00"/>
+      <param name="create-date" expression="${create.date}"/>
+      <param name="end-date" expression="${end.date}"/>
+      <param name="evaluation-key" expression="true" />
+      <outputproperty name="method" value="xml"/>
+      <outputproperty name="indent" value="yes"/>
+    </xslt>
+  </target>
+
+  <target name="convert_path">
+    <script language="javascript"> <![CDATA[
+    // getting the value
+    sentence = self.getProject().getProperty("dist.dir");
+    // convert to uppercase
+    convertValue = sentence.replace("\\","/");
+    convertValue = convertValue.concat("/");
+    // store the result in a new property
+    self.getProject().setProperty("dist.convert.dir",convertValue);
+    ]]> </script>
+    <!-- Display the values -->
+    <echo>dist.convert.dir=${dist.convert.dir}</echo>
+  </target>
+
+  <property name="" value="0"/>
+  <property name="nextminutes" value="0"/>
+  <target name="getTime">
+    <script language="javascript">
+      <![CDATA[
+               currentTime = new Date();
+               if (currentTime.getMinutes() == 59) {
+               self.getProject().setProperty("hours", currentTime.getHours()+1);
+               self.getProject().setProperty("nextminutes", 00);
+               } else {
+               self.getProject().setProperty("hours", currentTime.getHours());
+               self.getProject().setProperty("nextminutes", currentTime.getMinutes()+1);
+               }
+      ]]>
+    </script>
+  </target>
+
+  <target name="startFalcon" description="start falcon's tomcat" depends="init_ant, define_arch" >
+    <antcall target="start_tomcat_windows" />
+    <antcall target="start_tomcat_linux" />
+  </target>
+
+  <target name="stopFalcon" description="stop falcon's tomcat" depends="init_ant, define_arch" >
+    <antcall target="stop_tomcat_windows" />
+    <antcall target="stop_tomcat_linux" />
+  </target>
+
+  <!--task convertJDBCConfig -->
+  <!-- convert config file to xml-->
+  <!--Added by SG, 13 Jan 2013 -->
+  <target name="convertJDBCConfig" depends="init_ant, define_arch, convertJDBCConfig_windows, convertJDBCConfig_linux" >
+  </target>
+  
+  <target name="convertJDBCConfig_windows" depends="getTime" if="is-windows">
+    <echo>Run cmd.exe /c ${basedir}${dist.path.setting}${platform.slash}bin${platform.slash}convertJDBCConfig.bat at ${hours}:${nextminutes}.</echo>
+    <echo>in dir ${dist.bin.dir}</echo>
+    <exec executable="cmd.exe" dir="${dist.bin.dir}">
+      <arg value="/c" />
+      <arg value="${basedir}${dist.path.setting}${platform.slash}bin${platform.slash}convertJDBCConfig.bat" />
+    </exec>
+  </target>
+
+
+  <target name="convertJDBCConfig_linux" if="is-linux" >
+    <echo message="Run ${dist.bin.dir}/convertJDBCConfig.sh in ${dist.bin.dir} at ${hours}:${nextminutes}" />
+    <exec executable="${dist.bin.dir}/convertJDBCConfig.sh" dir="${dist.bin.dir}" >
+    </exec>
+  </target>
+  <!--task convertJDBCConfig -->
+  
+  <!--task initIDOL -->
+  <target name="initIDOL" depends="init_ant, define_arch, initIDOL_windows, initIDOL_linux" >
+  </target>
+
+  <target name="initIDOL_windows" depends="getTime" if="is-windows">
+    <echo message="fixing SET DOCUSHARE_HOME with value ${base.dir}" />
+	<replace file="${dist.bin.dir}/setup_docushare.bat"
+             token='SET DOCUSHARE_HOME=c:\cvstree_tiny\DocuShare3\dist'
+             value='SET DOCUSHARE_HOME=${base.dir}' />
+    <echo>Run cmd.exe /c ${basedir}${dist.path.setting}${platform.slash}bin${platform.slash}initIDOL.bat at ${hours}:${nextminutes}.</echo>
+    <echo>in dir ${dist.bin.dir}</echo>
+    <exec executable="cmd.exe" dir="${dist.bin.dir}">
+      <arg value="/c" />
+      <arg value="${basedir}${dist.path.setting}${platform.slash}bin${platform.slash}initIDOL.bat" />
+	  <arg value="${basedir}" />
+    </exec>
+  </target>
+
+  <target name="initIDOL_linux" if="is-linux" >
+    <echo message="Run ${dist.bin.dir}/initIDOL.sh in ${dist.bin.dir} at ${hours}:${nextminutes}" />
+    <echo message="fixing DOCUSHARE_HOME with value ${base.dir}" />
+    <replace file="${dist.bin.dir}/setup_docushare.sh"
+             token='DOCUSHARE_HOME=${HOME}/jDocuShareNext/dist'
+             value='DOCUSHARE_HOME=${base.dir}' />
+    <exec executable="${dist.bin.dir}/initIDOL.sh" dir="${dist.bin.dir}" >
+	  <arg value="${basedir}" />
+    </exec>
+  </target>
+  <!--task initIDOL -->
+
+  <!--task createDBConfig -->
+  <target name="createDBConfig" depends="init_ant, define_arch" >
+    <java classname="com.xerox.xcm.falcon.installer.config.CreateDatabaseConfig"
+          classpathref="dbconfig.classpath"
+          fork="true"
+          dir="${dist.dir}"
+          maxmemory="128m"
+          >
+      <arg value="${dist.dir}" />
+      <arg value="${dist.dir}/localhost.properties" />
+    </java>
+  </target>  
+  <!--task convertJDBCConfig -->
+
+  <!-- IDOL content instances -->
+  <!-- install tagets -->
+  <target name="install_content0" depends="check_content0" if="has_content0" description="install content0">
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="create"/>
+      <arg value="content0"/>
+      <arg value="binPath="/>
+      <arg value="${dist.idol.dir}/content0/content0.exe"/>
+      <arg value="start="/>
+      <arg value="auto"/>
+      <arg value="DisplayName="/>
+      <arg value="Falcon Content0 Server"/>
+      <arg value="depend="/>
+      <arg value="AutonomyDiSH"/>
+    </exec>
+  </target>
+  
+  <target name="install_content1" depends="check_content1" if="has_content1" description="install content1">
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="create"/>
+      <arg value="content1"/>
+      <arg value="binPath="/>
+      <arg value="${dist.idol.dir}/content1/content1.exe"/>
+      <arg value="start="/>
+      <arg value="auto"/>
+      <arg value="DisplayName="/>
+      <arg value="Falcon Content1 Server"/>
+      <arg value="depend="/>
+      <arg value="AutonomyDiSH"/>
+    </exec>
+  </target>
+  
+  <target name="install_content2" depends="check_content2" if="has_content2" description="install content2">
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="create"/>
+      <arg value="content2"/>
+      <arg value="binPath="/>
+      <arg value="${dist.idol.dir}/content2/content2.exe"/>
+      <arg value="start="/>
+      <arg value="auto"/>
+      <arg value="DisplayName="/>
+      <arg value="Falcon Content2 Server"/>
+      <arg value="depend="/>
+      <arg value="AutonomyDiSH"/>
+    </exec>
+  </target>
+  
+  <target name="install_content3" depends="check_content3" if="has_content3" description="install content3">
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="create"/>
+      <arg value="content3"/>
+      <arg value="binPath="/>
+      <arg value="${dist.idol.dir}/content3/content3.exe"/>
+      <arg value="start="/>
+      <arg value="auto"/>
+      <arg value="DisplayName="/>
+      <arg value="Falcon Content3 Server"/>
+      <arg value="depend="/>
+      <arg value="AutonomyDiSH"/>
+    </exec>
+  </target>
+
+  <target name="install_content4" depends="check_content4" if="has_content4" description="install content4">
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="create"/>
+      <arg value="content4"/>
+      <arg value="binPath="/>
+      <arg value="${dist.idol.dir}/content4/content4.exe"/>
+      <arg value="start="/>
+      <arg value="auto"/>
+      <arg value="DisplayName="/>
+      <arg value="Falcon Content4 Server"/>
+      <arg value="depend="/>
+      <arg value="AutonomyDiSH"/>
+    </exec>
+  </target>
+  
+  <!-- remove tagets -->
+  <target name="remove_content0" depends="check_content0" if="has_content0" description="remove content0">
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="delete"/>
+      <arg value="content0"/>
+    </exec>    
+  </target>
+
+  <target name="remove_content1" depends="check_content1" if="has_content1" description="remove content1">
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="delete"/>
+      <arg value="content1"/>
+    </exec>    
+  </target>
+
+  <target name="remove_content2" depends="check_content2" if="has_content2" description="remove content2">
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="delete"/>
+      <arg value="content2"/>
+    </exec>    
+  </target>
+
+  <target name="remove_content3" depends="check_content3" if="has_content3" description="remove content3">
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="delete"/>
+      <arg value="content3"/>
+    </exec>    
+  </target>
+
+  <target name="remove_content4" depends="check_content4" if="has_content4" description="remove content4">
+    <exec executable="sc.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="delete"/>
+      <arg value="content4"/>
+    </exec>    
+  </target>
+  
+  <!-- start tagets -->
+  <target name="start_content0" depends="check_content0" if="has_content0" description="start content0">
+    <exec executable="net.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="start"/>
+      <arg value="content0"/>
+    </exec>
+  </target>  
+
+  <target name="start_content1" depends="check_content1" if="has_content1" description="start content1">
+    <exec executable="net.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="start"/>
+      <arg value="content1"/>
+    </exec>
+  </target>
+
+  <target name="start_content2" depends="check_content2" if="has_content2" description="start content2">
+    <exec executable="net.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="start"/>
+      <arg value="content2"/>
+    </exec>
+  </target>
+  
+  <target name="start_content3" depends="check_content3" if="has_content3" description="start content3">
+    <exec executable="net.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="start"/>
+      <arg value="content3"/>
+    </exec>
+  </target>
+
+  <target name="start_content4" depends="check_content4" if="has_content4" description="start content4">
+    <exec executable="net.exe" 
+          failifexecutionfails="true" failonerror="true">
+      <arg value="start"/>
+      <arg value="content4"/>
+    </exec>
+  </target>
+  
+  <!-- stop tagets -->
+  <target name="stop_content0" depends="check_content0" if="has_content0" description="stop content0">
+    <exec executable="net.exe" 
+          failifexecutionfails="false" failonerror="false">
+      <arg value="stop"/>
+      <arg value="content0"/>
+    </exec>
+  </target>  
+
+  <target name="stop_content1" depends="check_content1" if="has_content1" description="stop content1">
+    <exec executable="net.exe" 
+          failifexecutionfails="false" failonerror="false">
+      <arg value="stop"/>
+      <arg value="content1"/>
+    </exec>
+  </target>
+
+  <target name="stop_content2" depends="check_content2" if="has_content2" description="stop content2">
+    <exec executable="net.exe" 
+          failifexecutionfails="false" failonerror="false">
+      <arg value="stop"/>
+      <arg value="content2"/>
+    </exec>
+  </target>
+  
+  <target name="stop_content3" depends="check_content3" if="has_content3" description="stop content3">
+    <exec executable="net.exe" 
+          failifexecutionfails="false" failonerror="false">
+      <arg value="stop"/>
+      <arg value="content3"/>
+    </exec>
+  </target>
+
+  <target name="stop_content4" depends="check_content4" if="has_content4" description="stop content4">
+    <exec executable="net.exe" 
+          failifexecutionfails="false" failonerror="false">
+      <arg value="stop"/>
+      <arg value="content4"/>
+    </exec>
+  </target>
+  
+  <!-- check tagets -->
+  <target name="check_content0" depends="set_distloc">
+    <condition property="has_content0">
+      <available file="${dist.idol.dir}/content0" type="dir" />
+    </condition>
+  </target>
+
+  <target name="check_content1" depends="set_distloc">
+    <condition property="has_content1">
+      <available file="${dist.idol.dir}/content1" type="dir" />
+    </condition>
+  </target>
+
+  <target name="check_content2" depends="set_distloc">
+    <condition property="has_content2">
+      <available file="${dist.idol.dir}/content2" type="dir" />
+    </condition>
+  </target>
+  
+  <target name="check_content3" depends="set_distloc">
+    <condition property="has_content3">
+      <available file="${dist.idol.dir}/content3" type="dir" />
+    </condition>
+  </target>
+
+  <target name="check_content4" depends="set_distloc">
+    <condition property="has_content4">
+      <available file="${dist.idol.dir}/content4" type="dir" />
+    </condition>
+  </target>
+
+  <target name="check_silent_install_env">
+    <condition property="is-windows-devloc">
+        <and>
+            <istrue value="${devloc}"/>
+            <istrue value="${is-windows}"/>
+        </and>
+    </condition>
+    <condition property="is-linux-devloc">
+        <and>
+            <istrue value="${devloc}"/>
+            <istrue value="${is-linux}"/>
+        </and>
+    </condition>	
+  </target>
+  
+  <target name="silent_install_windows" if="is-windows-devloc">
+    <echo message="Executing silent installer for Windows..." />
+	<exec executable="hostname" outputproperty="computer.hostname"/>
+	<mkdir dir="${dist.dir}${platform.slash}documents"/>
+	<echo message="Created directory ${dist.dir}${platform.slash}documents" />
+    <exec executable="cmd.exe" dir="${dist.dir}" failonerror="true" logError="true">
+      <arg value="/c ${dist.dir}${platform.slash}silent_install.bat ${client-test.dir}${platform.slash}${computer.hostname}-answer.txt" />
+    </exec>
+  </target>
+  
+  <target name="silent_install_linux"  if="is-linux-devloc">
+	<echo message="Executing silent installer for Linux..." />
+	<exec executable="hostname" outputproperty="computer.hostname"/>
+	<mkdir dir="${dist.dir}${platform.slash}documents"/>
+	<echo message="Created directory ${dist.dir}${platform.slash}documents" />
+	<exec executable="/bin/sh" dir="${dist.dir}">
+	  <arg line="-c 'sudo ./silent_install.sh ${client-test.dir}${platform.slash}${computer.hostname}-answer.txt'"/>
+	</exec>
+  </target>
+   
+  <target name="silent_install" depends="check_arch, get_location, check_silent_install_env">
+    <antcall target="silent_install_windows" />
+	<antcall target="silent_install_linux" />
+  </target>
+  
+</project>

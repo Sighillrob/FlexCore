@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+  version="3.1">
+
+  <!-- UTF-8 Filter to work around tomcat bug where it assumes ISO-8859-1 encoding.
+  This must be a filter because the first code that touches the request parameters 
+  taints them.
+  http://www.theserverside.com/discussions/thread.tss?thread_id=28944 [^]
+  -->
+ <display-name>Xerox Enterprise Content Management Platform</display-name>
+ <filter>
+    <filter-name>UTF8Filter</filter-name>
+    <filter-class>com.xerox.docushare.amber.base.UTF8Filter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>UTF8Filter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- Guice -->
+  <listener>
+    <listener-class>com.xerox.docushare.spyglass.servlet.DSGuiceServletContextListener</listener-class>
+  </listener>
+  
+   <filter>
+	<filter-name>OAuthFilter</filter-name>
+    <filter-class>com.xerox.docushare.spyglass.servlet.oauth.OAuthFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>OAuthFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+  <filter>
+    <filter-name>GuiceFilter</filter-name>
+    <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+  </filter>
+
+  <!-- Shadow and Spyglass are served through the Guice Filter; you won't see them in this file. -->
+  <filter-mapping>
+    <filter-name>GuiceFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+	<filter-name>monitoring</filter-name>
+    <filter-class>net.bull.javamelody.MonitoringFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>monitoring</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <listener>
+    <listener-class>net.bull.javamelody.SessionListener</listener-class>
+  </listener>
+
+  <servlet>
+    <servlet-name>docushareJSP</servlet-name>
+    <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+    <init-param>
+       <param-name>com.xerox.docushare.amber.base.IAdminPropertyDatastore</param-name>
+       <param-value>com.xerox.docushare.amber.base.XMLAdminPropertyDatastoreImpl</param-value>
+    </init-param>
+  </servlet>
+
+<!-- AR 24410: GlyphScan needs to be reimplemented -->
+<!--
+  <servlet>
+    <servlet-name>glyphscan</servlet-name>
+    <servlet-class>jp.co.fujixerox.docushare.amber.GlyphScanServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+-->
+
+  <context-param>
+    <param-name>org.restlet.application</param-name> 
+    <param-value>com.xerox.docushare.spyglass.restlet.RestletApplication</param-value> 
+  </context-param>
+
+  <!-- The mapping for the GlyphScan servlet -->
+<!--
+  <servlet-mapping>
+    <servlet-name>glyphscan</servlet-name>
+    <url-pattern>/glyphscan/*</url-pattern>
+  </servlet-mapping>
+-->
+
+  <!-- Establish the default list of welcome files -->
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+  </welcome-file-list>
+  
+   <error-page>
+    <error-code>401</error-code>
+    <location>/errorPages/401.jsp</location> 
+   </error-page>
+ w   <error-page>
+    <error-code>525</error-code>
+    <location>/errorPages/525.jsp</location> 
+   </error-page>
+   <error-page>
+    <error-code>503</error-code>
+    <location>/errorPages/503.jsp</location> 
+   </error-page>
+
+
+</web-app>

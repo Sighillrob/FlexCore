@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<page xml:lang="en">
+  <head>
+    <instance>
+      <inputInfo>
+	<title />
+	<subTitle />
+	<handle />
+	<userID />
+	<username />
+	<formURL />
+	<isfax>true</isfax>
+	<language />
+	<asFirstPage />
+	<formAsFirstPage />
+	<instruction />
+	<createDraft />
+	<dateFormat />
+	<object
+	    xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance">
+	  <classname />
+	  <original_classname />
+	  <handle />
+	</object>
+	<images>
+	</images>
+      </inputInfo>
+    </instance>
+
+    <height>792.0</height>
+    <width>612.0</width>
+
+    <style>
+      <face>italic</face>
+      <family>Courier</family>
+      <size>10.0</size>
+      <xoffset>1.0</xoffset>
+      <yoffset>1.0</yoffset>
+    </style>
+
+  </head>
+
+  <frame>
+    <title ref="/inputInfo/title" />
+    <subTitle ref="/inputInfo/subTitle" />
+    <handle ref="/inputInfo/handle" />
+    <userID ref="/inputInfo/userID" />
+    <username ref="/inputInfo/username" />
+    <formURL ref="/inputInfo/formURL" />
+    <isfax ref="/inputInfo/isfax" />
+    <language ref ="/inputInfo/language" />
+    <asFirstPage ref="/inputInfo/asFirstpage" />
+    <instruction ref="/inputInfo/instruction" />
+    <createDraft ref="/inputInfo/createDraft" />
+    <dateFormat ref="/inputInfo/dateFormat" />
+    <formAsFirstPage ref="/inputInfo/formAsFirstPage" />
+  </frame>
+
+  <body>
+    <style>
+      <face>italic</face>
+      <family>Helvatica</family>
+      <size>12</size>
+      <propertyXoffset/>
+      <propertyYoffset/>
+      <textXoffset>0</textXoffset>
+      <textYoffset>0</textYoffset>
+      <imageXoffset>0</imageXoffset>
+      <imageYoffset>0</imageYoffset>
+      <imageWidth/>
+      <imageHeight/>
+    </style>  
+
+    <group ref="/inputInfo/object[original_classname='Document']/properties">
+      <p>document.text.line.one</p>
+      <p>document.text.line.two</p>
+      <output ref="title">
+	<label src="dspropertylabel:" />
+      </output>
+      <output ref="icon" mediatype="image/*" />
+    </group>
+
+    <group ref="/inputInfo/object[original_classname='Collection']/properties">
+      <p>collection.text.line.one</p>
+      <output ref="title">
+	<label src="dspropertylabel:" />
+<!--	<label src="dspropertylabel:" />-->
+<!--	<label value="ds:lookupPropertyLabel(/object/classname, local-name())" " />-->
+	<label value="concat(/object/classname, local-name())" />
+      </output>
+      <output ref="Owner">
+	<label>Owner</label>
+      </output>
+      <output ref="icon" mediatype="image/*" />
+    </group>
+
+    <group ref="/inputInfo/object[original_classname='User']/properties">
+      <p>user.text.line.one</p>
+      <output ref="username">
+	<label src="dspropertylabel:" />
+	<label value="concat(/object/classname, local-name())" />
+      </output>
+      <output ref="icon" mediatype="image/*" />
+    </group>
+
+   <group ref="/inputInfo/object[original_classname='Workspace']/properties">
+      <p>workspace.text.line.one</p>
+      <output ref="title">
+	<label src="dspropertylabel:" />
+	<label value="concat(/object/classname, local-name())" />
+      </output>
+      <output ref="icon" mediatype="image/*" />
+    </group>
+
+  </body>
+</page>

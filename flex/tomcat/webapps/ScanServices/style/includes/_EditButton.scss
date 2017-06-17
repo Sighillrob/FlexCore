@@ -1,0 +1,406 @@
+/* ---------------------- */
+/* Edit / Add Button Page */
+/* ---------------------- */
+
+#accessOptions{margin:1em 0 0 0;}
+#accessOptions li input[type="radio"]{margin:3px 5px 0 0}
+
+/* jQuery Auto-complete */
+.ui-autocomplete{
+  border:1px solid #ccc;
+  box-shadow:1px 1px 5px #bcbec0;
+  list-style: none;
+  padding:0;margin:0;
+  float:left;
+  background:#fff;
+}
+.ui-menu-item a{padding:3px 6px;display:block;}
+.ui-menu-item a:hover{background:#3399FF;color:#fff;}
+.ui-helper-hidden-accessible{display:none;width:0;}
+.ui-autocomplete-loading{
+  background:url(../images/admin/loading.gif) center right 5px no-repeat;
+}
+.is-authenticated.is-found{
+  background: url(../images/admin/afp-primarykey-success.svg) center right 5px no-repeat;
+  background-size: 17px 17px;
+}
+
+.owner-auth-success{
+  padding: 5px;
+  color: green;
+  display: inline-block;
+  margin-left: 5px;
+  background: url(../images/admin/afp-primarykey-success.svg) 50% 50% no-repeat;
+  background-size: 17px 17px;
+  width: 27px;
+  height: 27px;
+}
+
+.owner-auth-fail, .owner-not-found, .folder-not-found{
+  padding: 6px 6px 6px 22px;
+  color: #CC292F;
+  margin-left: 10px;
+  background: url(../images/admin/icon_notice_majorwarning.svg) 0 50% no-repeat;
+  background-size: 17px 17px;
+  font-size: 90%;
+  display: inline-block;
+}
+
+#authenticateOwnerBtn{
+  margin-left: 10px;
+  padding: 5px 10px;
+}
+
+#btn_folderAccessTest{
+  padding: 5px 10px;
+}
+
+
+/*
+ Document property metadata Table Heading styling 
+*/
+
+#doctype_wrapper{
+  background: rgba(142, 154, 169, 0.1);
+  border: 1px solid #E6E7E8;
+  border-bottom:none;
+  padding:10px 5px;
+  margin:auto 0 0 0;
+}
+#doctype_wrapper ul{margin-bottom:0;overflow:hidden;}
+#doctype_wrapper ul li{display:block;float:left;padding:3px 6px;margin:0;}
+#doctype_wrapper label{
+  float:none;
+  width:auto;
+  display:inline-block;
+  padding: 3px;
+}
+#doctype_wrapper ul li:last-child{
+  background:rgba(142, 154, 169, 0.15) url(../images/admin/dbAutoPopulateProfile.svg) 8px 50% no-repeat;
+  background-size: 17px 17px;
+  border-radius:3px;
+  margin-left:5px;
+  padding-left:28px;
+  label{
+    margin-right: 0;
+  }
+}
+
+
+/*
+ Document property metadata table general styling 
+*/
+#fieldlisttable{
+  width: 100%;
+  border-collapse: collapse;
+  td,th{
+    padding: 8px 10px;
+    vertical-align: top;
+    border:1px solid rgba(142, 154, 169, 0.2);    
+  }
+  th{
+    background: rgba(142, 154, 169, 0.1);
+    text-align: left;
+    padding: 5px 10px;
+    color:#666;
+    font-weight: normal;
+    label{
+      display: inline-block;
+      padding: 3px;
+      width: auto;
+    }
+  }
+  .actions{
+    border-left:0;padding-left:0
+  }
+  .appendloc{
+    border-right:0
+  }
+}
+
+
+/*
+Document property metadata table tbody styling 
+*/
+
+#field_list {
+  .required_tag {
+    color: #999;
+    font-size: 85%;
+    white-space: normal;
+  }
+  .requiredBySubCol_tag {
+    color: #999;
+    font-size: 85%;
+    display: block;
+  }
+  span.display_name {
+    font-weight: bold;
+    padding-right: 0;
+  }
+  span.filename_tag {
+    font-weight: bold;
+  }
+  tr {
+    &:nth-child(even) {
+      background: rgba(142, 154, 169, 0.05);
+    }
+    td {
+      vertical-align: middle;
+      &:first-child {
+        padding-left: 25px;
+        cursor: move;
+        background: url(../images/admin/sortable-icon.png) 5px 50% no-repeat;
+        white-space: nowrap;
+        &:hover {
+          background: url(../images/admin/sortable-icon-over.png) 5px 50% no-repeat;
+        }
+      }
+    }
+  }
+  td {
+    .loading_bar {
+      top: 0;
+      left: 0;
+    }
+  }
+  select {
+    padding: 4px;
+  }
+  .ui-state-highlight {
+    border-top: 10px solid #00a8ff;
+    border-bottom: 10px solid #00a8ff;
+  }
+  .ui-sortable-helper {
+    background: #fff;
+    border: #ccc;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
+    td {
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #8b8b8b;
+    }
+  }
+  tr.autofill-mapped-prop-required {
+    span.afpmappedbadge {
+      background: url(../images/admin/icon_primarykey.svg) 0 50% no-repeat;
+      background-size: 17px 17px;
+      width: 17px;
+      height: 17px;
+      display: inline-block;
+      cursor: help;
+      vertical-align: top;
+    }
+  }
+  tr.autofill-mapped-prop {
+    span.afpmappedbadge {
+      background: url(../images/admin/dbAutoPopulateProfile.svg) 0 50% no-repeat;
+      background-size: 17px 17px;
+      width: 17px;
+      height: 17px;
+      display: inline-block;
+      cursor: help;
+      vertical-align: top;
+    }
+  }
+  a.removefield {
+    cursor: pointer;
+    white-space: nowrap;
+    float: left;
+    padding-left: 13px;
+    background: url(../images/admin/btn_field_remove.png) left center no-repeat;
+  }
+  .odbc-menu-wrapper {
+    margin-top: 5px;
+    padding: 5px 5px 5px 25px;
+    background: #f8f4bd url(../images/admin/dbMenu.svg) 5px 5px no-repeat;
+    background-size: 17px 17px;
+    border-radius: 3px;
+  }
+  .odbc-menu-label {
+    font-size: 85%;
+    width: auto;
+    float: none;
+    color: #77734d;
+  }
+  select.odbc-menu {
+    font-size: 85%;
+    display: block;
+    padding: 1px;
+  }
+  select.propchooser {
+    option {
+      padding-left: 20px;
+    }
+    option.autofill-mapped-prop {
+      background: url(../images/admin/dbAutoPopulateProfile.svg) 0 50% no-repeat;
+    }
+  }
+}
+
+
+#field_list_template{display:none}
+#field_list_footer{
+  background: rgba(142, 154, 169, 0.1);
+  padding: 10px;
+  margin-bottom:0;
+  border:1px solid #E6E7E8;
+  border-top:none;
+  #addfieldrow{
+    border: 1px solid rgba(142, 154, 169, 0.2);
+    background: rgba(142, 154, 169, 0.05);
+    color: #474D55;
+    &:hover{
+      background: #fff;
+    }
+  }
+}
+
+#parentGroupHandleLabel{
+  float:left;
+  height:20px;
+  padding-left:25px;
+  background:url(../images/admin/group.png) 0 50% no-repeat;
+}
+
+#field_list .meta_defaultvalue{
+  width:100%;
+  margin-right:5px;
+  min-width: 150px;
+}
+#field_list .meta_defaultvalue[readonly="readonly"]{
+  border-width: 0;
+  background: url(../images/admin/afp-autofillfield.svg) #f3f3f3 98% 50% no-repeat;
+  background-size: 17px 17px;
+  padding:6px 24px 6px 6px;
+  color:#666;
+  font-style:italic;
+  cursor:help;
+  box-sizing: border-box;
+}
+
+#field_list .meta_defaultvalue.afpmappedfield-loading{
+  background: url(../images/DS/afp-autofill-loading-readonly.gif) #f3f3f3 98% 50% no-repeat;
+}
+
+#field_list .meta_defaultvalue.afpprimaryfield-loading{
+  background: url(../images/DS/afp-autofillfield-loading.gif) #fff 98% 50% no-repeat;
+  padding:3px;
+  border:1px solid #ccc;
+  box-sizing: border-box;
+}
+
+#field_list td.afpprimaryfield-success .meta_defaultvalue{
+  background: url(../images/admin/afp-primarykey-success.svg) #fff 98% 50% no-repeat;
+  background-size: 17px 17px;
+  padding:3px;
+  border:1px solid #ccc;
+  box-sizing: border-box;
+}
+
+#field_list td.afpprimaryfield-nomatch .meta_defaultvalue{
+  background: url(../images/admin/afp-primarykey-nomatch.svg) #fff 98% 50% no-repeat;
+  background-size: 17px 17px;
+  padding:3px;
+  border:1px solid #ccc;
+  box-sizing: border-box;
+}
+
+#field_list td.afpprimaryfield-nomatch select.meta_defaultvaluemenu{
+  background-color: yellow;
+}
+
+#subCollectionSettings{margin-top:1.25em;}
+#subCollectionPathTemplate li{float:left;margin:0}
+#subCollectionPathTemplate li *{
+  vertical-align:middle;
+}
+#subCollectionPathTemplate li select{
+  margin:0 5px 0 0;
+  vertical-align: middle;
+}
+.subfolder-backslash{font-weight:bold;font-size:1.5em;vertical-align: middle;}
+
+#subfolder-rootlabel{
+  background:url(../images/admin/ckbutton_folder.svg) 0% 6px no-repeat;
+  background-size: 20px 20px;
+  padding: 7px 10px 0 25px;
+  margin-left:0 !important;
+  line-height: 20px;
+}
+
+#btn_folderAccessTest{margin:0 5px;}
+#nfconnwait{
+  background:url(../images/admin/loading.gif) 0 50% no-repeat;
+  font-style: italic;
+  padding-left:20px;
+}
+.mfconnmsg_error{
+  color:red;
+  background:url(../images/admin/icon_notice_error.png) 0 50% no-repeat;
+  padding-left:18px;
+}
+.mfconnmsg_success{
+  color:green;
+  background:url(../images/admin/icon_notice_success.png) 0 50% no-repeat;
+  padding-left:18px;
+}
+
+
+#icon_settings{
+  float:right;
+  width:150px;
+  padding:0 20px;
+  position:relative;
+  top:-100px;
+}
+
+#icon_preview{
+  min-width: 80px;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px dotted #dedfe2;
+  margin: 20px 0;
+  text-align: center;
+}
+
+#icon_settings label{float:none;color: #474D55; cursor: help;}
+
+#updateicon-form input[type='radio']{margin:5px 5px 0 0;}
+#updateicon-form fieldset>p{ margin-bottom:2em;margin-top: 0;}
+#updateicon-form li{margin-bottom:1.25em;}
+#updateicon-form .fieldnote_below{margin-left:15.5em;}
+
+#updateicon-form label{color:#474D55;cursor:default;width:15em;}
+#updateicon-form .fieldnote_below{margin-left:19em;margin-top:40px}
+#updateicon-form #iconfile{width:250px}
+
+ul.thumbnails{
+  overflow: auto !important;
+}
+
+#updateicon-form li ul.thumbnails li{
+  margin:0 6px 6px 0;
+  max-width:140px;
+  max-height:140px;
+}
+
+#EditButton #page_body{min-width:770px}
+
+#iconsetting{
+  float: left;
+  margin-right: 10px;
+  margin-top: 2px;
+}
+
+#iconsetting code{color:#8E9AA9;}
+#updateicon_noticonsmsg{float:left;color:#8E9AA9;font-style: italic;margin-top:2px;}
+#iconpreview{
+  float:left;margin-left:10px;
+  max-width:128px;
+  max-height:128px;
+  padding:5px;
+  border:1px solid rgba(142, 154, 169, 0.5);
+}
+#btn_editIcon{
+  
+}

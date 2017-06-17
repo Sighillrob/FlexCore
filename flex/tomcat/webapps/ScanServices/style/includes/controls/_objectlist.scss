@@ -1,0 +1,107 @@
+
+/* --------------------------- */
+/* Object List Control Styling */
+/* --------------------------- */
+
+.objectlist {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 1em;
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th {
+    color: #aaaaaa;
+    font-weight: normal;
+    border-bottom: 1px solid rgba(142, 154, 169, 0.4);
+    text-transform: uppercase;
+    font-size: 80%;
+    padding: 5px 10px;
+  }
+  td {
+    border-bottom: 1px solid rgba(142, 154, 169, 0.2);
+    padding: 5px 10px;
+  }
+  td.subtable_container {
+    padding: 0;
+    border-bottom: none;
+    tr.last {
+      td {
+        border-bottom: 1px solid #D8D8D8;
+      }
+    }
+  }
+  .emptymsg {
+    color: #666;
+    font-style: italic;
+    font-weight: 300;
+  }
+  tr.last {
+    td {
+      border-bottom: 0;
+    }
+  }
+  colgroup.muted {
+    background-color: rgba(142, 154, 169,0.1);
+    color: rgba(142, 154, 169, 1);
+  }
+  th.muted {
+    background: #fff;
+  }
+  td.emptylistmsg {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 20px 0;
+  }
+  th.ckbx, td.cbx {
+    width: 25px;
+    padding: 5px 0 5px 2px;
+    text-align: center;
+  }
+  th.name, td.name{
+    text-align: left;
+  }
+  th.actions, td.actions {
+    width: 140px;
+    vertical-align: middle;
+    border-left:1px solid rgba(142, 154, 169, 0.1);
+  }
+  th.actions{
+    border-left:1px solid rgba(142, 154, 169, 0.05);
+  }
+  
+}
+
+
+/* Action Menu in Objectlist styling */
+
+.actionmenu{
+  list-style: none;
+  margin:0;
+  padding:0;
+  display: inline-block;
+  li{
+    display: inline-block;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius:3px;
+    &:hover{
+      background-color:#fff;
+    }
+    a{
+      display: block;
+      width:20px;
+      height:20px;
+      outline:none;
+      text-indent: -999999px;
+    }
+  }
+}
+
+.actionmenu li.action_edit{background-image: url(../images/admin/action_edit.svg);}
+.actionmenu li.action_delete{background-image: url(../images/admin/action_delete.svg);}
+.actionmenu li.action_delete_disabled{background-image: url(../images/admin/action_delete.svg);opacity: .35}
+.actionmenu li.action_delete_disabled a{cursor: not-allowed}
+.actionmenu li.action_delete_disabled:hover{background-color:transparent}

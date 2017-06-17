@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DirectoryServiceConfig>
+	<LogLevel>DEBUG</LogLevel>
+	<ApacheLDAPConfigFilePath version="2.2"/>
+	<DirServersDefaultConfig>
+		<DirServer>
+			<Config>
+				<ServerType>0</ServerType>
+				<ServerName>Microsote Active Directory</ServerName>
+				<UserRdnKey>CN</UserRdnKey>
+				<GroupRdnKey>CN</GroupRdnKey>
+				<ObjectDataUser>
+					<ObjectDataLists>
+						<ObjectDataList>
+							<ObjectClass>person</ObjectClass>
+							<MemberOfAttribute>memberOf</MemberOfAttribute>
+						</ObjectDataList>
+					</ObjectDataLists>
+				</ObjectDataUser>
+				<ObjectDataGroup>
+					<ObjectDataLists>
+						<ObjectDataList>
+							<ObjectClass>group</ObjectClass>
+							<MemberOfAttribute>memberOf</MemberOfAttribute>
+							<MemberAttribute>member</MemberAttribute>							
+						</ObjectDataList>
+					</ObjectDataLists>
+				</ObjectDataGroup>
+			</Config>
+		</DirServer>
+		<DirServer>
+			<Config>
+				<ServerType>1</ServerType>
+				<ServerName>Apache Directory Server</ServerName>
+				<UserRdnKey>uid</UserRdnKey>
+				<GroupRdnKey>cn</GroupRdnKey>
+				<ObjectDataUser>
+					<ObjectDataLists>
+						<ObjectDataList>
+							<ObjectClass>person</ObjectClass>
+							<MemberOfAttribute />
+						</ObjectDataList>
+					</ObjectDataLists>
+				</ObjectDataUser>
+				<ObjectDataGroup>
+					<ObjectDataLists>
+						<ObjectDataList>
+							<ObjectClass>groupOfUniqueNames</ObjectClass>
+							<MemberOfAttribute />
+							<MemberAttribute>uniqueMember</MemberAttribute>	
+						</ObjectDataList>
+					</ObjectDataLists>
+				</ObjectDataGroup>
+			</Config>
+		</DirServer>
+		<DirServer>
+			<Config>
+				<ServerType>2</ServerType>
+				<ServerName>Oracle Identity Server</ServerName>
+				<UserRdnKey>cn</UserRdnKey>
+				<GroupRdnKey>cn</GroupRdnKey>
+				<ObjectDataUser>
+					<ObjectDataLists>
+						<ObjectDataList>
+							<ObjectClass>person</ObjectClass>
+							<MemberOfAttribute />
+						</ObjectDataList>
+					</ObjectDataLists>
+				</ObjectDataUser>
+				<ObjectDataGroup>
+					<ObjectDataLists>
+						<ObjectDataList>
+							<ObjectClass>groupOfUniqueNames</ObjectClass>
+							<MemberOfAttribute />
+							<MemberAttribute>uniqueMember</MemberAttribute>							
+						</ObjectDataList>
+					</ObjectDataLists>
+				</ObjectDataGroup>
+			</Config>
+		</DirServer>
+	</DirServersDefaultConfig>
+	<DirConfigLDAPServers>
+		<DirConfigLDAP>
+			<Config>
+				<ServerTypeConfig>
+					<ServerType>1</ServerType>
+					<UserRdnKey>uid</UserRdnKey>
+					<GroupRdnKey>cn</GroupRdnKey>
+					<UserAccessFilter />
+					<ObjectDataUser>
+						<ObjectDataLists>
+							<ObjectDataList>
+								<ObjectClass>person</ObjectClass>
+								<MemberOfAttribute />
+							</ObjectDataList>
+						</ObjectDataLists>
+					</ObjectDataUser>
+					<ObjectDataGroup>
+						<ObjectDataLists>
+							<ObjectDataList>
+								<ObjectClass>groupOfUniqueNames</ObjectClass>	
+								<MemberOfAttribute />
+								<MemberAttribute>uniqueMember</MemberAttribute>
+							</ObjectDataList>
+						</ObjectDataLists>
+					</ObjectDataGroup>
+				</ServerTypeConfig>
+				<BasicConfig>
+					<ServerName>DefaultDS</ServerName>
+					<Enabled>true</Enabled>
+					<Hosts>ad2008-hv.na.xerox.org</Hosts>
+					<Port>10389</Port>
+					<EnableSSL>false</EnableSSL>
+					<FallbackHost />
+					<NamespaceRoot>dc=example,dc=com</NamespaceRoot>
+					<AgentType>1</AgentType>
+					<AgentDN>uid=admin,ou=system</AgentDN>
+					<AgentPassword encrypt="true">secret</AgentPassword>
+					<EnableAutoCreateUser>true</EnableAutoCreateUser>
+					<EnableAutoRemoveUser>false</EnableAutoRemoveUser>
+					<EnableLoginSynch>true</EnableLoginSynch>
+					<EnableAutoCreateGroup>true</EnableAutoCreateGroup>
+					<EnableAutoRemoveGroup>false</EnableAutoRemoveGroup>
+					<EnableGroups>true</EnableGroups>
+					<EnableSubtreeSearch>true</EnableSubtreeSearch>
+					<LastSyncTimeStamp></LastSyncTimeStamp>
+					<UserACLID>30</UserACLID>
+					<GroupACLID>30</GroupACLID>
+				</BasicConfig>
+				<SyncSchedule>
+					<EnableListener>false</EnableListener>
+					<SyncScheduleMode>0</SyncScheduleMode>
+					<SyncInterval>1</SyncInterval>
+					<SyncTime>18:00:00</SyncTime>
+					<SyncStartDate>1970-01-01</SyncStartDate>
+					<SyncWeekDate>1 2 3 4 5</SyncWeekDate>
+				</SyncSchedule>
+				<UserLevelGroup>
+					<DefaultUserLevelGroup>41</DefaultUserLevelGroup>
+					<UserLevelGroupRows>
+						<UserLevelGroupRow>
+							<DITRoot>uid=Mr.11,ou=Users,dc=example,dc=com</DITRoot>
+							<UserLevelGroupAssigned>44</UserLevelGroupAssigned>
+						</UserLevelGroupRow>
+					</UserLevelGroupRows>
+				</UserLevelGroup>
+				<GlobalPropertyMapUsers>
+					<GlobalPropertyMap>
+						<GlobalPropertyMapRow>
+							<Type>10</Type>
+							<Readonly>true</Readonly>
+							<DSProperty>com.xerox.xcm.elf.User/givenName</DSProperty>
+							<LDAPAttribute>givenName</LDAPAttribute>
+						</GlobalPropertyMapRow>
+						<GlobalPropertyMapRow>
+							<Type>10</Type>
+							<Readonly>true</Readonly>
+							<DSProperty>com.xerox.xcm.elf.User/familyName</DSProperty>
+							<LDAPAttribute>sn</LDAPAttribute>
+						</GlobalPropertyMapRow>
+						<GlobalPropertyMapRow>
+							<Type>10</Type>
+							<Readonly>true</Readonly>
+							<DSProperty>com.xerox.xcm.elf.User/username</DSProperty>
+							<LDAPAttribute>uid</LDAPAttribute>
+						</GlobalPropertyMapRow>
+						<GlobalPropertyMapRow>
+							<Type>10</Type>
+							<Readonly>true</Readonly>
+							<DSProperty>com.xerox.xcm.elf.User/emailAddress</DSProperty>
+							<LDAPAttribute/>
+						</GlobalPropertyMapRow>
+					</GlobalPropertyMap>
+				</GlobalPropertyMapUsers>
+				<GlobalPropertyMapGroups>
+					<GlobalPropertyMap>
+						<GlobalPropertyMapRow>
+							<Type>10</Type>
+							<Readonly>true</Readonly>
+							<DSProperty>com.xerox.xcm.elf.Displayable/title</DSProperty>
+							<LDAPAttribute>cn</LDAPAttribute>
+						</GlobalPropertyMapRow>
+						<GlobalPropertyMapRow>
+							<Type>10</Type>
+							<Readonly>true</Readonly>
+							<DSProperty>com.xerox.xcm.elf.Displayable/summary</DSProperty>
+							<LDAPAttribute />
+						</GlobalPropertyMapRow>
+						<GlobalPropertyMapRow>
+							<Type>10</Type>
+							<Readonly>true</Readonly>
+							<DSProperty>com.xerox.xcm.elf.Displayable/description</DSProperty>
+							<LDAPAttribute />
+						</GlobalPropertyMapRow>
+						<GlobalPropertyMapRow>
+							<Type>10</Type>
+							<Readonly>true</Readonly>
+							<DSProperty>com.xerox.xcm.elf.Displayable/keywords</DSProperty>
+							<LDAPAttribute />
+						</GlobalPropertyMapRow>
+					</GlobalPropertyMap>
+				</GlobalPropertyMapGroups>
+			</Config>
+		</DirConfigLDAP>
+
+	</DirConfigLDAPServers>
+	</DirectoryServiceConfig>

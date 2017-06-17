@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- -->
+<!-- Extremely Important.  All mime-types must be in LOWER case (type attribute) -->
+<!-- -->
+<config>
+<category name="mimetypes">
+<!-- application mime types -->
+<!-- eps -->
+<mime-type type="application/eps" canHtml="true" html="true" index="false" abstract="false" icon="small/eps_icon.png" bigicon="large/eps_icon.png" system="true">
+<file-extension>eps</file-extension>
+</mime-type>
+<!-- msword -->
+<mime-type type="application/msword" canHtml="true" html="true" index="true" abstract="true" icon="small/word.png" bigicon="large/word.png" system="true">
+<file-extension>doc</file-extension>
+<file-extension>dot</file-extension>
+</mime-type>
+<!-- octet-stream -->
+<mime-type type="application/octet-stream" canHtml="false" html="false" index="false" abstract="false" icon="small/binary.png" bigicon="large/binary.png" system="true">
+<file-extension>exe</file-extension>
+</mime-type>
+<!-- pdf -->
+<mime-type type="application/pdf" canHtml="true" html="true" index="true" abstract="true" icon="small/pdfsmall.png" bigicon="large/pdf.png" system="true">
+<file-extension>pdf</file-extension>
+</mime-type>
+<!-- pgp-encrypted -->
+<mime-type type="application/pgp-encrypted" canHtml="false" html="false" index="false" abstract="false" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>pgp</file-extension>
+</mime-type>
+<!-- pgp-keys -->
+<mime-type type="application/pgp-keys" canHtml="false" html="false" index="false" abstract="false" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>pgp</file-extension>
+</mime-type>
+<mime-type type="application/pgp-signature" canHtml="false" html="false" index="false" abstract="false" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>pgp</file-extension>
+</mime-type>
+
+<mime-type type="application/postscript" canHtml="true" html="true" index="false" abstract="false" icon="small/ps_icon.png" bigicon="large/ps_icon.png" system="true">
+<file-extension>ps</file-extension>
+</mime-type>
+<mime-type type="application/rtf" canHtml="true" html="true" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>rtf</file-extension>
+</mime-type>
+<mime-type type="application/vnd.applix-words" canHtml="true" html="true" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>aw</file-extension>
+</mime-type>
+<!-- corel-draw -->
+<mime-type type="application/vnd.corel-draw" canHtml="true" html="true" index="false" abstract="false" icon="small/corel_draw.png" bigicon="large/corel_draw.png" system="true">
+<file-extension>cdr</file-extension>
+</mime-type>
+<!-- corel-presentations -->
+<mime-type type="application/vnd.corel-presentations" canHtml="true" html="true" index="true" abstract="true" icon="small/corel_presentation.png" bigicon="large/corel_presentation.png" system="true">
+<file-extension>shw</file-extension>
+</mime-type>
+<!-- framemaker -->
+<mime-type type="application/vnd.framemaker" canHtml="false" html="false" index="false" abstract="false" icon="small/desktoppublish.png" bigicon="large/desktoppublish.png" system="true">
+<file-extension>fm</file-extension>
+<file-extension>book</file-extension>
+</mime-type>
+<!-- fujixerox.docuworks -->
+<mime-type type="application/vnd.fujixerox.docuworks" canHtml="false" html="false" index="true" abstract="true" icon="small/xdw.png" bigicon="large/xdw.png" system="true">
+<file-extension>xdw</file-extension>
+</mime-type>
+<mime-type type="application/vnd.fujixerox.docuworks.binder" canHtml="false" html="false" index="true" abstract="true" icon="small/xbd.png" bigicon="large/xbd.png" system="true">
+<file-extension>xbd</file-extension>
+</mime-type>
+<!-- harvard-graphics -->
+<mime-type type="application/vnd.harvard-graphics" canHtml="false" html="false" index="false" abstract="false" icon="small/desktoppublish.png" bigicon="large/desktoppublish.png" system="true">
+<file-extension>prs</file-extension>
+<file-extension>hfx</file-extension>
+</mime-type>
+<!-- lotus-123 -->
+<mime-type type="application/vnd.lotus-123" canHtml="true" html="true" index="true" abstract="false" icon="small/spreadsheet.png" bigicon="large/spreadsheet.png" system="true">
+<file-extension>123</file-extension>
+<file-extension>wk4</file-extension>
+</mime-type>
+<mime-type type="application/vnd.lotus-amipro" canHtml="true" html="true" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>sam</file-extension>
+</mime-type>
+<mime-type type="application/vnd.lotus-freelance" canHtml="true" html="true" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>prz</file-extension>
+<file-extension>pre</file-extension>
+</mime-type>
+<mime-type type="application/vnd.lotus-wordpro" canHtml="true" html="true" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>lwp</file-extension>
+</mime-type>
+<mime-type type="application/vnd.ms-access" canHtml="false" html="false" index="false" abstract="false" icon="small/msaccess.png" bigicon="large/msaccess.png" system="true">
+<file-extension>mdb</file-extension>
+<file-extension>accdb</file-extension>
+</mime-type>
+<mime-type type="application/vnd.ms-excel" canHtml="true" html="true" index="true" abstract="false" icon="small/excel.png" bigicon="large/msexcel.png" system="true">
+<file-extension>xls</file-extension>
+<file-extension>xlw</file-extension>
+<file-extension>xlt</file-extension>
+<file-extension>xla</file-extension>
+</mime-type>
+
+<mime-type type="application/vnd.ms-powerpoint" canHtml="true" html="true" index="true" abstract="true" icon="small/ppt.png" bigicon="large/ppt.png" system="true">
+<file-extension>ppt</file-extension>
+<file-extension>pot</file-extension>
+</mime-type>
+
+<mime-type type="application/vnd.ms-project" canHtml="false" html="false" index="false" abstract="false" icon="small/msproject.png" bigicon="large/msproject.png" system="true">
+<file-extension>mpp</file-extension>
+</mime-type>
+<mime-type type="application/vnd.ms-publisher" canHtml="false" html="false" index="false" abstract="false" icon="small/mspublisher.png" bigicon="large/mspublisher.png" system="true">
+<file-extension>pub</file-extension>
+</mime-type>
+<mime-type type="application/vnd.ms-works" canHtml="true" html="true" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>wps</file-extension>
+<file-extension>wks</file-extension>
+</mime-type>
+<mime-type type="application/vnd.ms-write" canHtml="true" html="true" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>wri</file-extension>
+</mime-type>
+<!-- pagemaker -->
+<mime-type type="application/vnd.pagemaker" canHtml="false" html="false" index="false" abstract="false" icon="small/desktoppublish.png" bigicon="large/desktoppublish.png" system="true">
+<file-extension>pm5</file-extension>
+<file-extension>pm6</file-extension>
+<file-extension>p65</file-extension>
+</mime-type>
+<!-- quattro-pro -->
+<mime-type type="application/vnd.quattro-pro" canHtml="true" html="true" index="true" abstract="true" icon="small/corel_quatropro.png" bigicon="large/corel_quatropro.png" system="true">
+<file-extension>qwp</file-extension>
+<file-extension>wb2</file-extension>
+<file-extension>wb3</file-extension>
+</mime-type>
+<mime-type type="application/vnd.symphony" canHtml="false" html="false" index="false" abstract="false" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>wr1</file-extension>
+</mime-type>
+<mime-type type="application/vnd.visio" canHtml="true" html="true" index="true" abstract="true" icon="small/msvisio.png" bigicon="large/msvisio.png" system="true">
+<file-extension>vsd</file-extension>
+</mime-type>
+<mime-type type="application/vnd.wordperfect" canHtml="true" html="true" index="true" abstract="true" icon="small/corel_wordperfect.png" bigicon="large/corel_wordperfect.png" system="true">
+<file-extension>wp6</file-extension>
+<file-extension>wpd</file-extension>
+</mime-type>
+<mime-type type="application/vnd.wordstar" canHtml="false" html="false" index="false" abstract="false" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>ws</file-extension>
+</mime-type>
+<!-- maker interchange format -->
+<mime-type type="application/vnd.mif" canHtml="true" html="true" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>mif</file-extension>
+</mime-type>
+<mime-type type="application/dca-rft" canHtml="false" html="false" index="false" abstract="false" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>rft</file-extension>
+<file-extension>fft</file-extension>
+</mime-type>
+<mime-type type="application/vnd.fujitsu.oasys2" canHtml="true" html="true" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>oa2</file-extension>
+</mime-type>
+<mime-type type="application/x-js-taro" canHtml="true" html="true" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>jtd</file-extension>
+</mime-type>
+<mime-type type="application/x-applix-spreadsheet" canHtml="true" html="true" index="true" abstract="true" icon="small/spreadsheet.png" bigicon="large/spreadsheet.png" system="true">
+<file-extension>as</file-extension>
+</mime-type>
+<mime-type type="application/x-folio-flat" canHtml="true" html="true" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>fff</file-extension>
+</mime-type>
+<mime-type type="application/x-xywrite" canHtml="false" html="false" index="false" abstract="false" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>xy4</file-extension>
+</mime-type>
+<mime-type type="application/msoutlook" canHtml="true" html="true" index="true" abstract="true" icon="small/msoutlook.png" bigicon="large/msoutlook.png" system="true">
+<file-extension>msg</file-extension>
+<file-extension>oft</file-extension>
+</mime-type>
+<mime-type type="application/dwg" canHtml="true" html="true" index="true" abstract="true" icon="small/cad.png" bigicon="large/cad.png" system="true">
+<file-extension>dwg</file-extension>
+</mime-type>
+<mime-type type="application/dxf" canHtml="false" html="false" index="true" abstract="true" icon="small/cad.png" bigicon="large/cad.png" system="true">
+<file-extension>dxf</file-extension>
+</mime-type>
+<mime-type type="application/vnd.sun.xml.writer" canHtml="true" html="true" index="false" abstract="false" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>sxw</file-extension>
+</mime-type>
+<mime-type type="application/vnd.sun.xml.calc" canHtml="true" html="true" index="false" abstract="false" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>sxc</file-extension>
+</mime-type>
+<mime-type type="application/vnd.sun.xml.impress" canHtml="true" html="true" index="false" abstract="false" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>sxi</file-extension>
+<file-extension>sxp</file-extension>
+</mime-type>
+<mime-type type="application/vnd.sun.xml.writer.template" canHtml="true" html="true" index="false" abstract="false" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>stw</file-extension>
+</mime-type>
+<mime-type type="application/x-compressed" canHtml="false" html="false" index="false" abstract="false" icon="small/zip.png" bigicon="large/zip.png" system="true">
+<file-extension>tar.Z</file-extension>
+<file-extension>tar.gz</file-extension>
+<file-extension>gz</file-extension>
+</mime-type>
+<!-- x-gzip -->
+<mime-type type="application/x-gzip" canHtml="false" html="false" index="false" abstract="false" icon="small/zip.png" bigicon="large/zip.png" system="true">
+<file-extension>gzip</file-extension>
+</mime-type>
+<!-- x-shar -->
+<mime-type type="application/x-shar" canHtml="false" html="false" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>shar</file-extension>
+</mime-type>
+<mime-type type="application/x-stuffit" canHtml="false" html="false" index="false" abstract="false" icon="small/zip.png" bigicon="large/zip.png" system="true">
+<file-extension>sit</file-extension>
+<file-extension>sitx</file-extension>
+</mime-type>
+<mime-type type="application/x-tar" canHtml="false" html="false" index="false" abstract="false" icon="small/zip.png" bigicon="large/zip.png" system="true">
+<file-extension>tar</file-extension>
+</mime-type>
+<mime-type type="application/x-zip" canHtml="false" html="false" index="false" abstract="false" icon="small/zip.png" bigicon="large/zip.png" system="true">
+<file-extension>zip</file-extension>
+<file-extension>jar</file-extension>
+</mime-type>
+<!-- audio mime types -->
+<mime-type type="audio/basic" canHtml="false" html="false" index="false" abstract="false" icon="small/audio.png" bigicon="large/audio.png" system="true">
+<file-extension>au</file-extension>
+</mime-type>
+<mime-type type="audio/x-aiff" canHtml="false" html="false" index="false" abstract="false" icon="small/audio.png" bigicon="large/audio.png" system="true">
+<file-extension>aiff</file-extension>
+</mime-type>
+<mime-type type="audio/x-midi" canHtml="false" html="false" index="false" abstract="false" icon="small/audio.png" bigicon="large/audio.png" system="true">
+<file-extension>midi</file-extension>
+</mime-type>
+<mime-type type="audio/x-mpeg" canHtml="false" html="false" index="false" abstract="false" icon="small/audio.png" bigicon="large/audio.png" system="true">
+<file-extension>mp3</file-extension>
+</mime-type>
+<mime-type type="audio/x-wav" canHtml="false" html="false" index="false" abstract="false" icon="small/audio.png" bigicon="large/audio.png" system="true">
+<file-extension>wav</file-extension>
+<file-extension>wave</file-extension>
+</mime-type>
+<mime-type type="audio/x-realaudio" canHtml="false" html="false" index="false" abstract="false" icon="small/audio.png" bigicon="large/audio.png" system="true">
+<file-extension>ra</file-extension>
+</mime-type>
+<mime-type type="audio/x-ms-wma" canHtml="false" html="false" index="false" abstract="false" icon="small/audio.png" bigicon="large/audio.png" system="true">
+<file-extension>wma</file-extension>
+</mime-type>
+<!-- image mime types -->
+<mime-type type="image/bmp" canHtml="true" html="true" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>bmp</file-extension>
+</mime-type>
+<mime-type type="image/cgm" canHtml="false" html="false" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>cgm</file-extension>
+</mime-type>
+<mime-type type="image/emf" canHtml="true" html="true" index="true" abstract="true" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>emf</file-extension>
+</mime-type>
+<mime-type type="image/gif" canHtml="true" html="true" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>gif</file-extension>
+</mime-type>
+<mime-type type="image/ico" canHtml="true" html="true" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>ico</file-extension>
+</mime-type>
+<mime-type type="image/jpeg" canHtml="true" html="true" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>jpg</file-extension>
+<file-extension>jpeg</file-extension>
+</mime-type>
+<mime-type type="image/mac" canHtml="true" html="true" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>mac</file-extension>
+</mime-type>
+<mime-type type="image/pict" canHtml="true" html="true" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>pcx</file-extension>
+<file-extension>pct</file-extension>
+<file-extension>pict</file-extension>
+<file-extension>pntg</file-extension>
+</mime-type>
+<mime-type type="image/png" canHtml="true" html="true" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>png</file-extension>
+</mime-type>
+<mime-type type="image/targa" canHtml="true" html="true" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>tga</file-extension>
+</mime-type>
+<mime-type type="image/tiff" canHtml="true" html="true" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>tif</file-extension>
+<file-extension>tiff</file-extension>
+</mime-type>
+<mime-type type="image/vnd.svf" canHtml="false" html="false" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>svf</file-extension>
+</mime-type>
+<mime-type type="image/vnd.windows-metafile" canHtml="true" html="true" index="true" abstract="true" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>wmf</file-extension>
+</mime-type>
+<mime-type type="image/wpg" canHtml="true" html="true" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>wpg</file-extension>
+</mime-type>
+<mime-type type="application/x-applix-graphic" canHtml="false" html="false" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>ap</file-extension>
+</mime-type>
+<mime-type type="image/x-lotus-pic" canHtml="true" html="true" index="true" abstract="true" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>pic</file-extension>
+</mime-type>
+<mime-type type="image/x-lotusamidraw" canHtml="true" html="true" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true" >
+<file-extension>sdw</file-extension>
+</mime-type>
+<!-- SGI RGB -->
+<mime-type type="image/x-rgb" canHtml="true" html="true" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>rgb</file-extension>
+</mime-type>
+<mime-type type="image/sun-raster" canHtml="true" html="true" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>rs</file-extension>
+</mime-type>
+<mime-type type="image/x-wordperfect-graphics" canHtml="true" html="true" index="false" abstract="false" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>wpg</file-extension>
+</mime-type>
+<mime-type type="image/x-dcx" canHtml="true" html="true" index="true" abstract="true" icon="small/image.png" bigicon="large/image.png" system="true">
+<file-extension>dcx</file-extension>
+</mime-type>
+<!-- message mime types -->
+<mime-type type="message/news" canHtml="false" html="false" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>nws</file-extension>
+</mime-type>
+<!-- text mime types -->
+<mime-type type="text/html" canHtml="true" html="false" index="true" abstract="true" icon="small/code.png" bigicon="large/code.png" system="true">
+<file-extension>html</file-extension>
+<file-extension>htm</file-extension>
+</mime-type>
+<mime-type type="text/plain" canHtml="true" html="false" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>txt</file-extension>
+</mime-type>
+<mime-type type="text/sgml" canHtml="true" html="false" index="true" abstract="true" icon="small/code.png" bigicon="large/code.png" system="true">
+<file-extension>sgml</file-extension>
+</mime-type>
+<mime-type type="text/xml" canHtml="true" html="false" index="true" abstract="true" icon="small/code.png" bigicon="large/code.png" system="true">
+<file-extension>xml</file-extension>
+</mime-type>
+<mime-type type="text/csv" canHtml="true" html="true" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>csv</file-extension>
+</mime-type>
+<!-- video mime types -->
+<mime-type type="video/avi" canHtml="false" html="false" index="false" abstract="false" icon="small/video.png" bigicon="large/video.png" system="true">
+<file-extension>avi</file-extension>
+</mime-type>
+<mime-type type="video/mpeg" canHtml="false" html="false" index="false" abstract="false" icon="small/video.png" bigicon="large/video.png" system="true">
+<file-extension>mpg</file-extension>
+<file-extension>mpeg</file-extension>
+</mime-type>
+<mime-type type="video/quicktime" canHtml="false" html="false" index="false" abstract="false" icon="small/video_qtime.png" bigicon="large/quicktime_movie.png" system="true">
+<file-extension>qt</file-extension>
+<file-extension>mov</file-extension>
+</mime-type>
+<mime-type type="application/x-shockwave-flash" canHtml="false" html="false" index="false" abstract="false" icon="small/flash_swf.png" bigicon="large/flash_swf.png" system="true">
+<file-extension>swf</file-extension>
+<file-extension>fla</file-extension>
+</mime-type>
+<mime-type type="video/x-ms-wmv" canHtml="false" html="false" index="false" abstract="false" icon="small/video.png" bigicon="large/video.png" system="true">
+<file-extension>wmv</file-extension>
+</mime-type>
+
+<!-- NON SYSTEM mime types -->
+<mime-type type="application/ms-officebinder" canHtml="false" html="false" index="false" abstract="false" icon="small/msbinder.png" bigicon="large/msbinder.png" system="false">
+<file-extension>obd</file-extension>
+</mime-type>
+<mime-type type="application/vnd.photoshop" canHtml="false" html="false" index="false" abstract="false" icon="small/photoshop.png" bigicon="large/photoshop.png" system="false">
+<file-extension>psd</file-extension>
+</mime-type>
+<mime-type type="application/x-vnd.xerox.rdo" canHtml="false" html="false" index="false" abstract="false" icon="small/rdo.png" bigicon="small/rdo.png" system="false">
+<file-extension>rdo</file-extension>
+</mime-type>
+<mime-type type="application/x-vnd.xerox.rdt" canHtml="false" html="false" index="false" abstract="false" icon="small/rdo.png" bigicon="small/rdo.png" system="false">
+<file-extension>rdt</file-extension>
+</mime-type>
+<mime-type type="application/x-vnd.xerox.xjt" canHtml="false" html="false" index="false" abstract="false" icon="small/ticket.png" bigicon="large/ticket.png" system="false">
+<file-extension>xjt</file-extension>
+</mime-type>
+<mime-type type="application/x-vnd.xerox.xpif" canHtml="false" html="false" index="false" abstract="false" icon="small/ticket.png" bigicon="large/ticket.png" system="false">
+<file-extension>xpf</file-extension>
+</mime-type>
+<mime-type type="application/vnd.cip4-jdf+xml" canHtml="false" html="false" index="false" abstract="false" icon="small/ticket.png" bigicon="large/ticket.png" system="false">
+<file-extension>jdf</file-extension>
+</mime-type>
+<mime-type type="application/vnd.cip4-jmf+xml" canHtml="false" html="false" index="false" abstract="false" icon="small/ticket.png" bigicon="large/ticket.png" system="false">
+<file-extension>jmf</file-extension>
+</mime-type>
+<mime-type type="application/vnd.illustrator" canHtml="false" html="false" index="false" abstract="false" icon="small/illustrator.png" bigicon="large/illustrator.png" system="false">
+<file-extension>ai</file-extension>
+</mime-type>
+<mime-type type="application/vnd.indesign" canHtml="false" html="false" index="false" abstract="false" icon="small/indesign.png" bigicon="large/indesign.png" system="false">
+<file-extension>indd</file-extension>
+</mime-type>
+
+<!-- Added 091506 -->
+<!-- .pst is for Windows only; need to enable in style.uni -->
+<!--
+<mime-type type="application/x-ms-pst" canHtml="true" html="true" index="true" abstract="true" icon="small/msoutlook.png" bigicon="large/msoutlook.png" system="true">
+<file-extension>pst</file-extension>
+</mime-type> 
+-->
+<mime-type type="application/vnd.lotus-notes" canHtml="false" html="false" index="false" abstract="false" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>nsf</file-extension>
+<file-extension>ntf</file-extension>
+</mime-type>
+<mime-type type="application/vnd.visio.xml" canHtml="true" html="true" index="true" abstract="true" icon="small/msvisio.png" bigicon="large/msvisio.png" system="true">
+<file-extension>vdx</file-extension>
+</mime-type>
+<mime-type type="message/rfc822" canHtml="false" html="false" index="true" abstract="true" icon="small/msoutlook.png" bigicon="large/msoutlook.png" system="true">
+<file-extension>eml</file-extension>
+</mime-type>
+
+<!--added 120309 -->
+<mime-type type="application/vnd.oasis.opendocument.text" canHtml="true" html="true" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>odt</file-extension>
+</mime-type>
+<mime-type type="application/vnd.oasis.opendocument.presentation" canHtml="true" html="true" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>odp</file-extension>
+</mime-type>
+<mime-type type="application/vnd.oasis.opendocument.spreadsheet" canHtml="true" html="true" index="true" abstract="true" icon="small/page.png" bigicon="large/page.png" system="true">
+<file-extension>ods</file-extension>
+<file-extension>ots</file-extension>
+</mime-type>
+
+<!-- Office 2007 doc types -->
+<mime-type type="application/vnd.openxmlformats-officedocument.wordprocessingml.document" canHtml="true" html="true" index="true" abstract="true" icon="small/word.png" bigicon="large/word.png" system="true">
+<file-extension>docx</file-extension>
+</mime-type>
+<mime-type type="application/vnd.ms-word.document.macroenabled.12" canHtml="true" html="true" index="true" abstract="true" icon="small/word.png" bigicon="large/word.png" system="true">
+<file-extension>docm</file-extension>
+</mime-type>
+<mime-type type="application/vnd.openxmlformats-officedocument.wordprocessingml.template" canHtml="false" html="false" index="false" abstract="false" icon="small/word.png" bigicon="large/word.png" system="true">
+<file-extension>dotx</file-extension>
+</mime-type>
+<mime-type type="application/vnd.ms-word.template.macroenabled.12" canHtml="false" html="false" index="false" abstract="false" icon="small/word.png" bigicon="large/word.png" system="true">
+<file-extension>dotm</file-extension>
+</mime-type>
+
+<!-- Office 2007 excel types -->
+<mime-type type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" canHtml="true" html="true" index="true" abstract="true" icon="small/excel.png" bigicon="large/msexcel.png" system="true">
+<file-extension>xlsx</file-extension>
+</mime-type>
+<mime-type type="application/vnd.ms-excel.sheet.macroenabled.12" canHtml="true" html="true" index="true" abstract="true" icon="small/excel.png" bigicon="large/msexcel.png" system="true">
+<file-extension>xlsm</file-extension>
+</mime-type>
+<mime-type type="application/vnd.ms-excel.sheet.binary.macroenabled.12" canHtml="false" html="false" index="false" abstract="false" icon="small/excel.png" bigicon="large/msexcel.png" system="true">
+<file-extension>xlsb</file-extension>
+</mime-type>
+<mime-type type="application/vnd.openxmlformats-officedocument.spreadsheetml.template" canHtml="false" html="false" index="false" abstract="false" icon="small/excel.png" bigicon="large/msexcel.png" system="true">
+<file-extension>xltx</file-extension>
+</mime-type>
+<mime-type type="application/vnd.ms-excel.template.macroenabled.12" canHtml="false" html="false" index="false" abstract="false" icon="small/excel.png" bigicon="large/msexcel.png" system="true">
+<file-extension>xltm</file-extension>
+</mime-type>
+<mime-type type="application/vnd.ms-excel.addin.macroEnabled.12" canHtml="false" html="false" index="false" abstract="false" icon="small/excel.png" bigicon="large/msexcel.png" system="true">
+<file-extension>xlam</file-extension>
+</mime-type>
+
+<!-- Office 2007 powerpoint types -->
+<mime-type type="application/vnd.openxmlformats-officedocument.presentationml.presentation" canHtml="true" html="true" index="true" abstract="true" icon="small/ppt.png" bigicon="large/ppt.png" system="true">
+<file-extension>pptx</file-extension>
+</mime-type>
+<mime-type type="application/vnd.ms-powerpoint.presentation.macroenabled.12" canHtml="true" html="true" index="true" abstract="true" icon="small/ppt.png" bigicon="large/ppt.png" system="true">
+<file-extension>pptm</file-extension>
+</mime-type>
+<mime-type type="application/vnd.openxmlformats-officedocument.presentationml.template" canHtml="true" html="true" index="true" abstract="true" icon="small/ppt.png" bigicon="large/ppt.png" system="true">
+<file-extension>potx</file-extension>
+</mime-type>
+<mime-type type="application/vnd.ms-powerpoint.template.macroenabled.12" canHtml="true" html="true" index="true" abstract="true" icon="small/ppt.png" bigicon="large/ppt.png" system="true">
+<file-extension>potm</file-extension>
+</mime-type>
+<mime-type type="application/vnd.openxmlformats-officedocument.presentationml.slideshow" canHtml="true" html="true" index="true" abstract="true" icon="small/ppt.png" bigicon="large/ppt.png" system="true">
+<file-extension>ppsx</file-extension>
+</mime-type>
+<mime-type type="application/vnd.ms-powerpoint.slideshow.macroEnabled.12" canHtml="true" html="true" index="true" abstract="true" icon="small/ppt.png" bigicon="large/ppt.png" system="true">
+<file-extension>ppsm</file-extension>
+</mime-type>
+<!-- Hangul word processor -->
+<mime-type abstract="true" bigicon="large/page.png" canHtml="false" html="false" icon="small/page.png" index="true" system="true" type="application/x-hwp">
+<file-extension>hwp</file-extension>
+</mime-type>
+</category>
+</config>

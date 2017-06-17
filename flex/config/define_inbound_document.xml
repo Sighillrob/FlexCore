@@ -1,0 +1,492 @@
+<!-- This is the input to modifySchema for defining the inbound_document classType of Document -->
+<!-- It defines a mixin, inbound_document, with the custom properties for the type of document -->
+<!-- and adds the inbound_document classType definition to the Document class -->
+
+<schemaChanges>
+  <schemaChange change="add" select="/classes">
+
+    <mixin name="com.xerox.xcm.falcon.test.inbound_document">
+      <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=inbound_document" />
+      <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=inbound_documentHelp" />
+      <capabilities>
+        <schemaPermanent>false</schemaPermanent>
+        <searchable>false</searchable>
+        <wantDbIndex sort="none">false</wantDbIndex>
+      </capabilities>
+
+      <property name="business_unit">
+        <default />
+        <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=business_unit" />
+        <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=business_unitHelp" />
+        <capabilities>
+          <required>false</required>
+          <multiValued>false</multiValued>
+          <searchable>true</searchable>
+          <sortable>true</sortable>
+          <wantDbIndex userDbSearchable="true" sort="none">true</wantDbIndex>
+          <generated nonGeneratedModifyAllowed="false">false</generated>
+          <editableWhenLocked>false</editableWhenLocked>
+          <final>false</final>
+          <skipModifiedDate>false</skipModifiedDate>
+          <unique>false</unique>
+          <schemaPermanent>false</schemaPermanent>
+        </capabilities>
+        <auditReportable enabled="false" />
+        <readRestrictions>
+          <permission>readProperties</permission>
+        </readRestrictions>
+        <writeRestrictions>
+          <ownerOnly>false</ownerOnly>
+          <permission onReferenceTarget="false">editProperties</permission>
+        </writeRestrictions>
+        <type basetype="xsd:string" dstype="string">
+          <size>64</size>
+          <regex />
+          <autoIncrement enabled="false" />
+        </type>
+      </property>
+
+      <property name="urn">
+        <default/>
+        <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=urn" />
+        <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=urnHelp" />
+        <capabilities>
+          <required>false</required>
+          <multiValued>false</multiValued>
+          <searchable>true</searchable>
+          <sortable>true</sortable>
+          <wantDbIndex userDbSearchable="true" sort="none">true</wantDbIndex>
+          <generated nonGeneratedModifyAllowed="false">false</generated>
+          <editableWhenLocked>false</editableWhenLocked>
+          <final>false</final>
+          <skipModifiedDate>false</skipModifiedDate>
+          <unique>false</unique>
+          <schemaPermanent>false</schemaPermanent>
+        </capabilities>
+        <auditReportable enabled="false" />
+        <readRestrictions>
+          <permission>readProperties</permission>
+        </readRestrictions>
+        <writeRestrictions>
+          <ownerOnly>false</ownerOnly>
+          <permission onReferenceTarget="false">editProperties</permission>
+        </writeRestrictions>
+        <type basetype="xsd:string" dstype="string">
+          <size>64</size>
+          <regex />
+          <autoIncrement enabled="false" />
+        </type>
+      </property>
+
+      <property name="page_count">
+        <default/>
+        <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=page_count" />
+        <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=page_countHelp" />
+        <capabilities>
+          <required>false</required>
+          <multiValued>false</multiValued>
+          <searchable>true</searchable>
+          <sortable>true</sortable>
+          <wantDbIndex userDbSearchable="false" sort="none">true</wantDbIndex>
+          <generated nonGeneratedModifyAllowed="false">false</generated>
+          <editableWhenLocked>false</editableWhenLocked>
+          <final>false</final>
+          <skipModifiedDate>false</skipModifiedDate>
+          <unique>false</unique>
+          <schemaPermanent>false</schemaPermanent>
+        </capabilities>
+        <auditReportable enabled="false" />
+        <readRestrictions>
+          <permission>readProperties</permission>
+        </readRestrictions>
+        <writeRestrictions>
+          <ownerOnly>false</ownerOnly>
+          <permission onReferenceTarget="false">editProperties</permission>
+        </writeRestrictions>
+        <type dstype="long" basetype="xsd:long">
+          <minValue>0</minValue>
+          <maxValue></maxValue>
+          <autoIncrement enabled="false" />
+        </type>
+      </property>
+
+      <property name="task">
+        <default />
+        <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=task" />
+        <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=taskHelp" />
+        <capabilities>
+          <required>false</required>
+          <multiValued>false</multiValued>
+          <searchable>true</searchable>
+          <sortable>true</sortable>
+          <wantDbIndex userDbSearchable="true" sort="none">true</wantDbIndex>
+          <generated nonGeneratedModifyAllowed="false">false</generated>
+          <editableWhenLocked>false</editableWhenLocked>
+          <final>false</final>
+          <skipModifiedDate>false</skipModifiedDate>
+          <unique>false</unique>
+          <schemaPermanent>false</schemaPermanent>
+        </capabilities>
+        <auditReportable enabled="false" />
+        <readRestrictions>
+          <permission>readProperties</permission>
+        </readRestrictions>
+        <writeRestrictions>
+          <ownerOnly>false</ownerOnly>
+          <permission onReferenceTarget="false">editProperties</permission>
+        </writeRestrictions>
+        <type basetype="xsd:string" dstype="string">
+          <size>64</size>
+          <regex />
+          <autoIncrement enabled="false" />
+        </type>
+      </property>
+
+      <property name="index_date">
+        <default/>
+        <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=index_date" />
+        <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=index_dateHelp" />
+        <capabilities>
+          <required>false</required>
+          <multiValued>false</multiValued>
+          <searchable>true</searchable>
+          <sortable>true</sortable>
+          <wantDbIndex userDbSearchable="false" sort="none">true</wantDbIndex>
+          <generated nonGeneratedModifyAllowed="false">false</generated>
+          <editableWhenLocked>false</editableWhenLocked>
+          <final>false</final>
+          <skipModifiedDate>false</skipModifiedDate>
+          <unique>false</unique>
+          <schemaPermanent>false</schemaPermanent>
+        </capabilities>
+        <auditReportable enabled="false" />
+        <readRestrictions>
+          <permission>readProperties</permission>
+        </readRestrictions>
+        <writeRestrictions>
+          <ownerOnly>false</ownerOnly>
+          <permission onReferenceTarget="false">editProperties</permission>
+        </writeRestrictions>
+        <type dstype="date" basetype="xsd:date" />
+      </property>
+
+      <property name="team">
+        <default/>
+        <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=team" />
+        <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=teamHelp" />
+        <capabilities>
+          <required>false</required>
+          <multiValued>false</multiValued>
+          <searchable>true</searchable>
+          <sortable>true</sortable>
+          <wantDbIndex userDbSearchable="true" sort="none">true</wantDbIndex>
+          <generated nonGeneratedModifyAllowed="false">false</generated>
+          <editableWhenLocked>false</editableWhenLocked>
+          <final>false</final>
+          <skipModifiedDate>false</skipModifiedDate>
+          <unique>false</unique>
+          <schemaPermanent>false</schemaPermanent>
+        </capabilities>
+        <auditReportable enabled="false" />
+        <readRestrictions>
+          <permission>readProperties</permission>
+        </readRestrictions>
+        <writeRestrictions>
+          <ownerOnly>false</ownerOnly>
+          <permission onReferenceTarget="false">editProperties</permission>
+        </writeRestrictions>
+        <type dstype="string" basetype="xsd:string">
+          <size>64</size>
+          <regex />
+          <autoIncrement enabled="false" />
+        </type>
+      </property>
+
+      <property name="job_id">
+        <default/>
+        <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=job_id" />
+        <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=job_idHelp" />
+        <capabilities>
+          <required>false</required>
+          <multiValued>false</multiValued>
+          <searchable>true</searchable>
+          <sortable>true</sortable>
+          <wantDbIndex userDbSearchable="true" sort="none">true</wantDbIndex>
+          <generated nonGeneratedModifyAllowed="false">false</generated>
+          <editableWhenLocked>false</editableWhenLocked>
+          <final>false</final>
+          <skipModifiedDate>false</skipModifiedDate>
+          <unique>false</unique>
+          <schemaPermanent>false</schemaPermanent>
+        </capabilities>
+        <auditReportable enabled="false" />
+        <readRestrictions>
+          <permission>readProperties</permission>
+        </readRestrictions>
+        <writeRestrictions>
+          <ownerOnly>false</ownerOnly>
+          <permission onReferenceTarget="false">editProperties</permission>
+        </writeRestrictions>
+        <type dstype="string" basetype="xsd:string">
+          <size>64</size>
+          <regex />
+          <autoIncrement enabled="false" />
+        </type>
+      </property>
+
+      <property name="complaint_no">
+        <default/>
+        <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=complaint_no" />
+        <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=complaint_noHelp" />
+        <capabilities>
+          <required>false</required>
+          <multiValued>false</multiValued>
+          <searchable>true</searchable>
+          <sortable>true</sortable>
+          <wantDbIndex userDbSearchable="true" sort="none">true</wantDbIndex>
+          <generated nonGeneratedModifyAllowed="false">false</generated>
+          <editableWhenLocked>false</editableWhenLocked>
+          <final>false</final>
+          <skipModifiedDate>false</skipModifiedDate>
+          <unique>false</unique>
+          <schemaPermanent>false</schemaPermanent>
+        </capabilities>
+        <auditReportable enabled="false" />
+        <readRestrictions>
+          <permission>readProperties</permission>
+        </readRestrictions>
+        <writeRestrictions>
+          <ownerOnly>false</ownerOnly>
+          <permission onReferenceTarget="false">editProperties</permission>
+        </writeRestrictions>
+        <type dstype="string" basetype="xsd:string">
+          <size>64</size>
+          <regex />
+          <autoIncrement enabled="false" />
+        </type>
+      </property>
+
+      <property name="category">
+        <default/>
+        <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=category" />
+        <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=categoryHelp" />
+        <capabilities>
+          <required>true</required>
+          <multiValued>false</multiValued>
+          <searchable>true</searchable>
+          <sortable>true</sortable>
+          <wantDbIndex userDbSearchable="true" sort="none">true</wantDbIndex>
+          <generated nonGeneratedModifyAllowed="false">false</generated>
+          <editableWhenLocked>false</editableWhenLocked>
+          <final>false</final>
+          <skipModifiedDate>false</skipModifiedDate>
+          <unique>false</unique>
+          <schemaPermanent>false</schemaPermanent>
+        </capabilities>
+        <auditReportable enabled="false" />
+        <readRestrictions>
+          <permission>readProperties</permission>
+        </readRestrictions>
+        <writeRestrictions>
+          <ownerOnly>false</ownerOnly>
+          <permission onReferenceTarget="false">editProperties</permission>
+        </writeRestrictions>
+        <type dstype="string" basetype="xsd:string">
+          <size>64</size>
+          <regex />
+          <autoIncrement enabled="false" />
+        </type>
+      </property>
+
+      <property name="product_id">
+        <default/>
+        <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=product_id" />
+        <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=product_idHelp" />
+        <capabilities>
+          <required>false</required>
+          <multiValued>false</multiValued>
+          <searchable>true</searchable>
+          <sortable>true</sortable>
+          <wantDbIndex userDbSearchable="true" sort="none">true</wantDbIndex>
+          <generated nonGeneratedModifyAllowed="false">false</generated>
+          <editableWhenLocked>false</editableWhenLocked>
+          <final>false</final>
+          <skipModifiedDate>false</skipModifiedDate>
+          <unique>false</unique>
+          <schemaPermanent>false</schemaPermanent>
+        </capabilities>
+        <auditReportable enabled="false" />
+        <readRestrictions>
+          <permission>readProperties</permission>
+        </readRestrictions>
+        <writeRestrictions>
+          <ownerOnly>false</ownerOnly>
+          <permission onReferenceTarget="false">editProperties</permission>
+        </writeRestrictions>
+        <type dstype="string" basetype="xsd:string">
+          <size>64</size>
+          <regex />
+          <autoIncrement enabled="false" />
+        </type>
+      </property>
+
+      <property name="scan_date">
+        <default/>
+        <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=scan_date" />
+        <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=scan_dateHelp" />
+        <capabilities>
+          <required>false</required>
+          <multiValued>false</multiValued>
+          <searchable>true</searchable>
+          <sortable>true</sortable>
+          <wantDbIndex userDbSearchable="false" sort="none">true</wantDbIndex>
+          <generated nonGeneratedModifyAllowed="false">false</generated>
+          <editableWhenLocked>false</editableWhenLocked>
+          <final>false</final>
+          <skipModifiedDate>false</skipModifiedDate>
+          <unique>false</unique>
+          <schemaPermanent>false</schemaPermanent>
+        </capabilities>
+        <auditReportable enabled="false" />
+        <readRestrictions>
+          <permission>readProperties</permission>
+        </readRestrictions>
+        <writeRestrictions>
+          <ownerOnly>false</ownerOnly>
+          <permission onReferenceTarget="false">editProperties</permission>
+        </writeRestrictions>
+        <type dstype="date" basetype="xsd:date" />
+      </property>
+
+      <property name="receipt_date">
+        <default/>
+        <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=receipt_date" />
+        <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=receipt_dateHelp" />
+        <capabilities>
+          <required>false</required>
+          <multiValued>false</multiValued>
+          <searchable>true</searchable>
+          <sortable>true</sortable>
+          <wantDbIndex userDbSearchable="false" sort="none">true</wantDbIndex>
+          <generated nonGeneratedModifyAllowed="false">false</generated>
+          <editableWhenLocked>false</editableWhenLocked>
+          <final>false</final>
+          <skipModifiedDate>false</skipModifiedDate>
+          <unique>false</unique>
+          <schemaPermanent>false</schemaPermanent>
+        </capabilities>
+        <auditReportable enabled="false" />
+        <readRestrictions>
+          <permission>readProperties</permission>
+        </readRestrictions>
+        <writeRestrictions>
+          <ownerOnly>false</ownerOnly>
+          <permission onReferenceTarget="false">editProperties</permission>
+        </writeRestrictions>
+        <type dstype="date" basetype="xsd:date" />
+      </property>
+
+      <property name="claim_no">
+        <default/>
+        <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=claim_no" />
+        <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=claim_noHelp" />
+        <capabilities>
+          <required>false</required>
+          <multiValued>false</multiValued>
+          <searchable>true</searchable>
+          <sortable>true</sortable>
+          <wantDbIndex userDbSearchable="true" sort="none">true</wantDbIndex>
+          <generated nonGeneratedModifyAllowed="false">false</generated>
+          <editableWhenLocked>false</editableWhenLocked>
+          <final>false</final>
+          <skipModifiedDate>false</skipModifiedDate>
+          <unique>false</unique>
+          <schemaPermanent>false</schemaPermanent>
+        </capabilities>
+        <auditReportable enabled="false" />
+        <readRestrictions>
+          <permission>readProperties</permission>
+        </readRestrictions>
+        <writeRestrictions>
+          <ownerOnly>false</ownerOnly>
+          <permission onReferenceTarget="false">editProperties</permission>
+        </writeRestrictions>
+        <type dstype="string" basetype="xsd:string">
+          <size>64</size>
+          <regex />
+          <autoIncrement enabled="false" />
+        </type>
+      </property>
+
+      <property name="scan_op_id">
+        <default/>
+        <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=scan_op_id" />
+        <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=scan_op_idHelp" />
+        <capabilities>
+          <required>false</required>
+          <multiValued>false</multiValued>
+          <searchable>true</searchable>
+          <sortable>true</sortable>
+          <wantDbIndex userDbSearchable="true" sort="none">true</wantDbIndex>
+          <generated nonGeneratedModifyAllowed="false">false</generated>
+          <editableWhenLocked>false</editableWhenLocked>
+          <final>false</final>
+          <skipModifiedDate>false</skipModifiedDate>
+          <unique>false</unique>
+          <schemaPermanent>false</schemaPermanent>
+        </capabilities>
+        <auditReportable enabled="false" />
+        <readRestrictions>
+          <permission>readProperties</permission>
+        </readRestrictions>
+        <writeRestrictions>
+          <ownerOnly>false</ownerOnly>
+          <permission onReferenceTarget="false">editProperties</permission>
+        </writeRestrictions>
+        <type dstype="string" basetype="xsd:string">
+          <size>64</size>
+          <regex />
+          <autoIncrement enabled="false" />
+        </type>
+      </property>
+
+    </mixin>
+  </schemaChange>
+
+  <schemaChange change="add" select="/classes/class[@name='com.xerox.xcm.falcon.Document']">
+    <mixin name="com.xerox.xcm.falcon.test.inbound_document" required="false" />
+  </schemaChange>
+
+  <schemaChange change="add" select="/classes/class[@name='com.xerox.xcm.falcon.Document']" >
+    <classType name="com.xerox.xcm.falcon.test.inbound_document">
+      <mixin name="com.xerox.xcm.elf.AccessControlled" required="true" />
+      <mixin name="com.xerox.xcm.elf.BaseClassType" required="true" />
+      <mixin name="com.xerox.xcm.elf.BaseProps" required="true" />
+      <mixin name="com.xerox.xcm.elf.ContentBearing" required="true" />
+      <mixin name="com.xerox.xcm.elf.Displayable" required="true" />
+      <mixin name="com.xerox.xcm.elf.Locked" required="false" />
+      <mixin name="com.xerox.xcm.elf.NeedsIndexing" required="true" />
+      <mixin name="com.xerox.xcm.elf.Owned" required="true" />
+      <mixin name="com.xerox.xcm.elf.ExpungePending" required="false"/>
+      <mixin name="com.xerox.xcm.elf.ShrinkWrappable" required="false"/>
+      <mixin name="com.xerox.xcm.falcon.Containable" required="true" />
+      <mixin name="com.xerox.xcm.falcon.VersionSeries" required="false" />
+      <mixin name="com.xerox.xcm.falcon.Recyclable" required="true" />
+      <mixin name="com.xerox.xcm.falcon.Trash" required="false" />
+      <mixin name="com.xerox.xcm.falcon.CanBeBookmarked" required="true" />
+      <mixin name="com.xerox.xcm.falcon.RelatedTo" required="false" />
+      <mixin name="com.xerox.xcm.falcon.Expirable" required="false"/>
+      <mixin name="com.xerox.xcm.falcon.test.inbound_document" required="true" />
+    </classType>
+  </schemaChange>
+
+  <schemaChange change="add" select="/classes/mixin[@name='com.xerox.xcm.elf.BaseClassType']/property/type/menuItems" >
+    <item>
+      <label resource="shadow:/l10n/messages/falcon.install/messages.xml?key=inbound_document" />
+      <labelPlural resource="shadow:/l10n/messages/falcon.install/messages.xml?key=inbound_documents" />
+      <help resource="shadow:/l10n/messages/falcon.install/messages.xml?key=inbound_documentHelp" />
+      <value>com.xerox.xcm.falcon.test.inbound_document</value>
+    </item>
+  </schemaChange>
+
+</schemaChanges>

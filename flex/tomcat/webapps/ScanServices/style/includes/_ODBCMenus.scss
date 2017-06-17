@@ -1,0 +1,62 @@
+/* ---------------------- */
+/* ODBC Menu Listing Page */
+/* ---------------------- */
+#DatasourceMenus .objectlist td{vertical-align: top}
+#DatasourceMenus .objectlist td.name img{vertical-align: middle;}
+#DatasourceMenus .objectlist .name{text-align: left;width:auto !important;white-space: nowrap}
+#DatasourceMenus .objectlist .leftalign{text-align: left}
+#DatasourceMenus .objectlist .actions{width:50px;min-width:50px}
+#DatasourceMenus .objectlist .ds-loc{display: block;}
+#DatasourceMenus .objectlist tbody tr:nth-child(even){background:rgba(142, 154, 169, 0.1)}
+#DatasourceMenus .objectlist tbody tr:nth-child(even) td.actions{background:#e1e4e4}
+#DatasourceMenus .objectlist .ds-loc{display: block;margin:5px 0 0 20px;color:#777;font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;}
+#DatasourceMenus .objectlist .ds-type.ds-file-icon{background:url(../images/admin/ds-filedb.svg) 0 50% no-repeat;padding-left:20px;display:inline-block;min-height:16px;}
+#DatasourceMenus .objectlist .ds-type.ds-server-icon{background:url(../images/admin/ds-db.svg) 0 50% no-repeat;padding-left:20px;display:inline-block;min-height:16px;}
+
+#DatasourceMenus .objectlist .ds-table-col{font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace; color:#333;}
+
+#DatasourceMenus .objectlist .ds-src-label{font-size:0.85em;color:#666;background:rgba(142, 154, 169, 0.25);border-radius: 3px;padding:2px}
+#DatasourceMenus .objectlist .ds-src-vals div{margin-bottom:2px;}
+
+#DatasourceMenus .dmslist{
+  margin:0;padding:0;
+  list-style: none;
+}
+
+#DatasourceMenus .dmslist li{
+  font-size:90%;
+  padding-left:21px;
+  background:url(../images/admin/dbDependentMenu.svg) left top no-repeat;
+  min-height:16px;
+}
+
+/* ----------------------- */
+/* ODBC Menu Add/Edit Page */
+/* ----------------------- */
+#SimpleDataSourceMenu .objectlist-header label{float:none;display:inline;color: #414042;text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.25);}
+#SimpleDataSourceMenu .objectlist-header label:last-of-type{margin-left:1em;}
+
+
+#SimpleDataSourceMenu .returnlink{margin-top:1em;}
+#SimpleDataSourceMenu #dbconnpendingstatus{margin-left:1em;color:#8E9AA9;font-style: italic}
+#SimpleDataSourceMenu #dsNext[disabled='disabled']{background:#fff;border:1px solid #f3f3f3;}
+#SimpleDataSourceMenu #dsNext[disabled='disabled']:hover{background:#fff;border:1px solid #f3f3f3;}
+#SimpleDataSourceMenu #buttonrow{margin:0 0 0 1em;}
+
+#SimpleDataSourceMenu select[disabled="disabled"],
+#SimpleDataSourceMenu input[disabled="disabled"] {opacity: 0.5}
+
+.mappedwarnforprop{
+  background:#fff url("../images/admin/icon_notice_info.svg") 5px 50% no-repeat;
+  background-size: 16px 16px;
+  display:inline-block;
+  line-height: 18px;
+  color:#8E9AA9;
+  font-size: 90%;
+  padding:3px 5px 3px 25px;
+  border-radius:3px;
+  cursor: help;
+  &:hover{
+    background-color: #f3f3f3;
+  }
+}

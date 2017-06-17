@@ -1,0 +1,19 @@
+/* ----------------- */
+/* Server Setup Page */
+/* ----------------- */
+#ServerSetup p.fieldnote_below{width:400px;margin-top:30px;}
+.settingschangewhileregistered-note{
+  margin:0 0 10px 0;
+  background:#b7e3fd;
+  padding:10px;
+  border-radius:3px;
+}
+
+.passcodeLink{float:left;border:1px dotted #ccc; padding:3px;margin:0;}
+
+.settingschangewhileregistered-note p{margin:0}
+#forceEditWhileRegistered{margin-top:10px;}
+
+#Emulatator .objectlist td{
+  border: 0;
+}

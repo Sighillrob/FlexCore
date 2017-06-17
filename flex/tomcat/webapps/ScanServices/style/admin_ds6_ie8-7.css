@@ -1,0 +1,41 @@
+body{margin:0;}
+
+.objectlist thead th{
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bcbec0', endColorstr='#a7a9ac',GradientType=0 ); /* IE6-9 */
+}
+
+.objectlist th.muted{
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b1b3b5', endColorstr='#9fa1a4',GradientType=0 ); /* IE6-9 */ 
+}
+
+.objectlist .name{width:40%}
+
+button.btn_danger {
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f15458', endColorstr='#b5292e',GradientType=0 ); /* IE6-9 */
+}
+
+button.btn_danger:hover {
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff999e', endColorstr='#cc292f',GradientType=0 ); /* IE6-9 */
+}
+
+.ckbutton{
+  background:#e2e2e2;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f1f1', endColorstr='#d4d6d7',GradientType=0 );  /* IE6-9 */
+  
+}
+
+.button_mfd i{
+  background-image:url(../images/admin/ckbutton_mfd.png) !important;
+  background-position:center top !important;
+  background-repeat:no-repeat !important;
+}
+
+
+.ckbutton:hover{
+  background:#f3f3f3;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6e7e8',GradientType=0 ); /*  IE6-9 */
+}
+
+#icon_preview{
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 ); /* IE6-8 */
+}

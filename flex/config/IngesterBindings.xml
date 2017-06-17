@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<socket_bindings> 
+    <add_binding implementation="com.xerox.adoc.docushare.ingester.ImageStore"> 
+        <xf:bind xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> 
+          <xf:bind nodeset="@name" required="true()"/> 
+          <xf:bind nodeset="@enabled" type="xsd:boolean"/> 
+          <xf:bind nodeset="@userHandle" required="true()"/> 
+          <xf:bind nodeset="@defaultCollection" required="true()"/> 
+          <xf:bind nodeset="lister/lister/@watchDirectory" required="true()"/> 
+          <xf:bind nodeset="lister/@logDirectory" required="true()"/> 
+          <xf:bind nodeset="lister/@errorDirectory" required="true()"/> 
+          <xf:bind nodeset="lister/@tempDirectory" required="true()"/>
+          <xf:bind nodeset="lister/lister/@waitTimeMillis" required="true()"/> 
+          <xf:bind nodeset="lister/@wantLogging" type="xsd:boolean"/> 
+        </xf:bind> 
+    </add_binding> 
+    <edit_binding implementation="com.xerox.adoc.docushare.ingester.ImageStore"> 
+        <xf:bind xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> 
+          <xf:bind nodeset="@name" type="xsd:string" readonly="true"/> 
+          <xf:bind nodeset="@enabled" type="xsd:boolean"/> 
+          <xf:bind nodeset="@userHandle" required="true()"/> 
+          <xf:bind nodeset="@defaultCollection" required="true()"/> 
+          <xf:bind nodeset="lister/lister/@watchDirectory" required="true()"/> 
+          <xf:bind nodeset="lister/@logDirectory" required="true()"/> 
+          <xf:bind nodeset="lister/@errorDirectory" required="true()"/> 
+          <xf:bind nodeset="lister/@tempDirectory" required="true()"/>
+          <xf:bind nodeset="lister/lister/@waitTimeMillis" required="true()"/> 
+          <xf:bind nodeset="lister/@wantLogging" type="xsd:boolean"/> 
+        </xf:bind> 
+    </edit_binding>    
+    <edit_binding implementation="com.xerox.adoc.docushare.ingester.GlyphScan"> 
+        <xf:bind xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> 
+          <xf:bind nodeset="@name" type="xsd:string" readonly="true"/> 
+          <xf:bind nodeset="@enabled" type="xsd:boolean"/> 
+          <xf:bind nodeset="lister/lister/@waitTimeMillis" required="true()"/> 
+        </xf:bind> 
+    </edit_binding> 
+    <add_binding implementation="com.xerox.adoc.docushare.ingester.FlatFiles"> 
+        <xf:bind xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> 
+          <xf:bind nodeset="@name" required="true()"/> 
+          <xf:bind nodeset="@enabled" type="xsd:boolean"/> 
+          <xf:bind nodeset="@userHandle" required="true()"/> 
+          <xf:bind nodeset="@defaultCollection" required="true()"/> 
+          <xf:bind nodeset="lister/@watchDirectory" required="true()"/> 
+          <xf:bind nodeset="lister/@waitTimeMillis" required="true()"/> 
+          <xf:bind nodeset="lister/@acceptedFileExtension" required="true()"/>           
+        </xf:bind> 
+    </add_binding> 
+    <edit_binding implementation="com.xerox.adoc.docushare.ingester.FlatFiles"> 
+        <xf:bind xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> 
+          <xf:bind nodeset="@name" type="xsd:string" readonly="true"/> 
+          <xf:bind nodeset="@enabled" type="xsd:boolean"/> 
+          <xf:bind nodeset="@userHandle" required="true()"/> 
+          <xf:bind nodeset="@defaultCollection" required="true()"/> 
+          <xf:bind nodeset="lister/@watchDirectory" required="true()"/> 
+          <xf:bind nodeset="lister/@waitTimeMillis" required="true()"/> 
+          <xf:bind nodeset="lister/@acceptedFileExtension" required="true()"/>           
+        </xf:bind> 
+    </edit_binding> 
+
+    <add_binding implementation="com.xerox.adoc.docushare.ingester.FileCabinet"> 
+        <xf:bind xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> 
+          <xf:bind nodeset="@name" required="true()"/> 
+          <xf:bind nodeset="@enabled" type="xsd:boolean"/> 
+          <xf:bind nodeset="@userHandle" required="true()"/> 
+          <xf:bind nodeset="@defaultCollection" required="true()"/> 
+          <xf:bind nodeset="lister/@errorDirectory" required="true()"/> 
+          <xf:bind nodeset="lister/@transformationDataFile" required="true()"/> 
+          <xf:bind nodeset="lister/lister/@watchDirectory" required="true()"/> 
+          <xf:bind nodeset="lister/lister/@waitTimeMillis" required="true()"/> 
+        </xf:bind> 
+    </add_binding> 
+
+    <edit_binding implementation="com.xerox.adoc.docushare.ingester.FileCabinet"> 
+        <xf:bind xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> 
+          <xf:bind nodeset="@name" required="true()"/> 
+          <xf:bind nodeset="@enabled" type="xsd:boolean"/> 
+          <xf:bind nodeset="@userHandle" required="true()"/> 
+          <xf:bind nodeset="@defaultCollection" required="true()"/> 
+          <xf:bind nodeset="lister/@errorDirectory" required="true()"/> 
+          <xf:bind nodeset="lister/@transformationDataFile" required="true()"/> 
+          <xf:bind nodeset="lister/lister/@watchDirectory" required="true()"/> 
+          <xf:bind nodeset="lister/lister/@waitTimeMillis" required="true()"/> 
+        </xf:bind> 
+    </edit_binding> 
+</socket_bindings>

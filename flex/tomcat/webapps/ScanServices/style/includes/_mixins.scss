@@ -1,0 +1,45 @@
+//Retina equivalent image function
+//usage: @include image-2x("../images/logo2x.png", 220px, 55px);
+@mixin image-2x($image, $width, $height) {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+      /* on retina, use image that's scaled by 2 */
+      background-image: url($image);
+      background-size: $width $height;
+  }
+}
+
+// image replacement mixin that hides all text inside an element.
+@mixin hide-text{
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+}
+
+// clears floats
+@mixin clearfix{
+  &:after{
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}
+
+// starting point for off-default buttons in the system.
+@mixin smallbtn{
+  color: $small-submit-button-text-color;
+  border-width: $small-submit-button-border-width;
+  border-style: $small-submit-button-border-style;
+  border-color: $small-submit-button-border-color;
+  background: $small-submit-button-background-color;
+  padding: 5px 10px;
+  &:hover {
+    color: $small-submit-button-hover-text-color;
+    background: $small-submit-button-hover-background-color;
+    border-color: $small-submit-button-hover-border-color;
+  }
+}

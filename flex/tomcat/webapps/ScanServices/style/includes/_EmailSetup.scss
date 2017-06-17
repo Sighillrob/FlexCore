@@ -1,0 +1,27 @@
+/* ----------------- */
+/* Email Setup Page */
+/* ----------------- */
+#btn_testServerConn{
+  padding:2px 5px;
+  margin-left:5px;
+}
+.connstatus{display:none}
+
+#EmailSetup .connstatus.wait{
+  background:url(../images/admin/loading.gif) 0 50% no-repeat;
+  font-style: italic;
+  padding-left:20px;
+}
+#EmailSetup .connstatus.failure{
+  color:red;
+  background:url(../images/admin/icon_notice_error.png) 0 50% no-repeat;
+  padding-left:18px;
+}
+#EmailSetup .connstatus.success{
+  color:green;
+  background:url(../images/admin/icon_notice_success.png) 0 50% no-repeat;
+  padding-left:18px;
+}
+
+#EmailSetup .emailteststatus{display:block;margin-top:60px;clear:both;}
+#EmailSetup .emailteststatus span{padding:3px 0;}

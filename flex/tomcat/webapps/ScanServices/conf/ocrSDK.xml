@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recognitionType codepage="Windows ANSI" docInfo="printed" languageIndex="0" layout="auto" maxOcr="1" replyFileName="notUsed" seedID="1234" useMRC="0" pdfa="0">
+   <ImageFileName><string>C:\tmp\ocr\input.pdf</string></ImageFileName>
+   <TextFileName><string>C:\tmp\ocr\output.pdf</string></TextFileName>
+   <format><string>Converters.Text.PDFImageOnText</string></format>
+   <isAscii><boolean>false</boolean></isAscii>
+   <TempFileName><string>C:\tmp\ocr\tmp.opd</string></TempFileName>
+</recognitionType>

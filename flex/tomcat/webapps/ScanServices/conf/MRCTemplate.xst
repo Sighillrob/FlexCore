@@ -1,0 +1,65 @@
+[service xrx_svc_general]
+ {
+      string JobTemplateName = "<<!fileId!>>";
+      enum_DCS DcsDefinitionUsed = DCS_GENERIC;
+      string JobTemplateDescription = "<<!fileId!>>";
+      enum_encoding JobTemplateCharacterEncoding = ASCII;
+      string JobTemplateLanguageVersion = "2.00";
+      boolean SuppressJobLog = FALSE;
+      enum_confmethod ConfirmationMethod = PRINT;
+      string JobTemplateCreator = "<<!fileId!>>";
+      string NetworkUsername = "";
+ }
+end
+
+[service xrx_svc_scan]
+ {
+    * enum_autoexposure AutoExposure = OFF;
+    * integer Darkness = 0;
+    * enum_imagemode DocumentImageMode = <<!scan_type!>>;
+    * struct_borders InputEdgeErase = 3/3/3/3/mm;
+    * struct_magnification Magnification = MANISO/100;
+    * enum_inputorientation InputOrientation = <<!scan_orient!>>;
+    * enum_sided SidesToScan = <<!scan_page!>>;
+    * enum_colormode ColorMode = <<!scan_color!>>;
+    * integer Contrast = 0;
+    * integer Sharpness = 0;
+    * integer CompressionQuality = <<!scan_compression!>>;
+    * enum_mediasize InputMediaSize = <<!scan_inputsize!>>;
+ }(XRX_STATUS_COMPLETED)
+end
+
+[doc_object xrx_document]
+{
+    * integer BitsPerPixel = 1;
+    * enum_docformat DocumentFormat = <<!scan_format!>>;
+    * string DocumentObjectName = "<<!fileId!>>";
+    * enum_outputsize OutputImageSize = AUTO;
+    * enum_resolution Resolution = <<!scan_res!>>;
+    * enum_compression CompressionsSupported = MIXED;
+    * enum_mixedcompressions MixedCompressionsSupported = G4, JPEG;
+    * enum_mixedtype MixedTypesSupported = MULTI_MASK_MRC;
+    * enum_searchabletext SearchableText = <<!scan_ocr!>>;
+    * enum_textcompression TextCompression = FLATE;
+    * string SourceDocumentLanguages = "<<!ocr_lang!>>";
+    * enum_mediasize InputMediaSize = <<!scan_inputsize!>>;
+    * integer NumberImagesScanned = 2;
+ }
+end
+
+[service xrx_svc_file]
+{
+    * enum_filingpolicy DocumentFilingPolicy = NEW_AUTO_GENERATE;
+    * string RepositoryAlias = "";
+    * string UserNetworkFilingLoginName = "";
+    * enum_filingprotocol FilingProtocol = <<!protocol!>>;
+    * string RepositoryName = "<<!server_ip!>>:<<!server_port!>>";
+    * string DocumentPath = "<<!fileId!>>_dir";
+    * string RepositoryVolume = "";
+    * string NDSTree = "";
+    * string NDSNameContext = "";
+    * string XrxHTTPScriptLocation = "<<!script_location!>>";
+    * boolean ServerValidationReq = FALSE;
+    * ref_invocation OutputDocument = xrx_document:<<!fileId!>>;
+ }(XRX_STATUS_COMPLETED)
+end

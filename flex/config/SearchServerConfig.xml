@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><SearchServer>
+  <Properties>
+    <verbose/>
+    <timing>true</timing>
+    <separateLog>true</separateLog>
+  </Properties>
+  <Searcher>
+    <Properties>
+       <name>SOLR</name>
+       <classname>com.xerox.docushare.elf.search.server.solr.SolrSearcher</classname>
+       <searchHost>127.0.0.1</searchHost>         
+       <searchPort>8983</searchPort>
+       <collectionName>Falcon</collectionName>	   
+    </Properties>
+  </Searcher>
+</SearchServer>

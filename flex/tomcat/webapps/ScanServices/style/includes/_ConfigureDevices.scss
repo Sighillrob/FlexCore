@@ -1,0 +1,109 @@
+/* ---------------------- */
+/* Configure Devices Page */
+/* ---------------------- */
+#ConfigureDevices {
+  .objectlist {
+    td {
+      vertical-align: top;
+      &.name {
+        text-align: left;
+        width: auto !important;
+        img {
+          vertical-align: middle;
+          margin-right: 5px;
+        }
+      }
+      &.buttons {
+        text-align: left;
+        width: 200px;
+      }
+      &.address {
+        text-align: left;
+        width: 200px;
+        color: #6d6e71;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 90%;
+      }
+      &.firewall {
+        text-align: center;
+        width: 20px;
+        border-left:1px solid rgba(142, 154, 169, 0.1);
+        img{
+          cursor: help;
+        }
+      }
+      &.actions {
+        width: 50px !important;
+        min-width: 50px;
+      }
+      .center {
+        text-align: center;
+      }
+    }
+    th {
+      &.address{
+        text-align: left;
+      }
+      &.buttons{
+        text-align: left;
+      }
+      &.firewall{
+        border-left:1px solid rgba(142, 154, 169, 0.1);
+        img{
+          cursor: help;
+        }
+      }
+      &.actions{
+        width: 50px;
+      }
+    }
+    
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background: rgba(142, 154, 169,0.1);
+          .actions, .buttons, .firewall {
+            background: rgba(142, 154, 169,0.05);
+          }
+        }
+      }
+    }
+  }
+}
+
+.buttonlist{
+  margin:0;padding:0;
+  list-style: none;
+}
+
+.buttonlist li{
+  font-size:90%;
+  padding-left:13px;
+  background:url(../images/admin/mfd_button_small.svg) left 2px no-repeat;
+  background-size: 10px 10px;
+}
+
+p.empty{
+  font-style: italic;
+  color:#666;
+}
+
+#servicebtnlist label{
+  color:#333;
+  cursor:default;
+}
+
+
+.alert{border:1px solid #ff3019 !important;}
+
+.alert .ui-dialog-titlebar{
+  background: #ff3019; /* Old browsers */
+  background: -moz-linear-gradient(top,  #ff3019 0%, #cf0404 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #ff3019 0%,#cf0404 100%); /* W3C */
+  color:#fff;
+  border:1px solid #cf0404;
+}

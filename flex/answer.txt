@@ -1,0 +1,268 @@
+
+#
+# The Falcon silent install configuration file
+#
+# This file contains the required configuration parameters
+# to install Falcon into a host machine.  The Falcon
+# installation program allows for a silent install for a 
+# "clean" installation.  It does not allow an upgrade or
+# a reinstall of an existing Falcon instance.  Each of the
+# parameters below match an existing screen of the Falcon
+# installation wizard.
+
+# Setting the Locale for the silent installation
+# Default locale is set to English.
+answer.file.locale=en
+
+
+# Setting for the license file
+#
+# These settings are for the license file for Falcon
+#
+
+# licenseFilePath - The absolute path for the falcon license
+falcon.licenseFilePath=D:\TRUNK\DocuShare3\dist\config\falconLicense.xml
+# Setting for the database
+#
+# This setting tells the installer which database you wish to use
+#
+# database - The database for the Falcon schema
+#            The allowed values are "oracle", "postgresql" and "sqlserver".
+#            Default - "sqlserver" for Win32
+#                      "postgresql" for Solaris/Linux
+# Note: Following this database selection setting will be all possible database
+#       setup values.  This is show each of the databases and their settings.  
+#       Only the setting for the database you have chosen in this setting will 
+#       be used.  For example, if you choose "pgsql" in this setting area, only
+#       The PostgreSQL settings that follow will be used to configure Falcon and
+#       PostgreSQL.  The other database settings will be ignored.
+#
+databaseConfig.database=postgresql
+
+#
+# Settings for the PostgreSQL database
+#
+# These settings allow the installer to connect to an existing
+# PostgreSQL database to add the Falcon schema.  The installer
+# can, if desired, create a new database within PostgreSQL
+# for the Falcon schema.
+#
+# user       - The user for the Falcon schema
+#              Default - postgres
+# password   - The password for the user for the Falcon schema
+#              Default - blank
+# port       - The tcp/ip port to the PostgreSQL database
+#              Default - 5432
+# host       - The host name of the machine running PostgreSQL
+#              Default - blank
+# name       - Name of the PostgreSQL database  
+#
+# create     - Should the installer create the PostgreSQL database
+#              for the Falcon schema
+#              The allowed values are "true" and "false"
+#              Default - "false"
+postgresConfig.user=postgres
+postgresConfig.password=postgres
+postgresConfig.port=5432
+postgresConfig.host=13.198.102.114
+postgresConfig.database.name=mydatabasetest
+postgresConfig.database.create=true
+
+#
+# Settings for the MSSQL database
+#
+# These settings allow the installer to connect to a MSSQL database
+# engine.  The installer can create the database within an existing
+# MSSQL instance.  Then the installer will add the Falcon schema
+# to the database within the named instance.  Falcon uses JDBC to
+# connect to the MSSQL database which requires the database account
+# to be a MSSQL account.  This is called server authentication "mixed"
+# mode.  Please see the Falcon installation guide if you have questions
+# reguarding this issue.
+#
+# user         - The user for the Falcon schema
+#                Default - sa
+# password     - The password for the user for the Falcon schema
+#                Default - blank
+# databaseName - The name of the database within the MSSQL instance
+#                This can be either an existing database or the installer
+#                can create it if desired
+#                Default - docushare
+# host         - The host name of the machine running MSSQL
+#                Default - blank
+# port         - The tcp/ip port to the MSSQL database engine
+#                Default - 1433
+# instanceType - The type of MSSQL instance.  There are two types, 
+#                "named" and "default".  If you did not install a 
+#                named instance when installing MSSQL you installed
+#                a default instance.
+#                Default - named
+# instanceName - The existing MSSQL database instance that you would
+#                like to use. This value will be used only if instanceType    
+#                parameter is 'named'
+#                Default - blank
+# create       - Should the installer create the database within the 
+#                defined MSSQL instance?  The allowed values are "true"
+#                and "false"
+#                Default - false
+mssqlConfig.user=sa
+mssqlConfig.password=Falcon1
+mssqlConfig.databaseName=falcondbtest
+mssqlConfig.host=13.198.102.59
+mssqlConfig.port=1434
+mssqlConfig.instanceType=default
+mssqlConfig.instanceName=FALCON
+mssqlConfig.database.create=true
+
+#
+# Settings for the ORACLE database
+#
+# These settings allow the installer to connect to a ORACLE database
+#
+# user         - The user for the Falcon schema
+#                Default - sa
+# password     - The password for the user for the Falcon schema
+#                Default - blank
+#                Default - docushare
+# host         - The host name of the machine running ORACLE
+#                Default - blank
+# port         - The tcp/ip port to the ORACLE database engine
+#                Default - 5362
+# dbsid        - Database SID
+# index Tablespace - Index Tablespace of the database.
+
+
+oracleConfig.host=13.198.101.107
+oracleConfig.port=1521
+oracleConfig.user=JK102_FALCON2
+oracleConfig.password=Docushare1
+oracleConfig.dbsid=UTF8
+#oracleConfig.db.service.name=PDUTF8
+oracleConfig.index.tablespace=JK102_FALCON2_TBS_01_INDEX
+oracleConfig.overflow.tablespace=JK102_FALCON2_TBS_01_OVERFLOW
+
+#
+# Settings for Tomcat
+#
+# These settings are for the setup of the HTTP tomcat connector
+#
+# host - The fully qualified name of the machine hosting Falcon
+#        Default - blank
+# port - The port number for tomcat.
+#
+# root - The root of the Falcon URL
+#        Default - xcm
+# scheme - The http protocal type.  This does not setup tomcat or a 
+#        web server to use a specific protocal, it defines the return
+#        type to the client.
+#        The allowed values are "http" and "https"
+# contentStore - The absolute path for the contentStore directory for Falcon
+
+tomcatConfig.host=localhost
+tomcatConfig.port=8080
+tomcatConfig.falcon.contextRoot=xcm
+tomcatConfig.scanServices.contextRoot=ScanServices
+tomcatConfig.scheme=http
+tomcatConfig.contentStore=/home/falcon/MyLinuxBuild/documents
+tomcatConfig.defaultLocale=en
+tomcatConfig.default.timezone=Pacific/Honolulu
+
+
+#
+# Settings for LDAP 
+#
+# These settings are for the setup of the LDAP
+#
+# Web server type - The type of the web server. The allowed value is 
+#                   "apache".
+# Web server home - The absolute path for the home directory of the web server
+#
+# Server type     - The LDAP server type. The allowed values are 
+#                   "apache_directory" and "active_directory".
+#
+# host            - The fully qualified name of the LDAP.
+#
+# port            - The port for LDAP.
+#
+# agentDN         - LDAP agent DN
+#
+# agent password  - LDAP agent password.
+#
+# adminDN	  	  - Falcon site admin DN
+#
+# coordinatorDN   - Falcon site coordinator DN
+#
+# coordinator password  - Falcon site coordinator password.
+#
+# rootDIT         - LDAP rootDIT
+#
+
+ldapConfig.webServer.type=apache
+ldapConfig.webServer.host=13.198.102.122
+ldapConfig.webServer.home=C:\Program Files (x86)\Apache Software Foundation\Apache2.2
+ldapConfig.webServer.port=80
+ldapConfig.webServer.ssl.enable=false
+ldapConfig.webServer.apache.version=2.2
+ldapConfig.webServer.autoConfig.enable=true
+
+ldapConfig.server.type=active_directory
+ldapConfig.server.ssl.enable=false
+ldapConfig.host=13.198.102.131
+ldapConfig.port=389
+ldapConfig.agentDN=CN=Mr.11,OU=LQTestOU,OU=Falcon,DC=ad2012,DC=dssg,DC=com
+ldapConfig.agent.password=Docushare1
+ldapConfig.site.adminDN=CN=Wayne Rooney,OU=LQTestOU,OU=Falcon,DC=ad2012,DC=dssg,DC=com
+ldapConfig.coordinatorDN=CN=lq1,OU=Users,OU=Falcon,DC=ad2012,DC=dssg,DC=com
+ldapConfig.coordinator.password=Docushare1
+ldapConfig.rootDIT=DC=ad2012,DC=dssg,DC=com
+
+#ldapConfig.server.type=apache_directory
+#ldapConfig.host=13.198.102.109
+#ldapConfig.port=389
+#ldapConfig.agentDN=CN=Administrator,CN=Users,DC=SGtest,DC=com
+#ldapConfig.agent.password=Password1
+#ldapConfig.site.adminDN=CN=Local two,OU=SG_Test,DC=SGtest,DC=com
+#ldapConfig.site.admin.password=Docushare1
+#ldapConfig.rootDIT=OU=SG_Test,DC=SGtest,DC=com
+
+#
+#Property Mapping User Properties
+#
+#ldapPropertyMappingConfig.user.name default to be samaccountname for active_directory
+#ldapPropertyMappingConfig.user.name default to be uid for apache_directory
+ldapPropertyMappingConfig.first.name=givenName
+ldapPropertyMappingConfig.last.name=sn
+ldapPropertyMappingConfig.user.name=samaccountname
+ldapPropertyMappingConfig.email=
+
+#
+#Property Mapping Group Properties
+#
+
+ldapPropertyMappingConfig.title=cn
+ldapPropertyMappingConfig.summary=
+ldapPropertyMappingConfig.description=
+
+#Property Mapping for PrizmDoc Client
+#prizm.service.user: ONLY Windows version use it, For CentOS, please ignore it
+prizm.service.user=DS102D147\Administrator
+
+#prizm.service.password: ONLY Windows version use it, this will be prizmClient service user password. For CentOS, please ignore it
+prizm.service.password=Docushare1
+
+#prizm.install.folder: ONLY Windows version use it, For CentOS, please ignore it
+prizm.install.folder=C:\Prizm
+
+prizm.scheme=http
+prizm.server.host=xcm-centos7-dev.adoc.xerox.com
+prizm.server.port=18681
+
+prizm.client.scheme=http
+prizm.client.host=localhost
+prizm.client.port=3000
+prizm.client.secretKey=mysecretkey
+
+#
+#
+# End of Answer file
+#

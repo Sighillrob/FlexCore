@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ingester_localized_data>
+    <categories xml:lang="en">
+        <category name="ImagingSubsystem">
+            <label>Imaging Subsystem</label>
+            <type name="ImageStore">
+                <label>DocuShare Image Manager</label>
+                <implementation>com.xerox.adoc.docushare.ingester.ImageStore</implementation>
+            </type>
+            <type name="GlyphScan">
+                <label>GlyphScan</label>
+                <implementation>com.xerox.adoc.docushare.ingester.GlyphScan</implementation>
+            </type>
+        </category>
+        <category name="FlatFiles">
+            <label>Flat Files</label>
+            <type name="NoProperties">
+                <label>Flat Files with No Metadata</label>
+                <implementation>com.xerox.adoc.docushare.ingester.FlatFiles</implementation>
+            </type>
+        </category>
+        <category name="FileCabinet">
+            <label>File Cabinet</label>
+            <type name="FileCabinet">
+                <label>CSV file pointing to content files</label>
+                <implementation>com.xerox.adoc.docushare.ingester.FileCabinet</implementation>
+            </type>
+        </category>
+    </categories>
+
+    <presentations>
+        <presentation implementation="com.xerox.adoc.docushare.ingester.ImageStore" usage="add">
+            <xf:group xmlns:xf="http://www.w3.org/2002/xforms" xml:lang="en">
+                <xf:input ref="@name"><xf:label>Name: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_name" /></xf:input>
+                <xf:input ref="@enabled"><xf:label>Enabled: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_enabled" /></xf:input>
+                <xf:input ref="@userHandle"><xf:label>Default User Handle: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_default_user" /></xf:input>
+                <xf:input ref="@defaultCollection"><xf:label>Target Root Collection Handle: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_target_collection" /></xf:input>
+                <xf:input ref="lister/lister/@watchDirectory"><xf:label>Watch Directory: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_watch_directory" /></xf:input>
+                <xf:input ref="lister/@logDirectory"><xf:label>Log Directory: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_log_directory" /></xf:input>
+                <xf:input ref="lister/@wantLogging"><xf:label>Confirm Document Upload</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_want_logging" /></xf:input>
+                <xf:input ref="lister/@externalLoopbackClass"><xf:label>Loopback Java Class</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_class" /></xf:input>
+                <xf:input ref="lister/@externalLoopbackURL"><xf:label>URL for Specialized Loopback Logging</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_url" /></xf:input>
+				<xf:input ref="lister/@externalLoopbackURLUsername"><xf:label>Username for Specialized Loopback Logging URL</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_url_username" /></xf:input>
+				<xf:secret ref="lister/@externalLoopbackURLPassword"><xf:label>Password for Specialized Loopback Logging URL</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_url_password" /></xf:secret>
+                <xf:input ref="lister/@externalLoopbackProxy"><xf:label>Proxy address for Specialized Loopback Logging (or blank)</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_proxy" /></xf:input>
+				<xf:input ref="lister/@externalLoopbackProxyPort"><xf:label>Proxy's Port for Specialized Loopback Logging (or blank)</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_proxy_port" /></xf:input>
+				<xf:input ref="lister/@externalLoopbackProxyUsername"><xf:label>Username for Specialized Loopback Logging Proxy address (or blank)</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_proxy_username" /></xf:input>
+				<xf:secret ref="lister/@externalLoopbackProxyPassword"><xf:label>Password for Specialized Loopback Logging Proxy address (or blank)</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_proxy_password" /></xf:secret>
+                <xf:input ref="lister/@errorDirectory"><xf:label>Error Directory: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_error_directory" /></xf:input>
+                <xf:input ref="lister/@tempDirectory"><xf:label>Temporary Directory: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_temp_directory" /></xf:input>
+                <xf:input ref="lister/lister/@waitTimeMillis"><xf:label>Polling Interval (Milliseconds): </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_wait_time" /></xf:input>
+            </xf:group>
+        </presentation>
+        <presentation implementation="com.xerox.adoc.docushare.ingester.ImageStore" usage="edit">
+            <xf:group xmlns:xf="http://www.w3.org/2002/xforms" xml:lang="en">
+                <xf:input ref="@enabled"><xf:label>Enabled: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_enabled" /></xf:input>
+                <xf:input ref="@userHandle"><xf:label>Default User Handle: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_default_user" /></xf:input>
+                <xf:input ref="@defaultCollection"><xf:label>Target Root Collection Handle: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_target_collection" /></xf:input>
+                <xf:input ref="lister/lister/@watchDirectory"><xf:label>Watch Directory: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_watch_directory" /></xf:input>
+                <xf:input ref="lister/@logDirectory"><xf:label>Log Directory: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_log_directory" /></xf:input>
+                <xf:input ref="lister/@wantLogging"><xf:label>Confirm Document Upload</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_want_logging" /></xf:input>
+                <xf:input ref="lister/@externalLoopbackClass"><xf:label>Loopback Java Class</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_class" /></xf:input>
+                <xf:input ref="lister/@externalLoopbackURL"><xf:label>URL for Specialized Loopback Logging</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_url" /></xf:input>
+				<xf:input ref="lister/@externalLoopbackURLUsername"><xf:label>Username for Specialized Loopback Logging URL</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_url_username" /></xf:input>
+				<xf:secret ref="lister/@externalLoopbackURLPassword"><xf:label>Password for Specialized Loopback Logging URL</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_url_password" /></xf:secret>
+                <xf:input ref="lister/@externalLoopbackProxy"><xf:label>Proxy address for Specialized Loopback Logging (or blank)</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_proxy" /></xf:input>
+				<xf:input ref="lister/@externalLoopbackProxyPort"><xf:label>Proxy's Port for Specialized Loopback Logging (or blank)</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_proxy_port" /></xf:input>
+				<xf:input ref="lister/@externalLoopbackProxyUsername"><xf:label>Username for Specialized Loopback Logging Proxy address (or blank)</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_proxy_username" /></xf:input>
+				<xf:secret ref="lister/@externalLoopbackProxyPassword"><xf:label>Password for Specialized Loopback Logging Proxy address (or blank)</xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_loopback_proxy_password" /></xf:secret>
+                <xf:input ref="lister/@errorDirectory"><xf:label>Error Directory: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_error_directory" /></xf:input>
+                <xf:input ref="lister/@tempDirectory"><xf:label>Temporary Directory: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_temp_directory" /></xf:input>
+                <xf:input ref="lister/lister/@waitTimeMillis"><xf:label>Polling Interval (Milliseconds): </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_wait_time" /></xf:input>
+            </xf:group>
+        </presentation>
+
+        <presentation implementation="com.xerox.adoc.docushare.ingester.GlyphScan" usage="edit">
+            <xf:group xmlns:xf="http://www.w3.org/2002/xforms" xml:lang="en">
+                <xf:input ref="@enabled"><xf:label>Enabled: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_enabled" /></xf:input>
+                <xf:input ref="lister/lister/@waitTimeMillis"><xf:label>Polling Interval (Milliseconds): </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_wait_time" /></xf:input>
+            </xf:group>
+        </presentation>
+        <presentation implementation="com.xerox.adoc.docushare.ingester.FlatFiles" usage="add">
+            <xf:group xmlns:xf="http://www.w3.org/2002/xforms" xml:lang="en">
+                <xf:input ref="@name"><xf:label>Name: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_name" /></xf:input>
+                <xf:input ref="@enabled"><xf:label>Enabled: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_enabled" /></xf:input>
+                <xf:input ref="@userHandle"><xf:label>Default User Handle: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_default_user" /></xf:input>
+                <xf:input ref="@defaultCollection"><xf:label>Target Root Collection Handle: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_target_collection" /></xf:input>
+                <xf:input ref="lister/@watchDirectory"><xf:label>Watch Directory: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_watch_directory" /></xf:input>
+                <xf:input ref="lister/@waitTimeMillis"><xf:label>Polling Interval (Milliseconds): </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_wait_time" /></xf:input>
+                <xf:input ref="lister/@acceptedFileExtension"><xf:label>File Extension (doc,pdf): </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_file_extension" /></xf:input>
+            </xf:group>
+        </presentation>
+        <presentation implementation="com.xerox.adoc.docushare.ingester.FlatFiles" usage="edit">
+            <xf:group xmlns:xf="http://www.w3.org/2002/xforms" xml:lang="en">
+                <xf:input ref="@enabled"><xf:label>Enabled: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_enabled" /></xf:input>
+                <xf:input ref="@userHandle"><xf:label>Default User Handle: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_default_user" /></xf:input>
+                <xf:input ref="@defaultCollection"><xf:label>Target Root Collection Handle: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_target_collection" /></xf:input>
+                <xf:input ref="lister/@watchDirectory"><xf:label>Watch Directory: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_watch_directory" /></xf:input>
+                <xf:input ref="lister/@waitTimeMillis"><xf:label>Polling Interval (Milliseconds): </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_wait_time" /></xf:input>
+                <xf:input ref="lister/@acceptedFileExtension"><xf:label>File Extension (doc,pdf): </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_file_extension" /></xf:input>
+            </xf:group>
+        </presentation>
+
+		<presentation implementation="com.xerox.adoc.docushare.ingester.FileCabinet" usage="add">
+            <xf:group xmlns:xf="http://www.w3.org/2002/xforms" xml:lang="en">
+                <xf:input ref="@enabled"><xf:label>Enabled: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_enabled" /></xf:input>
+                <xf:input ref="@userHandle"><xf:label>Default User Handle: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_default_user" /></xf:input>
+                <xf:input ref="@defaultCollection"><xf:label>Target Root Collection Handle: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_target_collection" /></xf:input>
+				<xf:input ref="lister/@transformationDataFile"><xf:label>IMC Data File: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/file_cabinet_data_file_directory" /></xf:input>
+				<xf:input ref="lister/@errorDirectory"><xf:label>Error Directory: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_error_directory" /></xf:input>
+                <xf:input ref="lister/lister/@watchDirectory"><xf:label>Watch Directory: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_watch_directory" /></xf:input>
+                <xf:input ref="lister/lister/@waitTimeMillis"><xf:label>Polling Interval (Milliseconds): </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_wait_time" /></xf:input>
+            </xf:group>
+        </presentation>
+		        
+		<presentation implementation="com.xerox.adoc.docushare.ingester.FileCabinet" usage="edit">
+            <xf:group xmlns:xf="http://www.w3.org/2002/xforms" xml:lang="en">
+                <xf:input ref="@enabled"><xf:label>Enabled: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_enabled" /></xf:input>
+                <xf:input ref="@userHandle"><xf:label>Default User Handle: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_default_user" /></xf:input>
+                <xf:input ref="@defaultCollection"><xf:label>Target Root Collection Handle: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_target_collection" /></xf:input>
+				<xf:input ref="lister/@transformationDataFile"><xf:label>IMC Data File: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/file_cabinet_data_file_directory" /></xf:input>
+				<xf:input ref="lister/@errorDirectory"><xf:label>Error Directory: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_error_directory" /></xf:input>
+                <xf:input ref="lister/lister/@watchDirectory"><xf:label>Watch Directory: </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_watch_directory" /></xf:input>
+                <xf:input ref="lister/lister/@waitTimeMillis"><xf:label>Polling Interval (Milliseconds): </xf:label><xf:help xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="${request:config:cmd_base}PropHelp/ingester_wait_time" /></xf:input>
+            </xf:group>
+        </presentation>
+
+    </presentations>
+</ingester_localized_data>

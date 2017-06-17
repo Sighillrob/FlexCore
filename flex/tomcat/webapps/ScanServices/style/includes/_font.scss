@@ -1,0 +1,83 @@
+
+/* ------------ */
+/* Font Styling */
+/* ------------ */
+
+@charset "UTF-8";
+
+//Roboto font faces from Google
+
+//Roboto-Thin.ttf: Copyright 2011 Google Inc. All Rights Reserved.
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 100;
+  font-style: normal;
+  src: url('../fonts/Roboto-100/Roboto-100.eot?v=#{$dsversion}');
+  src: url('../fonts/Roboto-100/Roboto-100.eot?#iefix&v=#{$dsversion}') format('embedded-opentype'),
+    local('Roboto Thin'),
+    local('Roboto-100'),
+    url('../fonts/Roboto-100/Roboto-100.woff2?v=#{$dsversion}') format('woff2'),
+    url('../fonts/Roboto-100/Roboto-100.woff?v=#{$dsversion}') format('woff'),
+    url('../fonts/Roboto-100/Roboto-100.ttf?v=#{$dsversion}') format('truetype'),
+    url('../fonts/Roboto-100/Roboto-100.svg?v=#{$dsversion}') format('svg');
+}
+
+//Roboto-Light.ttf: Copyright 2011 Google Inc. All Rights Reserved.
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-style: normal;
+  src: url('../fonts/Roboto-300/Roboto-300.eot?v=#{$dsversion}');
+  src: url('../fonts/Roboto-300/Roboto-300.eot?#iefix&v=#{$dsversion}') format('embedded-opentype'),
+    local('Roboto Light'),
+    local('Roboto-300'),
+    url('../fonts/Roboto-300/Roboto-300.woff2?v=#{$dsversion}') format('woff2'),
+    url('../fonts/Roboto-300/Roboto-300.woff?v=#{$dsversion}') format('woff'),
+    url('../fonts/Roboto-300/Roboto-300.ttf?v=#{$dsversion}') format('truetype'),
+    url('../fonts/Roboto-300/Roboto-300.svg?v=#{$dsversion}') format('svg');
+}
+
+//Roboto-Regular.ttf: Copyright 2011 Google Inc. All Rights Reserved.
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/Roboto-regular/Roboto-regular.eot?v=#{$dsversion}');
+  src: url('../fonts/Roboto-regular/Roboto-regular.eot?#iefix&v=#{$dsversion}') format('embedded-opentype'),
+    local('Roboto'),
+    local('Roboto-regular'),
+    url('../fonts/Roboto-regular/Roboto-regular.woff2?v=#{$dsversion}') format('woff2'),
+    url('../fonts/Roboto-regular/Roboto-regular.woff?v=#{$dsversion}') format('woff'),
+    url('../fonts/Roboto-regular/Roboto-regular.ttf?v=#{$dsversion}') format('truetype'),
+    url('../fonts/Roboto-regular/Roboto-regular.svg?v=#{$dsversion}') format('svg');
+}
+
+//Roboto-Medium.ttf: Copyright 2011 Google Inc. All Rights Reserved.
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-style: normal;
+  src: url('../fonts/Roboto-500/Roboto-500.eot?v=#{$dsversion}');
+  src: url('../fonts/Roboto-500/Roboto-500.eot?#iefix&v=#{$dsversion}') format('embedded-opentype'),
+    local('Roboto Medium'),
+    local('Roboto-500'),
+    url('../fonts/Roboto-500/Roboto-500.woff2?v=#{$dsversion}') format('woff2'),
+    url('../fonts/Roboto-500/Roboto-500.woff?v=#{$dsversion}') format('woff'),
+    url('../fonts/Roboto-500/Roboto-500.ttf?v=#{$dsversion}') format('truetype'),
+    url('../fonts/Roboto-500/Roboto-500.svg?v=#{$dsversion}') format('svg');
+}
+
+//Roboto-Bold.ttf: Copyright 2011 Google Inc. All Rights Reserved.
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/Roboto-700/Roboto-700.eot?v=#{$dsversion}');
+  src: url('../fonts/Roboto-700/Roboto-700.eot?#iefix&v=#{$dsversion}') format('embedded-opentype'),
+    local('Roboto Bold'),
+    local('Roboto-700'),
+    url('../fonts/Roboto-700/Roboto-700.woff2?v=#{$dsversion}') format('woff2'),
+    url('../fonts/Roboto-700/Roboto-700.woff?v=#{$dsversion}') format('woff'),
+    url('../fonts/Roboto-700/Roboto-700.ttf?v=#{$dsversion}') format('truetype'),
+    url('../fonts/Roboto-700/Roboto-700.svg?v=#{$dsversion}') format('svg');
+}

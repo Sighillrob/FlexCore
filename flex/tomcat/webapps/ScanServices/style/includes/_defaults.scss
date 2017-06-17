@@ -1,0 +1,44 @@
+$dsversion: "7.0"; // Used for cache-busting
+
+$nav-background-color: #fff;
+
+
+// Button Styling
+$buttons-border-radius: 3px;
+
+// Primary Button
+$primary-button-background-color: #3498db;
+$primary-button-hover-background-color: #3cb0fd;
+$primary-button-disabled-background-color: #edeff1;
+$primary-button-text-color: #fff;
+$primary-button-hover-text-color: $primary-button-text-color;
+$primary-button-disabled-text-color: #d2d9dc;
+$primary-button-border-width:0;
+//$primary-button-border-color;
+//$primary-button-hover-border-color;
+//$primary-button-disabled-border-color;
+$primary-button-padding: 10px 20px;
+
+// Secondary Button
+$secondary-button-background-color: #fff;
+$secondary-button-hover-border-color: #2e3236;
+$secondary-button-border-color: #e3e6e9;
+$secondary-button-text-color: #2e3236;
+$secondary-button-disabled-text-color: #d2d9dc;
+$secondary-button-border-width:0;
+//$secondary-button-border-color;
+//$secondary-button-hover-border-color;
+//$secondary-button-disabled-border-color;
+$secondary-button-padding: $primary-button-padding;
+
+// Small Form Button
+$small-submit-button-background-color: transparent;
+$small-submit-button-text-color: #2e3236;
+$small-submit-button-border-color: #dcdee0;
+$small-submit-button-hover-background-color: #7c8890;
+$small-submit-button-hover-text-color: #fff;
+$small-submit-button-hover-border-color: #7c8890;
+$small-submit-button-border-width:1px;
+$small-submit-button-border-style:solid;
+//$small-submit-button-disabled-border-color;
+$small-submit-button-padding: 5px 10px;

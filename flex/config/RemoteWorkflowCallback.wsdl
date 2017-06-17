@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.xerox.com/xpim/2006/remoteworkflow" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.xerox.com/xpim/2006/remoteworkflow" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.xerox.com/xpim/2006/remoteworkflow">
+      <s:element name="ReportStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Response" type="tns:remoteWorkflowResponseType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="remoteWorkflowResponseType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Node" type="tns:nodeType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="File" type="tns:fileType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+        <s:attribute name="jobName" type="s:string" />
+        <s:attribute name="jobId" type="s:long" use="required" />
+        <s:attribute name="activityId" type="s:string" />
+        <s:attribute name="itemCount" type="s:long" />
+        <s:attribute name="itemsCompleted" type="s:long" />
+        <s:attribute name="status" type="tns:ActivityStatus" />
+        <s:attribute name="statusMessage" type="s:string" />
+        <s:anyAttribute />
+      </s:complexType>
+      <s:complexType name="nodeType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Attribute" type="tns:metadataAttributeType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Rendition" type="tns:renditionType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Node" type="tns:nodeType" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+        <s:attribute name="name" type="s:ID" />
+        <s:attribute name="layer" type="s:string" />
+        <s:attribute name="type" type="s:string" />
+        <s:attribute name="status" type="tns:ActivityStatus" />
+        <s:attribute name="statusMessage" type="s:string" />
+        <s:anyAttribute />
+      </s:complexType>
+      <s:complexType name="metadataAttributeType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="name" type="s:string" />
+            <s:attribute name="type" type="s:string" />
+            <s:attribute name="format" type="s:string" />
+            <s:attribute name="length" type="s:string" />
+            <s:attribute name="precision" type="s:string" />
+            <s:anyAttribute />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="renditionType">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+        <s:attribute name="name" type="s:string" />
+        <s:attribute name="format" type="s:string" />
+        <s:attribute name="size" type="s:string" />
+        <s:attribute name="location" type="s:string" />
+        <s:anyAttribute />
+      </s:complexType>
+      <s:simpleType name="ActivityStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Inactive" />
+          <s:enumeration value="Ready" />
+          <s:enumeration value="Running" />
+          <s:enumeration value="Suspended" />
+          <s:enumeration value="Completed" />
+          <s:enumeration value="Skipped" />
+          <s:enumeration value="Failed" />
+          <s:enumeration value="Terminated" />
+          <s:enumeration value="Queued" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="fileType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="content" type="s:base64Binary" />
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+        <s:attribute name="id" type="s:ID" />
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="ReportStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReportStatusResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ReportStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:ReportStatus" />
+  </wsdl:message>
+  <wsdl:message name="ReportStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:ReportStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RemoteWorkflowCallbackSoap">
+    <wsdl:operation name="ReportStatus">
+      <wsdl:input message="tns:ReportStatusSoapIn" />
+      <wsdl:output message="tns:ReportStatusSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="RemoteWorkflowCallbackHttpGet" />
+  <wsdl:portType name="RemoteWorkflowCallbackHttpPost" />
+  <wsdl:binding name="RemoteWorkflowCallbackSoap" type="tns:RemoteWorkflowCallbackSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReportStatus">
+      <soap:operation soapAction="http://www.xerox.com/xpim/2006/remoteworkflow/ReportStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RemoteWorkflowCallbackSoap12" type="tns:RemoteWorkflowCallbackSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReportStatus">
+      <soap12:operation soapAction="http://www.xerox.com/xpim/2006/remoteworkflow/ReportStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RemoteWorkflowCallbackHttpGet" type="tns:RemoteWorkflowCallbackHttpGet">
+    <http:binding verb="GET" />
+  </wsdl:binding>
+  <wsdl:binding name="RemoteWorkflowCallbackHttpPost" type="tns:RemoteWorkflowCallbackHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="RemoteWorkflowCallback">
+    <wsdl:port name="RemoteWorkflowCallbackSoap" binding="tns:RemoteWorkflowCallbackSoap">
+      <soap:address location="http://13.121.239.107/XPIMRemoteWorkflow/RemoteWorkflowCallback.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RemoteWorkflowCallbackSoap12" binding="tns:RemoteWorkflowCallbackSoap12">
+      <soap12:address location="http://13.121.239.107/XPIMRemoteWorkflow/RemoteWorkflowCallback.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RemoteWorkflowCallbackHttpGet" binding="tns:RemoteWorkflowCallbackHttpGet">
+      <http:address location="http://13.121.239.107/XPIMRemoteWorkflow/RemoteWorkflowCallback.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RemoteWorkflowCallbackHttpPost" binding="tns:RemoteWorkflowCallbackHttpPost">
+      <http:address location="http://13.121.239.107/XPIMRemoteWorkflow/RemoteWorkflowCallback.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

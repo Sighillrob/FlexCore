@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>ViewONE Quick Start</title>
+
+
+<script language="JavaScript">
+
+
+function getParam(name)
+{
+   var divider = "?";
+   var separator = "&";
+   var split = "=";
+   var param = null;
+   var location_string = document.location.toString();
+   var parameterIndex = location_string.indexOf(divider);
+   var parameters;
+
+   if (parameterIndex > -1)
+   {
+      parameters = location_string.substring(parameterIndex + 1);
+      var parameterArray = parameters.split(separator);
+      for (i = 0; i < parameterArray.length; i++)
+      {
+         var indexSplit = parameterArray[i].indexOf(split);
+         if (indexSplit > -1)
+         {
+            var paramName = parameterArray[i].substring(0, indexSplit);
+            var paramValue = parameterArray[i].substring(indexSplit + 1);
+            if (paramName == name)
+            {
+               return decode(paramValue)
+            }
+         }
+      }
+   }
+   return "";
+}
+
+
+function decode(str)
+{
+   var result = "";
+
+   for (var i = 0; i < str.length; i++)
+   {
+      if (str.charAt(i) == "+")
+      {
+         result += " ";
+      }
+      else
+      {
+	     result += str.charAt(i);
+      }
+   }
+
+   return unescape(result);
+}
+
+
+
+var code = getParam("code");
+var archive = getParam("archive");
+var cabbase = getParam("cabbase");
+var launchHandle = getParam("launchHandle");
+</script>
+
+</head>
+<body>
+<script language="JavaScript">
+document.write('<applet name="viewone" mayscript code="'+code+'" width="250" height="250" codebase="." archive="'+archive+'">');
+document.write('<param name="cabbase" value="'+cabbase+'">');
+
+document.write('<param name="mainQuickstartWindow" value="true">');
+
+if (launchHandle != null)
+{
+   document.write('<param name="launchHandle" value="'+launchHandle+'">');
+}
+
+document.write('</applet>');
+
+</script>
+
+</body>
+</html>

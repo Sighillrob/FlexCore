@@ -1,0 +1,1 @@
+//externalDecoder1 = SampleDecoder<extension>

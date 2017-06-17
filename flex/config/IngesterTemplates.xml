@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IngesterTemplates>
+
+    <socket name="" key="" category="ImagingSubsystem" type="ImageStore" enabled="false" className="com.xerox.docushare.ingester.impl.plugin.DocumentCreatorPlugin"
+            userHandle="" defaultCollection="" implementation="com.xerox.adoc.docushare.ingester.ImageStore">
+        <lister className="com.xerox.docushare.ingester.impl.lister.ZipXMLIngesterProtoLister"
+                name="ImageStoreZipXML"
+                tempDirectory=""
+                errorDirectory=""
+                logDirectory=""
+                wantLogging="false"
+                externalLoopbackClass="com.xerox.docushare.ingester.impl.lister.ZipXMLLoopbackImpl"
+                externalLoopbackURL=""
+                externalLoopbackProxy=""
+				externalLoopbackProxyPort=""
+				externalLoopbackURLUsername="" 
+				externalLoopbackURLPassword="" 
+				externalLoopbackProxyUsername="" 
+				externalLoopbackProxyPassword=""
+                parserClass="com.xerox.docushare.ingester.impl.lister.XMLIngesterProtoParser">
+            <lister className="com.xerox.docushare.ingester.impl.lister.FileIngesterProtoLister"
+                    watchDirectory="" 
+                    logDirectory=""
+                    acceptedFileExtension="ZIP"
+                    waitTimeMillis="">
+             </lister>
+        </lister>
+    </socket>
+
+    <socket name="" key="" enabled="false" category="FlatFiles" type="NoProperties" className="com.xerox.docushare.ingester.impl.plugin.DocumentCreatorPlugin"
+            userHandle="" defaultCollection="" implementation="com.xerox.adoc.docushare.ingester.FlatFiles">
+        <lister className="com.xerox.docushare.ingester.impl.lister.FileIngesterProtoLister"
+                watchDirectory="" 
+                acceptedFileExtension=""
+                waitTimeMillis="">
+        </lister>
+    </socket>
+
+    <socket name="" key="" enabled="false" category="ImagingSubsystem" type="GlyphScan" className="com.xerox.docushare.ingester.impl.plugin.DocumentCreatorPlugin"
+            userHandle="" defaultCollection="" implementation="com.xerox.adoc.docushare.ingester.GlyphScan">
+        <lister className="com.xerox.docushare.ingester.impl.lister.GlyphXMLIngesterProtoLister"
+                name="GlyphScanImageXML"
+                parserClass="com.xerox.docushare.ingester.impl.lister.GlyphScanParser">
+            <lister className="com.xerox.docushare.ingester.impl.lister.FileIngesterProtoLister"
+                    acceptedFileExtension="XML"
+                    waitTimeMillis="30000">      
+            </lister>
+        </lister>
+    </socket>
+
+	<socket category="FileCabinet" className="com.xerox.docushare.ingester.impl.plugin.DocumentCreatorPlugin" defaultCollection="" 
+			enabled="false" implementation="com.xerox.adoc.docushare.ingester.FileCabinet" key="" name="" 
+			type="FileCabinet" userHandle="">
+		
+		<lister className="com.xerox.docushare.ingester.impl.lister.FileCabinetProtoLister" name="FileCabinetProtoLister" 
+			transformationClassName="com.xerox.docushare.ingester.impl.lister.FileCabinetTransformation" 
+			transformationDataFile="" errorDirectory="">
+			<lister acceptedFileExtension="CSV" className="com.xerox.docushare.ingester.impl.lister.FileIngesterProtoLister" 
+				logDirectory="" waitTimeMillis="250" watchDirectory="">
+			</lister>
+		</lister>
+	</socket>			
+</IngesterTemplates>

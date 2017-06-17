@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services mode="readWrite" version="1" maxSize="10" maxIndex="10" webLogLevel="DEBUG">
+  <service name="com.xerox.elf.kolvir.dbc.impl.DatabaseImpl" required="true" logLevel="DEBUG">
+    <label resource="shadow:/l10n/messages/elfbase.service/messages.xml?key=com.xerox.elf.kolvir.dbc.impl.DatabaseImpl" />
+  </service>
+  <service name="com.xerox.elf.oauth.KVServiceImpl" logLevel="DEBUG">
+    <label resource="shadow:/l10n/messages/elfbase.service/messages.xml?key=com.xerox.elf.oauth.KVServiceImpl" />
+  </service>
+  <service name="com.xerox.elf.kolvir.content.ContentStoreServiceImpl" logLevel="DEBUG">
+    <label resource="shadow:/l10n/messages/elfbase.service/messages.xml?key=com.xerox.elf.kolvir.content.ContentStoreServiceImpl" />
+  </service>
+  <service name="com.xerox.raptor.kite.service.ContentIntakeService" logLevel="INFO">
+    <label resource="shadow:/l10n/messages/elfbase.service/messages.xml?key=com.xerox.raptor.kite.service.ContentIntakeService" />
+    <license name="falcon" select="/license/CIM ='true' or /license/emailReceive = 'true'"/>
+  </service>
+  <service name="com.xerox.docushare.elf.index.server.IndexServerImpl" logLevel="INFO">
+    <label resource="shadow:/l10n/messages/elfbase.service/messages.xml?key=com.xerox.docushare.elf.index.server.IndexServerImpl" />
+    <license name="falcon" select="/license/fullTextSearch" />
+  </service>
+  <service name="com.xerox.docushare.elf.search.server.SearchServerImpl" logLevel="INFO">
+    <label resource="shadow:/l10n/messages/elfbase.service/messages.xml?key=com.xerox.docushare.elf.search.server.SearchServerImpl" />
+    <license name="falcon" select="/license/fullTextSearch" />
+  </service>
+  <service name="com.xerox.docushare.avalon.elfbase.contentRules.shadow.ContentRuleService" logLevel="INFO">
+    <label resource="shadow:/l10n/messages/elfbase.service/messages.xml?key=com.xerox.docushare.avalon.elfbase.contentRules.shadow.ContentRuleService" />
+  </service>
+  <service name="com.xerox.falcon.directory.service.KVServiceImpl" logLevel="DEBUG">
+    <label resource="shadow:/l10n/messages/elfbase.service/messages.xml?key=com.xerox.falcon.directory.service.KVServiceImpl" />
+  </service>
+  <service name="com.xerox.docushare.avalon.elfbase.alarm.AlarmService" logLevel="DEBUG">
+    <label resource="shadow:/l10n/messages/elfbase.service/messages.xml?key=com.xerox.docushare.avalon.elfbase.alarm.AlarmService" />
+  </service>
+  <service name="com.xerox.docushare.emailservicefalcon.KVServiceImpl" logLevel="INFO">
+    <label resource="shadow:/l10n/messages/elfbase.service/messages.xml?key=com.xerox.docushare.emailservicefalcon.KVServiceImpl" />
+    <license name="falcon" select="/license/emailSend ='true' or /license/emailReceive = 'true' or /license/print = 'true'" />
+  </service>
+</services>

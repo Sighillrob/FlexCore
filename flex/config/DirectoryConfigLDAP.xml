@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DirConfigLDAP>
+    <Config>
+        <Port>389</Port>
+        <Hosts />
+        <SslPort>636</SslPort>
+        <AuthMode>0</AuthMode>
+        <AuthLevel>simple</AuthLevel>
+        <AgentType>0</AgentType>
+        <AgentDN />
+        <AgentPassword />
+        <NamespaceRoot />
+        <SearchScope>0</SearchScope>
+        <ServerType>0</ServerType>
+        <RdnKey>cn</RdnKey>
+        <DnFormat>0</DnFormat>
+        <Version>3</Version>
+        <UserAccessFilter />
+        <UserPrivacyFilter />
+        <UserMembershipFilter></UserMembershipFilter>
+        <AutoSyncDayInterval>1</AutoSyncDayInterval>
+        <AutoSyncHour>0</AutoSyncHour>
+        <AutoSyncMinute>0</AutoSyncMinute>
+        <GroupSearchFilter />
+        <EnableSSL>false</EnableSSL>
+        <EnableLoginSynch>true</EnableLoginSynch>
+        <EnableGroups>true</EnableGroups>
+        <EnableDynamicGroups>false</EnableDynamicGroups>
+        <EnableAutoCreateUser>true</EnableAutoCreateUser>
+        <EnableAutoCreateGroup>true</EnableAutoCreateGroup>
+        <EnableAutoRemoveUser>false</EnableAutoRemoveUser>
+        <EnableAutoRemoveGroup>false</EnableAutoRemoveGroup>
+        <EnableUserAccessFilter>false</EnableUserAccessFilter>
+        <EnableGroupSearchFilter>false</EnableGroupSearchFilter>
+        <EnableUserPrivacyFilter>false</EnableUserPrivacyFilter>
+        <EnableMembershipFilter>false</EnableMembershipFilter>
+        <EnableAutoSync>false</EnableAutoSync>
+        <EnableWriteback>false</EnableWriteback>
+        <GlobalPropertyMapUsers>
+            <GlobalPropertyMap>
+                <GlobalPropertyMapRow>
+                    <DSProperty>email</DSProperty>
+                    <LDAPAttribute>mail</LDAPAttribute>
+                    <Readonly>true</Readonly>
+                    <Type>14</Type>
+                </GlobalPropertyMapRow>
+                <GlobalPropertyMapRow>
+                    <DSProperty>phone</DSProperty>
+                    <LDAPAttribute>telephoneNumber</LDAPAttribute>
+                    <Readonly>true</Readonly>
+                    <Type>10</Type>
+                </GlobalPropertyMapRow>            
+                <GlobalPropertyMapRow>
+                    <DSProperty>last_name</DSProperty>
+                    <LDAPAttribute>sn</LDAPAttribute>
+                    <Readonly>true</Readonly>
+                    <Type>10</Type>
+                </GlobalPropertyMapRow>
+                <GlobalPropertyMapRow>
+                    <DSProperty>first_name</DSProperty>
+                    <LDAPAttribute>givenName</LDAPAttribute>
+                    <Readonly>true</Readonly>
+                    <Type>10</Type>
+                </GlobalPropertyMapRow>
+                <GlobalPropertyMapRow>
+                    <DSProperty>username</DSProperty>
+                    <LDAPAttribute>sAMAccountName</LDAPAttribute>
+                    <Readonly>true</Readonly>
+                    <Type>10</Type>
+                </GlobalPropertyMapRow>                
+            </GlobalPropertyMap>
+        </GlobalPropertyMapUsers>
+        <GlobalPropertyMapGroups>
+            <GlobalPropertyMap>
+                <GlobalPropertyMapRow>
+                    <DSProperty>description</DSProperty>
+                    <LDAPAttribute>description</LDAPAttribute>
+                    <Readonly>true</Readonly>
+                    <Type>11</Type>
+                </GlobalPropertyMapRow>
+                <GlobalPropertyMapRow>
+                    <DSProperty>title</DSProperty>
+                    <LDAPAttribute>cn</LDAPAttribute>
+                    <Readonly>true</Readonly>
+                    <Type>10</Type>
+                </GlobalPropertyMapRow>
+                <GlobalPropertyMapRow>
+                    <DSProperty>summary</DSProperty>
+                    <LDAPAttribute>info</LDAPAttribute>
+                    <Readonly>true</Readonly>
+                    <Type>10</Type>
+                </GlobalPropertyMapRow>
+            </GlobalPropertyMap>
+        </GlobalPropertyMapGroups>
+        <ObjectDataUser>
+            <ObjectDataLists>
+                <ObjectDataList>
+                    <ObjectClass>user</ObjectClass>
+                </ObjectDataList>
+            </ObjectDataLists>
+        </ObjectDataUser>
+        <ObjectDataGroup>
+            <ObjectDataLists>
+                <ObjectDataList>
+                    <ObjectClass>group</ObjectClass>
+                    <GroupType>static</GroupType>
+                    <MemberAttribute>member</MemberAttribute>
+                </ObjectDataList>
+                <ObjectDataList>
+                    <ObjectClass>groupOfUrls</ObjectClass>
+                    <GroupType>dynamic</GroupType>
+                    <MemberAttribute>memberurl</MemberAttribute>
+                </ObjectDataList>
+            </ObjectDataLists>
+        </ObjectDataGroup>
+    </Config>
+</DirConfigLDAP>

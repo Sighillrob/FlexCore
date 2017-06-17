@@ -1,0 +1,131 @@
+/* ----------------------------- */
+/* Autofill Profile Listing Page */
+/* ----------------------------- */
+#AutofillProfiles .objectlist td{vertical-align: top;}
+#AutofillProfiles .objectlist td.name img{vertical-align: middle;}
+#AutofillProfiles .objectlist .name{text-align: left;width:auto !important;white-space: nowrap;}
+#AutofillProfiles .objectlist .leftalign{text-align: left}
+#AutofillProfiles .mapping{text-align: left;white-space:nowrap}
+#AutofillProfiles .objectlist .actions{width:50px;min-width:50px}
+#AutofillProfiles .objectlist .columnmapping{color:#666;padding-left:18px;}
+#AutofillProfiles .objectlist .columnmapping.primary{
+  font-weight:bold;
+  background:url(../images/admin/icon_primarykey.svg) 0 0 no-repeat;
+  background-size: 15px 15px;
+}
+#AutofillProfiles .objectlist .ds-loc{display: block;margin:5px 0 0 20px;color:#777;font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;}
+#AutofillProfiles .objectlist tbody tr:nth-child(even){background:rgba(142, 154, 169, 0.1)}
+#AutofillProfiles .objectlist tbody tr:nth-child(even) td.actions{background:rgba(142, 154, 169, 0.15)}
+
+#AutofillProfiles .objectlist .ds-type.ds-file-icon{background:url(../images/admin/ds-filedb.svg) 0 50% no-repeat;padding-left:20px;display:inline-block;min-height:16px;}
+#AutofillProfiles .objectlist .ds-type.ds-server-icon{background:url(../images/admin/ds-db.svg) 0 50% no-repeat;padding-left:20px;display:inline-block;min-height:16px;}
+
+
+/* ---------------------- */
+/* Autofill Edit/Add Page */
+/* ---------------------- */
+#mapped-btn-warn{
+  margin:0;
+  background:#b7e3fd;
+  padding:10px;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+#mapped-btn-warn p{margin:0 0 0.5em 0}
+
+#AutofillProfile #buttonrow{clear:none}
+#AutofillProfile #mappedButtonsListing{padding:10px;margin:10px 0;background:#f3f3f3;border-radius: 3px}
+#AutofillProfile #mappedButtonsListingLabel{font-weight:bold;}
+#AutofillProfile #mappedButtonsListing a{
+  background:url("../images/admin/mfd_button_small.svg") 0 50% no-repeat;
+  display:inline-block;
+  padding-left:15px;
+}
+#AutofillProfile #table.option{text-transform: capitalize}
+#AutofillProfile .objectlist{margin-top:0;}
+#AutofillProfile .objectlist-header{
+  padding:10px;
+  background: rgba(142, 154, 169, 0.05);
+  border-bottom:1px solid rgba(142, 154, 169, 0.25);
+  margin-top:2em;
+}
+
+#AutofillProfile .objectlist-header label{float:none;display:inline;color: rgb(142, 154, 169)}
+#AutofillProfile .objectlist-header label:last-of-type{margin-left:1em;}
+#AutofillProfile .returnlink{margin-top:1em;}
+#AutofillProfile #dbconnpendingstatus{margin-left:1em;color:#666;font-style: italic}
+#AutofillProfile #dsNext[disabled='disabled']{background:#fff;border:1px solid rgba(142, 154, 169, 0.1)}
+#AutofillProfile #dsNext[disabled='disabled']:hover{background:#fff;border:1px solid rgba(142, 154, 169, 0.1)}
+#AutofillProfile #buttonrow{margin:0 0 0 1em;}
+
+#afpMappingTable-wrapper{position: relative}
+
+.loading .loading-overlay{
+  position:absolute;
+  background-color:rgba(255, 255, 255, 0.8);
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width:100%;
+  height:100%;
+}
+.loading .loading-spinner{
+  padding:0;margin:0;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+  text-align:center;
+}
+
+.loading .loading-icon{
+  display:block;
+  width:20px;
+  height:20px;
+  background:url(../images/admin/loading.gif) 50% 50% no-repeat;
+  margin-bottom:1em;
+}
+
+.loading .loading-text{
+  text-align:center;
+}
+
+.afp-mapping-table tbody tr:nth-child(even){background-color:rgba(142, 154, 169, 0.1);}
+.afp-mapping-table select option.unassigned{font-style: italic;color:#666;}
+.afp-mapping-table .primarycol{text-align: center}
+.afp-mapping-table input{float:none}
+.afp-mapping-table .notsetup{padding:20px;font-style:italic;color:#666;text-align: center}
+.afp-mapping-table span.column-name{text-transform: capitalize}
+.afp-mapping-table tr.mapped span.column-name{color:#6c560b;font-weight: bold}
+#afp-mapping-tbody-template{display: none}
+.afp-mapping-table th label{float:none;width:inherit;display:inline-block;}
+
+.afp-mapping-table tr.mapped td{background-color:#f7e8b1}
+
+#AutofillProfile select[disabled="disabled"],
+#AutofillProfile input[disabled="disabled"] {opacity: 0.5}

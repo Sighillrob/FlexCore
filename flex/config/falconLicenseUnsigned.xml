@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<license>
+  <enableApplication>true</enableApplication>
+  <enableInternalApplication>false</enableInternalApplication>
+  <consumers>100</consumers>
+  <contributors>100</contributors>
+  <coordinators>100</coordinators>
+  <administrators>10</administrators>
+  <auditTrail>true</auditTrail>
+  <versioning>true</versioning>
+  <scanService>
+      <maxMFP>1</maxMFP>
+  </scanService>
+  <routing>true</routing>
+  <contentRules>true</contentRules>
+  <customProperties>true</customProperties>
+  <customTypes>true</customTypes>
+  <fullTextSearch>true</fullTextSearch>
+  <emailReceive>false</emailReceive>
+  <emailSend>true</emailSend>
+  <print>false</print>
+  <relatedDocuments>true</relatedDocuments>
+  <CIM>true</CIM>
+  <searchURL>true</searchURL>
+  <shrinkWrap>true</shrinkWrap>
+  <documentViewer>true</documentViewer>
+  <concurrentUsers>100</concurrentUsers>
+  <concurrentHostingTeamUsers>10</concurrentHostingTeamUsers>
+  <dns>@localhost@</dns>
+  <enddate>2017-08-01</enddate>
+</license>

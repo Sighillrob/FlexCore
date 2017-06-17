@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tables dbprovider ="MSDE" xmlversion="5">
+  <table name="DSObject_table">
+    <alterAddConstraint>ADD CONSTRAINT DSobject_PK PRIMARY KEY NONCLUSTERED (handle_id)</alterAddConstraint>
+    <alterDropConstraint>DROP CONSTRAINT DSobject_PK</alterDropConstraint>
+    <conditionalIndex name="DSObj_webdav">
+      <create>CREATE INDEX DSObj_webdav ON DSObject_table ( Object_webdav_title )</create>
+      <drop>DROP INDEX DSObject_table.DSObj_webdav</drop>
+    </conditionalIndex>
+    <index name="DSObj_handle_id">
+      <create>CREATE INDEX DSObj_handle_id ON DSObject_table( handle_id, Object_isDeleted ) INCLUDE( handle_class,handle_index,Object_title)</create>
+      <drop>DROP INDEX DSObject_table.DSObj_handle_id</drop>
+    </index>
+    <index name="DSObj_class">
+      <create>CREATE INDEX DSObj_class ON DSObject_table( handle_class, handle_index, Object_isDeleted )</create>
+      <drop>DROP INDEX DSObject_table.DSObj_class</drop>
+    </index>
+    <index name="DSObj_title">
+      <create>CREATE INDEX DSObj_title ON DSObject_table( Object_title )</create>
+      <drop>DROP INDEX DSObject_table.DSObj_title</drop>
+    </index>
+    <conditionalIndex name="DSObj_space">
+      <create>CREATE INDEX DSObj_space ON DSObject_table( Object_space )</create>
+      <drop>DROP INDEX DSObject_table.DSObj_space</drop>
+    </conditionalIndex>
+    <conditionalIndex name="DSObj_spaceName">
+      <create>CREATE INDEX DSObj_spaceName ON DSObject_table( Space_spaceName )</create>
+      <drop>DROP INDEX DSObject_table.DSObj_spaceName</drop>
+    </conditionalIndex>
+    <conditionalIndex name="DSObj_RemoteDN">
+      <create>CREATE INDEX DSObj_RemoteDN ON DSObject_table( Remote_DN )</create>
+      <drop>DROP INDEX DSObject_table.DSObj_RemoteDN</drop>
+    </conditionalIndex>
+  </table>
+
+  <table name="ACL_table">
+    <index name="ACL_index_covered">
+      <create>CREATE UNIQUE INDEX ACL_index_covered ON ACL_table ( handle_id, user_group_index,user_group_class, Object_isDeleted, searcher, reader, writer, manager, writeLinked, readLinked, readHistory )</create>
+      <drop>DROP INDEX ACL_table.ACL_index_covered</drop>
+    </index>
+    <index name="ACL_user_group">
+      <create>CREATE INDEX ACL_user_group on acl_table(user_group_index, user_group_class)</create>
+      <drop>DROP INDEX ACL_table.ACL_user_group</drop>
+    </index>
+  </table>
+
+  <table name="Link_table">
+    <index name="link_dest_id">
+      <create>CREATE INDEX link_dest_id ON Link_table ( destination_id, linktype, source_isDeleted )</create>
+      <drop>DROP INDEX Link_table.link_dest_id</drop>
+    </index>
+    <index name="link_source_id">
+      <create>CREATE INDEX link_source_id ON Link_table ( source_id, linktype, destination_isDeleted, destination_id )</create>
+      <drop>DROP INDEX Link_table.link_source_id</drop>
+    </index>
+  </table>
+
+  <table name="DSProp_table">
+    <index name="DSProp_handle">
+      <create>CREATE INDEX DSProp_handle ON DSprop_table(handle_id, isPrivate)</create>
+      <drop>DROP INDEX DSProp_table.DSProp_handle</drop>
+    </index>
+    <index name="DSProp_user_handle">
+      <create>CREATE INDEX DSProp_user_handle ON DSProp_table(user_handle_index, user_handle_class)</create>
+      <drop>DROP INDEX DSProp_table.DSProp_user_handle</drop>
+    </index>
+    <index name="DSProp_propname">
+      <create>CREATE INDEX DSProp_propname ON DSProp_table(propName)</create>
+      <drop>DROP INDEX DSProp_table.DSProp_propname</drop>
+    </index>
+  </table>
+
+  <table name="nxscope">
+    <index name="nxscope_handle">
+      <create>CREATE INDEX nxscope_handle on nxscope(handle_class, handle_index)</create>
+      <drop>DROP INDEX nxscope.nxscope_handle</drop>
+    </index>
+    <index name="nxscope_scope">
+      <create>CREATE INDEX nxscope_scope on nxscope(scope_class, scope_index)</create>
+      <drop>DROP INDEX nxscope.nxscope_scope</drop>
+    </index>
+  </table>
+
+  <table name="nxxml">
+    <index name="nxxml_context_nodeid">
+      <create>CREATE INDEX nxxml_context_nodeid on nxxml(context_nodeid)</create>
+      <drop>DROP INDEX nxxml.nxxml_context_nodeid</drop>
+    </index>
+    <index name="nxxml_parent_nodeid">
+      <create>CREATE INDEX nxxml_parent_nodeid on nxxml(parent_nodeid)</create>
+      <drop>DROP INDEX nxxml.nxxml_parent_nodeid</drop>
+    </index>
+    <index name="nxxml_handle">
+      <create>CREATE INDEX nxxml_handle on nxxml(handle_class, handle_index)</create>
+      <drop>DROP INDEX nxxml.nxxml_handle</drop>
+    </index>
+  </table>
+
+   <table name="accessTable">
+    <index name="access_op">
+      <create>CREATE INDEX access_op ON accessTable( op )</create>
+      <drop>DROP INDEX accessTable.access_op</drop>
+    </index>
+    <index name="access_handle">
+      <create>CREATE INDEX access_handle ON accessTable( handle_id )</create>
+      <drop>DROP INDEX accessTable.access_handle</drop>
+    </index>
+    <index name="access_opDate">
+      <create>CREATE INDEX access_opDate ON accessTable( opDate )</create>
+      <drop>DROP INDEX accessTable.access_opDate</drop>
+    </index>
+  </table>
+
+   <table name="rootObjectTable">
+    <index name="Root_handle_id">
+      <create>CREATE INDEX Root_handle_id ON rootObjectTable ( handle_id )</create>
+      <drop>DROP INDEX rootObjectTable.Root_handle_id</drop>
+    </index>
+  </table>
+
+   <table name="userInfo_table">
+    <index name="userInfo_handle_id">
+      <create>CREATE INDEX userInfo_handle_id ON userInfo_table ( handle_id )</create>
+      <drop>DROP INDEX userInfo_table.userInfo_handle_id</drop>
+    </index>
+    <index name="userInfo_lookupUser">
+      <create>CREATE INDEX userInfo_lookupUser ON userInfo_table ( username, domain )</create>
+      <drop>DROP INDEX userInfo_table.userInfo_lookupUser</drop>
+    </index>
+    <index name="userInfo_userLevel">
+      <create>CREATE INDEX userInfo_userLevel ON userInfo_table( userLevel, isActive )</create>
+      <drop>DROP INDEX userInfo_table.userInfo_userLevel</drop>
+    </index>
+  </table>
+
+  <table name="CE_table">
+    <index name="CE_table_owner">
+      <create>CREATE INDEX CE_table_owner ON CE_table( ce_owner_index, content_size )</create>
+      <drop>DROP INDEX ce_table.CE_table_owner</drop>
+    </index>
+  </table>
+
+  <table name="isDeleted_table">
+    <index name="isDel_handle_id">
+      <create>CREATE INDEX isDel_handle_id ON isDeleted_table( handle_id )</create>
+      <drop>DROP INDEX isDeleted_table.isDel_handle_id</drop>
+    </index>
+  </table>
+
+  <table name="eventTable">
+    <index name="eventTable_idx">
+      <create>CREATE INDEX eventTable_idx ON eventTable( queueName, batchID, seqNo )</create>
+      <drop>DROP INDEX eventTable.eventTable_idx</drop>
+    </index>
+  </table>
+
+  <table name="eventObjectTable">
+    <index name="eventObjectTable_idx">
+      <create>CREATE INDEX eventObjectTable_idx ON eventObjectTable( batchID, seqNo )</create>
+      <drop>DROP INDEX eventObjectTable_idx</drop>
+    </index>
+    <index name="eventObjectTable_refcount_idx">
+      <create>CREATE INDEX eventObjectTable_refcount_idx ON eventObjectTable( refCount )</create>
+      <drop>DROP INDEX eventObjectTable.eventObjectTable_refcount_idx</drop>
+    </index>
+  </table>
+
+  <table name="deleteObjectTempData">
+    <index name="deleteObjectTempData1_idx">
+      <create>CREATE INDEX deleteObjectTempData1_idx ON deleteObjectTempData( target_id )</create>
+      <drop>DROP INDEX deleteObjectTempData.deleteObjectTempData1_idx</drop>
+    </index>
+    <index name="deleteObjectTempData2_idx">
+      <create>CREATE INDEX deleteObjectTempData2_idx ON deleteObjectTempData( levelNumber )</create>
+      <drop>DROP INDEX deleteObjectTempData.deleteObjectTempData2_idx</drop>
+    </index>
+    <index name="deleteObjectTempData3_idx">
+      <create>CREATE INDEX deleteObjectTempData3_idx ON deleteObjectTempData( internal_objects_parent )</create>
+      <drop>DROP INDEX deleteObjectTempData.deleteObjectTempData3_idx</drop>
+    </index>
+  </table>
+
+  <table name="deleteObjectTempDataBG">
+    <index name="deleteObjectTempDataBG1_idx">
+      <create>CREATE INDEX deleteObjectTempDataBG1_idx ON deleteObjectTempDataBG( target_id )</create>
+      <drop>DROP INDEX deleteObjectTempDataBG.deleteObjectTempDataBG1_idx</drop>
+    </index>
+    <index name="deleteObjectTempDataBG2_idx">
+      <create>CREATE INDEX deleteObjectTempDataBG2_idx ON deleteObjectTempDataBG( levelNumber )</create>
+      <drop>DROP INDEX deleteObjectTempDataBG.deleteObjectTempDataBG2_idx</drop>
+    </index>
+    <index name="deleteObjectTempDataBG3_idx">
+      <create>CREATE INDEX deleteObjectTempDataBG3_idx ON deleteObjectTempDataBG( internal_objects_parent )</create>
+      <drop>DROP INDEX deleteObjectTempDataBG.deleteObjectTempDataBG3_idx</drop>
+    </index>
+  </table>
+
+  <table name="expungeObjectTempData">
+    <index name="expungeObjectTempData1_idx">
+      <create>CREATE INDEX expungeObjectTempData1_idx ON expungeObjectTempData( target_id )</create>
+      <drop>DROP INDEX expungeObjectTempData.expungeObjectTempData1_idx</drop>
+    </index>
+    <index name="expungeObjectTempData2_idx">
+      <create>CREATE INDEX expungeObjectTempData2_idx ON expungeObjectTempData( levelNumber )</create>
+      <drop>DROP INDEX expungeObjectTempData.expungeObjectTempData2_idx</drop>
+    </index>
+    <index name="expungeObjectTempData3_idx">
+      <create>CREATE INDEX expungeObjectTempData3_idx ON expungeObjectTempData( internal_objects_parent )</create>
+      <drop>DROP INDEX expungeObjectTempData.expungeObjectTempData3_idx</drop>
+    </index>
+  </table>
+
+  <table name="expungeObjectTempDataBG">
+    <index name="expungeObjectTempDataBG1_idx">
+      <create>CREATE INDEX expungeObjectTempDataBG1_idx ON expungeObjectTempDataBG( target_id )</create>
+      <drop>DROP INDEX expungeObjectTempDataBG.expungeObjectTempDataBG1_idx</drop>
+    </index>
+    <index name="expungeObjectTempDataBG2_idx">
+      <create>CREATE INDEX expungeObjectTempDataBG2_idx ON expungeObjectTempDataBG( levelNumber )</create>
+      <drop>DROP INDEX expungeObjectTempDataBG.expungeObjectTempDataBG2_idx</drop>
+    </index>
+    <index name="expungeObjectTempDataBG3_idx">
+      <create>CREATE INDEX expungeObjectTempDataBG3_idx ON expungeObjectTempDataBG( internal_objects_parent )</create>
+      <drop>DROP INDEX expungeObjectTempDataBG.expungeObjectTempDataBG3_idx</drop>
+    </index>
+  </table>
+
+  <table name="restoreObjectTempData">
+    <index name="restoreObjectTempData1_idx">
+      <create>CREATE INDEX restoreObjectTempData1_idx ON restoreObjectTempData( target_id )</create>
+      <drop>DROP INDEX restoreObjectTempData.restoreObjectTempData1_idx</drop>
+    </index>
+    <index name="restoreObjectTempData2_idx">
+      <create>CREATE INDEX restoreObjectTempData2_idx ON restoreObjectTempData( levelNumber )</create>
+      <drop>DROP INDEX restoreObjectTempData.restoreObjectTempData2_idx</drop>
+    </index>
+    <index name="restoreObjectTempData3_idx">
+      <create>CREATE INDEX restoreObjectTempData3_idx ON restoreObjectTempData( internal_objects_parent )</create>
+      <drop>DROP INDEX restoreObjectTempData.restoreObjectTempData3_idx</drop>
+    </index>
+  </table>
+
+  <table name="restoreObjectTempDataBG">
+    <index name="restoreObjectTempDataBG1_idx">
+      <create>CREATE INDEX restoreObjectTempDataBG1_idx ON restoreObjectTempDataBG( target_id )</create>
+      <drop>DROP INDEX restoreObjectTempDataBG.restoreObjectTempDataBG1_idx</drop>
+    </index>
+    <index name="restoreObjectTempDataBG2_idx">
+      <create>CREATE INDEX restoreObjectTempDataBG2_idx ON restoreObjectTempDataBG( levelNumber )</create>
+      <drop>DROP INDEX restoreObjectTempDataBG.restoreObjectTempDataBG2_idx</drop>
+    </index>
+    <index name="restoreObjectTempDataBG3_idx">
+      <create>CREATE INDEX restoreObjectTempDataBG3_idx ON restoreObjectTempDataBG( internal_objects_parent )</create>
+      <drop>DROP INDEX restoreObjectTempDataBG.restoreObjectTempDataBG3_idx</drop>
+    </index>
+  </table>
+
+  <table name="replaceACLTempData">
+    <index name="replaceACLTempData1_idx">
+      <create>CREATE INDEX replaceACLTempData1_idx ON replaceACLTempData( target_id )</create>
+      <drop>DROP INDEX replaceACLTempData.replaceACLTempData1_idx</drop>
+    </index>
+    <index name="replaceACLTempData2_idx">
+      <create>CREATE INDEX replaceACLTempData2_idx ON replaceACLTempData( levelNumber )</create>
+      <drop>DROP INDEX replaceACLTempData.replaceACLTempData2_idx</drop>
+    </index>
+    <index name="replaceACLTempData3_idx">
+      <create>CREATE INDEX replaceACLTempData3_idx ON replaceACLTempData( internal_objects_parent )</create>
+      <drop>DROP INDEX replaceACLTempData.replaceACLTempData3_idx</drop>
+    </index>
+  </table>
+
+  <table name="replaceACLTempDataBG">
+    <index name="replaceACLTempDataBG1_idx">
+      <create>CREATE INDEX replaceACLTempDataBG1_idx ON replaceACLTempDataBG( target_id )</create>
+      <drop>DROP INDEX replaceACLTempDataBG.replaceACLTempDataBG1_idx</drop>
+    </index>
+    <index name="replaceACLTempDataBG2_idx">
+      <create>CREATE INDEX replaceACLTempDataBG2_idx ON replaceACLTempDataBG( levelNumber )</create>
+      <drop>DROP INDEX replaceACLTempDataBG.replaceACLTempDataBG2_idx</drop>
+    </index>
+    <index name="replaceACLTempDataBG3_idx">
+      <create>CREATE INDEX replaceACLTempDataBG3_idx ON replaceACLTempDataBG( internal_objects_parent )</create>
+      <drop>DROP INDEX replaceACLTempDataBG.replaceACLTempDataBG3_idx</drop>
+    </index>
+  </table>
+
+  <table name="replaceOwnerTempData">
+    <index name="replaceOwnerTempData1_idx">
+      <create>CREATE INDEX replaceOwnerTempData1_idx ON replaceOwnerTempData( target_id )</create>
+      <drop>DROP INDEX replaceOwnerTempData.replaceOwnerTempData1_idx</drop>
+    </index>
+    <index name="replaceOwnerTempData2_idx">
+      <create>CREATE INDEX replaceOwnerTempData2_idx ON replaceOwnerTempData( levelNumber )</create>
+      <drop>DROP INDEX replaceOwnerTempData.replaceOwnerTempData2_idx</drop>
+    </index>
+    <index name="replaceOwnerTempData3_idx">
+      <create>CREATE INDEX replaceOwnerTempData3_idx ON replaceOwnerTempData( internal_objects_parent )</create>
+      <drop>DROP INDEX replaceOwnerTempData.replaceOwnerTempData3_idx</drop>
+    </index>
+  </table>
+
+  <table name="replaceOwnerTempDataBG">
+    <index name="replaceOwnerTempDataBG1_idx">
+      <create>CREATE INDEX replaceOwnerTempDataBG1_idx ON replaceOwnerTempDataBG( target_id )</create>
+      <drop>DROP INDEX replaceOwnerTempDataBG.replaceOwnerTempDataBG1_idx</drop>
+    </index>
+    <index name="replaceOwnerTempDataBG2_idx">
+      <create>CREATE INDEX replaceOwnerTempDataBG2_idx ON replaceOwnerTempDataBG( levelNumber )</create>
+      <drop>DROP INDEX replaceOwnerTempDataBG.replaceOwnerTempDataBG2_idx</drop>
+    </index>
+    <index name="replaceOwnerTempDataBG3_idx">
+      <create>CREATE INDEX replaceOwnerTempDataBG3_idx ON replaceOwnerTempDataBG( internal_objects_parent )</create>
+      <drop>DROP INDEX replaceOwnerTempDataBG.replaceOwnerTempDataBG3_idx</drop>
+    </index>
+  </table>
+
+  <table name="modifyACLTempData">
+    <index name="modifyACLTempData1_idx">
+      <create>CREATE INDEX modifyACLTempData1_idx ON modifyACLTempData( target_id )</create>
+      <drop>DROP INDEX modifyACLTempData.modifyACLTempData1_idx</drop>
+    </index>
+    <index name="modifyACLTempData2_idx">
+      <create>CREATE INDEX modifyACLTempData2_idx ON modifyACLTempData( levelNumber )</create>
+      <drop>DROP INDEX modifyACLTempData.modifyACLTempData2_idx</drop>
+    </index>
+    <index name="modifyACLTempData3_idx">
+      <create>CREATE INDEX modifyACLTempData3_idx ON modifyACLTempData( internal_objects_parent )</create>
+      <drop>DROP INDEX modifyACLTempData.modifyACLTempData3_idx</drop>
+    </index>
+  </table>
+
+  <table name="deleteObjectSkipDataBG">
+    <index name="deleteObjectSkipDataBG1_idx">
+      <create>CREATE INDEX deleteObjectSkipDataBG1_idx ON deleteObjectSkipDataBG( skip_id )</create>
+      <drop>DROP INDEX deleteObjectSkipDataBG.deleteObjectSkipDataBG1_idx</drop>
+    </index>
+    <index name="deleteObjectSkipDataBG2_idx">
+      <create>CREATE INDEX deleteObjectSkipDataBG2_idx ON deleteObjectSkipDataBG( pass )</create>
+      <drop>DROP INDEX deleteObjectSkipDataBG.deleteObjectSkipDataBG2_idx</drop>
+    </index>
+  </table>
+
+  <table name="expungeObjectSkipDataBG">
+    <index name="expungeObjectSkipDataBG1_idx">
+      <create>CREATE INDEX expungeObjectSkipDataBG1_idx ON expungeObjectSkipDataBG( skip_id )</create>
+      <drop>DROP INDEX expungeObjectSkipDataBG.expungeObjectSkipDataBG1_idx</drop>
+    </index>
+    <index name="expungeObjectSkipDataBG2_idx">
+      <create>CREATE INDEX expungeObjectSkipDataBG2_idx ON expungeObjectSkipDataBG( pass )</create>
+      <drop>DROP INDEX expungeObjectSkipDataBG.expungeObjectSkipDataBG2_idx</drop>
+    </index>
+  </table>
+
+  <table name="replaceACLSkipDataBG">
+    <index name="replaceACLSkipDataBG1_idx">
+      <create>CREATE INDEX replaceACLSkipDataBG1_idx ON replaceACLSkipDataBG( skip_id )</create>
+      <drop>DROP INDEX replaceACLSkipDataBG.replaceACLSkipDataBG1_idx</drop>
+    </index>
+    <index name="replaceACLSkipDataBG2_idx">
+      <create>CREATE INDEX replaceACLSkipDataBG2_idx ON replaceACLSkipDataBG( pass )</create>
+      <drop>DROP INDEX replaceACLSkipDataBG.replaceACLSkipDataBG2_idx</drop>
+    </index>
+  </table>
+
+  <table name="deleteObjectSkipData">
+    <index name="deleteObjectSkipData1_idx">
+      <create>CREATE INDEX deleteObjectSkipData1_idx ON deleteObjectSkipData( skip_id )</create>
+      <drop>DROP INDEX deleteObjectSkipData.deleteObjectSkipData1_idx</drop>
+    </index>
+    <index name="deleteObjectSkipData2_idx">
+      <create>CREATE INDEX deleteObjectSkipData2_idx ON deleteObjectSkipData( pass )</create>
+      <drop>DROP INDEX deleteObjectSkipData.deleteObjectSkipData2_idx</drop>
+    </index>
+  </table>
+
+  <table name="expungeObjectSkipData">
+    <index name="expungeObjectSkipData1_idx">
+      <create>CREATE INDEX expungeObjectSkipData1_idx ON expungeObjectSkipData( skip_id )</create>
+      <drop>DROP INDEX expungeObjectSkipData.expungeObjectSkipData1_idx</drop>
+    </index>
+    <index name="expungeObjectSkipData2_idx">
+      <create>CREATE INDEX expungeObjectSkipData2_idx ON expungeObjectSkipData( pass )</create>
+      <drop>DROP INDEX expungeObjectSkipData.expungeObjectSkipData2_idx</drop>
+    </index>
+  </table>
+
+  <table name="replaceACLSkipData">
+    <index name="replaceACLSkipData1_idx">
+      <create>CREATE INDEX replaceACLSkipData1_idx ON replaceACLSkipData( skip_id )</create>
+      <drop>DROP INDEX replaceACLSkipData.replaceACLSkipData1_idx</drop>
+    </index>
+    <index name="replaceACLSkipData2_idx">
+      <create>CREATE INDEX replaceACLSkipData2_idx ON replaceACLSkipData( pass )</create>
+      <drop>DROP INDEX replaceACLSkipData.replaceACLSkipData2_idx</drop>
+    </index>
+  </table>
+
+  <table name="modifyACLSkipData">
+    <index name="modifyACLSkipData1_idx">
+      <create>CREATE INDEX modifyACLSkipData1_idx ON modifyACLSkipData( skip_id )</create>
+      <drop>DROP INDEX modifyACLSkipData.modifyACLSkipData1_idx</drop>
+    </index>
+    <index name="modifyACLSkipData2_idx">
+      <create>CREATE INDEX modifyACLSkipData2_idx ON modifyACLSkipData( pass )</create>
+      <drop>DROP INDEX modifyACLSkipData.modifyACLSkipData2_idx</drop>
+    </index>
+  </table>
+
+  <table name="instancePreferenceTable">
+    <index name="instancePreferenceTable1_idx">
+      <create>CREATE INDEX instancePreferenceTable1_idx ON instancePreferenceTable( handle_id, applicationName, preferenceName )</create>
+      <drop>DROP INDEX instancePreferenceTable1_idx</drop>
+    </index>
+    <index name="instancePreferenceTable2_idx">
+      <create>CREATE INDEX instancePreferenceTable2_idx ON instancePreferenceTable( applicationName, preferenceName )</create>
+      <drop>DROP INDEX instancePreferenceTable2_idx</drop>
+    </index>
+  </table>
+
+  <table name="DWE_Predecessors" drala="true">
+    <index name="Pred_Index">
+      <create>CREATE INDEX Pred_Index ON DWE_Predecessors(Pred_Id)</create>
+      <drop>DROP INDEX DWE_Predecessors.Pred_Index</drop>
+    </index>
+  </table>
+
+  <table name="DWE_Tasks">
+    <index name="Task_Index1">
+      <create>CREATE INDEX Task_Index1 ON DWE_Tasks(Workflow_Id)</create>
+      <drop>DROP INDEX DWE_Tasks.Task_Index1</drop>
+    </index>
+    <index name="Task_Index2">
+      <create>CREATE INDEX Task_Index2 ON DWE_Tasks(Parent)</create>
+      <drop>DROP INDEX DWE_Tasks.Task_Index2</drop>
+    </index>
+    <index name="Task_Index3">
+      <create>CREATE INDEX Task_Index3 ON DWE_Tasks(Template_Id)</create>
+      <drop>DROP INDEX DWE_Tasks.Task_Index3</drop>
+    </index>
+    <index name="Task_Index4">
+      <create>CREATE INDEX Task_Index4 ON DWE_Tasks(Resource_Id)</create>
+      <drop>DROP INDEX DWE_Tasks.Task_Index4</drop>
+    </index>
+    <index name="Task_Index5">
+      <create>CREATE INDEX Task_Index5 ON DWE_Tasks(Role_Name)</create>
+      <drop>DROP INDEX DWE_Tasks.Task_Index5</drop>
+    </index>
+  </table>
+
+  <table name="DWE_Workflows" drala="true">
+    <index name="Workflow_Index1">
+      <create>CREATE INDEX Workflow_Index1 ON DWE_Workflows(Template_Id)</create>
+      <drop>DROP INDEX DWE_Workflows.Workflow_Index1</drop>
+    </index>
+    <index name="Workflow_Index2">
+      <create>CREATE INDEX Workflow_Index2 ON DWE_Workflows(Unique_Key)</create>
+      <drop>DROP INDEX DWE_Workflows.Workflow_Index2</drop>
+    </index>
+  </table>
+  
+  <table name="rm_instance_table">
+    <index name="rm_instance_handle_id">
+      <create>CREATE INDEX rm_instance_handle_id ON rm_instance_table( handle_id )</create>
+      <drop>DROP INDEX rm_instance_table.rm_instance_handle_id</drop>
+    </index>
+    <index name="rm_instance_handle_rm_handle">
+      <create>CREATE INDEX rm_instance_handle_rm_handle ON rm_instance_table( rm_instance_handle )</create>
+      <drop>DROP INDEX rm_instance_table.rm_instance_handle_rm_handle </drop>
+    </index>
+  </table>
+
+  <table name="indexRecovery">
+    <index name="indexRec_handle_id">
+      <create>CREATE INDEX indexRec_handle_id ON indexRecovery( handleString )</create>
+      <drop>DROP INDEX indexRecovery.indexRec_handle_id</drop>
+    </index>
+    <index name="indexRec_date">
+      <create>CREATE INDEX indexRec_date ON indexRecovery( longDate )</create>
+      <drop>DROP INDEX indexRecovery.indexRec_date</drop>
+    </index>
+  </table>
+</tables>

@@ -1,0 +1,153 @@
+/* ---------------------- */
+/* Configure Buttons Page */
+/* ---------------------- */
+
+.objectlist {
+  th.type {
+    text-align: left;
+    width: 200px;
+  }
+  td.type {
+    color: #6D6E71;
+    width: 200px;
+    font-weight: 300;
+  }
+  th.access {
+    text-align: center;
+    width: 20px;
+    max-width: 30px;
+    border-left:1px solid rgba(142, 154, 169, 0.05);
+    span {
+      background: url(../images/admin/groupaccess.svg) 50% 50% no-repeat;
+      height: 20px;
+      display: block;
+      cursor: help;
+      width: 20px;
+      font: 0/0 a;
+      opacity: 0.7;
+    }
+  }
+  td.access {
+    text-align: center;
+    width: 40px;
+    max-width: 40px;
+    border-left:1px solid rgba(142, 154, 169, 0.1);
+  }
+  th.scantype {
+    text-align: center;
+    width: 40px;
+    max-width: 40px;
+    padding: 5px 10px;
+    border-left:1px solid rgba(142, 154, 169, 0.05);
+    span {
+      background: url(../images/admin/scanType_colheader.svg) 50% 50% no-repeat;
+      height: 20px;
+      display: block;
+      cursor: help;
+      width: 20px;
+      font: 0/0 a;
+      opacity: 0.7;
+    }
+  }
+  td.scantype {
+    text-align: center;
+    width: 40px;
+    max-width: 40px;
+    padding: 5px 10px;
+    border-left:1px solid rgba(142, 154, 169, 0.1);
+  }
+  th.idval, td.idval {
+    text-align: center;
+    width: 20px;
+  }
+
+  .scantype-coll, .scantype-networkfolder, .scantype-email, .grouprestricted {
+    height: 20px;
+    width: 20px;
+    display: block;
+    text-indent: -9999px;
+    overflow: hidden;
+    cursor: help;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
+  .scantype-coll{
+    background-image: url(../images/admin/scanType_DocuShare.svg);
+  }
+  .scantype-networkfolder {
+    background-image: url(../images/admin/scanType_Folder.svg);
+  }
+  .scantype-email {
+    background-image: url(../images/admin/scanType_Email.svg);
+  }
+  .grouprestricted {
+    background: url(../images/admin/groupaccess.svg);
+  }
+}
+
+
+#new_mfdbutton{
+  background:url(../images/admin/action_newservicebutton.svg) 0 50% no-repeat;
+  padding:2px 0 2px 25px;
+  line-height: 18px;
+}
+
+.buttongroup_toggle{
+  float:left;
+  width:20px;
+  height:20px;
+  text-indent:-99999px;
+  overflow:hidden;
+  margin:8px 10px 5px 0;
+  cursor:pointer;
+}
+.btn_collapse{background:url(../images/admin/tree_collapse.svg) 50% 50% no-repeat;}
+.btn_expand{background:url(../images/admin/tree_expand.svg) 50% 50% no-repeat;}
+
+.actionmenu li.action_addfolder{background-image: url(../images/admin/action_newfolder.svg);}
+.actionmenu li.action_addscanbutton{background-image: url(../images/admin/action_newscanbutton.svg);}
+.actionmenu li.action_permissions{background-image: url(../images/admin/action_permissions.svg);}
+
+
+.ckbutton{
+  background: rgba(142, 154, 169,0.1);
+  border:1px solid rgba(142, 154, 169, 0.25);
+  text-decoration: none;
+  padding:8px 10px 6px 8px;
+  display:inline-block;
+  margin-left:21px;
+  white-space: nowrap;
+  overflow:hidden;
+  color: #666;
+  vertical-align: middle;
+  border-radius: 3px;
+  font-weight: 500;
+  &:hover{
+    background: #ffffff;
+    border:1px solid rgba(142, 154, 169,0.25);
+    color: #333;
+  }
+}
+
+.ckbutton i{
+  width:20px;
+  height:20px;
+  background-repeat: no-repeat;
+  background-position: top center;
+  display: inline-block;
+  margin-right:3px;
+  vertical-align: middle;
+}
+
+.hasChildren{margin-left:0 !important}
+.button_scan i{background-image:url(../images/admin/ckbutton_scan.svg)}
+.button_folder i{background-image:url(../images/admin/ckbutton_folder.svg)}
+.button_mfd i{
+  background-image:url(../images/eip_icon.png);
+  background-size:18px 18px;
+  background-repeat:no-repeat;
+}
+
+#toggletreebtns{float:right;font-size:0.85em;margin:0 10px 0 0}
+#toggletreebtns span{padding-right:5px;cursor:pointer;}
+#toggletreebtns span i{color:#999;font-style:normal;}

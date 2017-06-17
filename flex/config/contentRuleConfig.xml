@@ -1,0 +1,6 @@
+<contentRule>
+  <pollInterval>60000</pollInterval>
+  <numThreads>1</numThreads>
+  <batchSize>50</batchSize>
+  <walkerChunkSize>100</walkerChunkSize>
+</contentRule>
