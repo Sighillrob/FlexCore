@@ -61,5 +61,11 @@ service stop httpd
 
 cd /opt/flex
 
+#add FQDN for License long and short name
+
+nano /etc/hosts/
+
+
+
 ./silentinstaller.sh answer.txt
 
