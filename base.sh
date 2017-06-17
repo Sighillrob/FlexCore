@@ -34,12 +34,6 @@ sudo systemctl start postgresql
 sudo systemctl enable postgresql
 
 
-#Install Flex and connect to Database
-
-#Get Flex from GitHub Repo
-
-git clone https://github.com/Sighillrob/FlexCore.git
-
 # Copy flex from Root to /opt/flex
 cp -a  FlexCore/flex/* /opt/flex/
 
