@@ -1,0 +1,7 @@
+service httpd start
+
+cd /opt/flex/
+
+source setup_ant
+
+ant startFalcon start_solr

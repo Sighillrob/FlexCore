@@ -1,0 +1,361 @@
+version: 1
+
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:21.147
+dn: dc=example,dc=com
+description: Example.Com, your trusted non-existent corporation.
+dc: example
+o: Example.Com
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+
+# Subtree for users
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:21.258
+dn: ou=Users,dc=example,dc=com
+ou: Users
+description: Example.Com Users
+objectClass: organizationalUnit
+
+# Subtree for groups
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:21.360
+dn: ou=Groups,dc=example,dc=com
+ou: Groups
+description: Example.Com Groups
+objectClass: organizationalUnit
+
+# Subtree for system accounts
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:21.463
+dn: ou=System,dc=example,dc=com
+ou: System
+description: Special accounts used by software applications.
+objectClass: organizationalUnit
+
+# Users
+
+# Mr. Twelve:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:21.593
+dn: uid=Mr.12,ou=Users,dc=example,dc=com
+ou: Users
+uid: Mr.12
+sn: Twelve
+cn: Mr. Twelve
+givenName: Mr
+displayName: Mr. Twelve
+mail: mrTwelve@example.com
+userPassword: secret
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+
+# Mr. Eleven:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:21.701
+dn: uid=Mr.11,ou=Users,dc=example,dc=com
+ou: Users
+uid: Mr.11
+sn: Eleven
+cn: Mr. Eleven
+givenName: Mr
+displayName: Mr. Eleven
+mail: mrEleven@example.com
+userPassword: secret
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+
+# Barbara Jensen:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:21.813
+dn: uid=barbara,ou=Users,dc=example,dc=com
+ou: Users
+uid: barbara
+sn: Jensen
+cn: Barbara Jensen
+givenName: Barbara
+displayName: Barbara Jensen
+mail: barbara@example.com
+userPassword: secret
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+
+# Betty White:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:21.926
+dn: uid=betty,ou=Users,dc=example,dc=com
+ou: Users
+uid: Betty
+sn: White
+cn: Betty White
+givenName: Betty
+displayName: Betty White
+mail: betty@example.com
+userPassword: secret
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+
+# George Person:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:22.038
+dn: uid=george,ou=Users,dc=example,dc=com
+ou: Users
+uid: george
+sn: Person
+cn: George Person
+givenName: George
+displayName: George Person
+mail: george@example.com
+userPassword: secret
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+
+# Sam Waterson:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:22.152
+dn: uid=sam,ou=Users,dc=example,dc=com
+ou: Users
+uid: sam
+sn: Waterson
+cn: Sam Waterson
+givenName: Sam
+displayName: Sam Waterson
+mail: sam@example.com
+userPassword: secret
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+
+# Little Kitty:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:22.270
+dn: uid=little,ou=Users,dc=example,dc=com
+ou: Users
+uid: little
+sn: Kitty
+cn: Little Kitty
+givenName: Little
+displayName: Little Kitty
+mail: little@example.com
+userPassword: secret
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+
+# Bob Morley:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:22.383
+dn: uid=bob,ou=Users,dc=example,dc=com
+ou: Users
+uid: Bob
+sn: Morley
+cn: Bob Morley
+givenName: Bob
+displayName: Bob Morley
+mail: bob@example.com
+userPassword: secret
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+
+# Susan Smith:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:22.495
+dn: uid=susan,ou=Users,dc=example,dc=com
+ou: Users
+uid: susan
+sn: Smith
+cn: Susan Smith
+givenName: Susan
+displayName: Susan Smith
+mail: susan@example.com
+userPassword: secret
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+
+# Lisa Conway:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:22.608
+dn: uid=lisa,ou=Users,dc=example,dc=com
+ou: Users
+uid: lisa
+sn: Conway
+cn: Lisa Conway
+givenName: Lisa
+displayName: Lisa Conway
+mail: lisa@example.com
+userPassword: secret
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+
+# Pete Lawson:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:22.719
+dn: uid=pete,ou=Users,dc=example,dc=com
+ou: Users
+uid: pete
+sn: Lawson
+cn: Pete Lawson
+givenName: Pete
+displayName: Pete Lawson
+mail: pete@example.com
+userPassword: secret
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+
+# Shawn Spenser:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:22.835
+dn: uid=shawn,ou=Users,dc=example,dc=com
+ou: Users
+uid: shawn
+sn: Shawn
+cn: Shawn Spenser
+givenName: Shawn
+displayName: Shawn Spenser
+mail: shawn@example.com
+userPassword: secret
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+
+# Matt Butcher
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:22.950
+dn: uid=matt,ou=Users,dc=example,dc=com
+ou: Users
+# Name info:
+uid: matt
+cn: Matt Butcher
+sn: Butcher
+givenName: Matt
+givenName: Matthew
+displayName: Matt Butcher
+# Work Info:
+title: Systems Integrator
+description: Systems Integration and IT for Example.Com
+employeeType: Employee
+departmentNumber: 001
+employeeNumber: 001-08-98
+mail: mbutcher@example.com
+mail: matt@example.com
+roomNumber: 301
+telephoneNumber: +1 555 555 4321
+mobile: +1 555 555 6789
+st: Illinois
+l: Chicago
+street: 1234 Cicero Ave.
+# Home Info:
+homePhone: +1 555 555 9876
+homePostalAddress: 1234 home street $ Chicago, IL $ 60699-1234
+# Misc:
+userPassword: secret
+preferredLanguage: en-us,en-gb
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+
+# Special Account for Authentication:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:23.063
+dn: uid=authenticate,ou=System,dc=example,dc=com
+uid: authenticate
+ou: System
+description: Special account for authenticating users
+userPassword: secret
+objectClass: account
+objectClass: simpleSecurityObject
+
+# Groups
+
+# LDAP Admin Group:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:23.171
+dn: cn=LDAP Admins,ou=Groups,dc=example,dc=com
+cn: LDAP Admins
+ou: Groups
+description: Users who are LDAP administrators
+uniqueMember: uid=barbara,ou=Users,dc=example,dc=com
+uniqueMember: uid=matt,ou=Users,dc=example,dc=com
+objectClass: groupOfUniqueNames
+
+# Falcon Admin Group:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:23.273
+dn: cn=Falcon Admins,ou=Groups,dc=example,dc=com
+cn: Falcon Admins
+ou: Groups
+description: Users who are Falcon administrators
+uniqueMember: uid=shawn,ou=Users,dc=example,dc=com
+uniqueMember: uid=george,ou=Users,dc=example,dc=com
+objectClass: groupOfUniqueNames
+
+# Falcon User Group:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:23.376
+dn: cn=Falcon Users,ou=Groups,dc=example,dc=com
+cn: Falcon Users
+ou: Groups
+description: Users who are LDAP administrators
+uniqueMember: uid=george,dc=example,dc=com
+uniqueMember: uid=lisa,ou=Users,dc=example,dc=com
+uniqueMember: uid=susan,ou=Users,dc=example,dc=com
+uniqueMember: uid=sam,ou=Users,dc=example,dc=com
+uniqueMember: uid=betty,ou=Users,dc=example,dc=com
+uniqueMember: uid=shawn,ou=Users,dc=example,dc=com
+uniqueMember: uid=pete,ou=Users,dc=example,dc=com
+objectClass: groupOfUniqueNames
+
+# Engineering Group:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:23.528
+dn: cn=LDAP Admins,ou=Groups,dc=example,dc=com
+cn: LDAP Admins
+ou: Groups
+description: Users who are LDAP administrators
+uniqueMember: uid=betty,ou=Users,dc=example,dc=com
+uniqueMember: uid=shawn,ou=Users,dc=example,dc=com
+objectClass: groupOfUniqueNames
+
+# HR Group:
+#!RESULT OK
+#!CONNECTION ldap://52.176.93.84:10389
+#!DATE 2017-06-17T08:41:23.679
+dn: cn=LDAP Admins,ou=Groups,dc=example,dc=com
+cn: LDAP Admins
+ou: Groups
+description: Users who are LDAP administrators
+uniqueMember: uid=lisa,ou=Users,dc=example,dc=com
+uniqueMember: uid=susan,ou=Users,dc=example,dc=com
+objectClass: groupOfUniqueNames

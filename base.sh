@@ -22,6 +22,7 @@ rpm -ivh apacheds-2.0.0-M23-x86_64.rpm
 
 mkdir /opt/flex
 mkdir /opt/flex/documents
+mkdir /opt/start/
 
 cd /etc/init.d/
 service apacheds-2.0.0_M23-default start
@@ -36,7 +37,7 @@ sudo systemctl enable postgresql
 
 # Copy flex from Root to /opt/flex
 cp -a  FlexCore/flex/* /opt/flex/
-
+cp -a  FlexCore/start* /opt/start/
 #
 # Security Stuff
 #
@@ -56,16 +57,12 @@ sudo systemctl enable fail2ban
 sudo yum install yum-plugin-protectbase.noarch -y
 sudo yum install mod_evasive -y
 sudo systemctl restart httpd.service
-service stop httpd 
+service httpd stop 
 
-
-cd /opt/flex
 
 #add FQDN for License long and short name
 
 nano /etc/hosts/
 
-
-
-./silentinstaller.sh answer.txt
+reboot
 
