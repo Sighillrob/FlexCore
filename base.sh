@@ -1,7 +1,7 @@
 #Apache and Cert 
 
 yum update -y
-sed -i --follow-symlinks 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux && cat /etc/sysconfig/selinux
+sed -i --follow-symlinks 's/^SELINUX=.*/SELINUX=permissive/g' /etc/sysconfig/selinux && cat /etc/sysconfig/selinux
 yum install httpd -y
 yum install mod_ldap -y 
 wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -67,5 +67,5 @@ service stop httpd
 
 cd /opt/flex
 
-./silentinstaller.sh answerrob.txt
+./silentinstaller.sh answer.txt
 
