@@ -20,7 +20,8 @@ wget http://www-eu.apache.org/dist//directory/apacheds/dist/2.0.0-M23/apacheds-2
 
 rpm -ivh apacheds-2.0.0-M23-x86_64.rpm
 
-cd FlexCore/
+wget http://products.accusoft.com/PrizmDoc/12.1/prizmdoc_client_12.1.x86_64.rpm.tar.gz
+
 tar -xzvf prizmdoc_client_12.1.x86_64.rpm.tar.gz 
 cd prizmdoc_client_12.1.0.75.x86_64.rpm/
 yum install --nogpgcheck *.rpm -y
@@ -41,9 +42,6 @@ sudo systemctl start postgresql
 sudo systemctl enable postgresql
 
 
-# Copy flex from Root to /opt/flex
-cp -a  FlexCore/flex/* /opt/flex/
-cp -a  FlexCore/start* /opt/start/
 #
 # Security Stuff
 #
@@ -68,7 +66,7 @@ service httpd stop
 
 #add FQDN for License long and short name
 
-nano /etc/hosts/
+nano /etc/hosts
 
 reboot
 
